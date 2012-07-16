@@ -10,82 +10,123 @@
 
 @interface CalculatorAlgorithmRPN ()
 
-@property (nonatomic, strong) NSMutableArray *operandStack;
+@property (nonatomic, strong) NSMutableArray *programStack;
 
 @end
 
 @implementation CalculatorAlgorithmRPN
 
-@synthesize operandStack = _operandStack;
+@synthesize programStack = _programStack;
 
-
-- (NSMutableArray *)operandStack {
-    if (!_operandStack) _operandStack = [[NSMutableArray alloc] init];
-    return _operandStack;
+- (NSMutableArray *)programStack {
+    if (!_programStack) _programStack = [[NSMutableArray alloc] init];
+    return _programStack;
 }
  
 - (void)pushOperand:(double)operand {
-    [self.operandStack addObject:[NSNumber numberWithDouble:operand]];
-}
-
-- (double)popOperand {
-    NSNumber *theOperand = [self.operandStack lastObject];
-    if (theOperand) [self.operandStack removeLastObject];
-    return [theOperand doubleValue];
+    [self.programStack addObject:[NSNumber numberWithDouble:operand]];
 }
 
 - (double)performOperation:(NSString *)operation {
-    double result, first, second;
+    [self.programStack addObject:operation];
+    return [CalculatorAlgorithmRPN runProgram:self.program];
+}
+
+- (id)program {
+    return [self.programStack copy];
+}
+
++ (NSString *)descriptionOfProgram:(id)program {
+    return @"TODO: HF";
+}
+
++ (double)runProgram:(id)program {
+    NSMutableArray *stack;
+    
+    if ([program isKindOfClass:[NSArray class]]) {
+        stack = [program mutableCopy];
+    }
+    
+    return [self popElementFromStack:stack];
+}
+
++ (double)popElementFromStack:(NSMutableArray *)stack {
+    double result = 0;
+    
+    id element = [stack lastObject];
+    if (element) [stack removeLastObject];
+    
+    if ([element isKindOfClass:[NSNumber class]]) {
+        result = [element doubleValue];
+    }
+    else if ([element isKindOfClass:[NSString class]]) {
+        result = [self calculateOperation:element withStack:stack];
+    }
+    
+    return result;
+}
+
++ (double)calculateOperation:(NSString *)operation withStack:(NSMutableArray *)stack {
+    double result = 0;
+    double first, second;
     unichar symbol;
     
-    if ([operation length] > 0) symbol = [operation characterAtIndex:0];
-    
+    if ([operation length] > 0) {
+        symbol = [operation characterAtIndex:0];
+    }
     switch (symbol) {
         case '/':
-            second = [self popOperand];
-            first  = [self popOperand];
-            result = first / second;
+            second = [self popElementFromStack:stack];
+            first  = [self popElementFromStack:stack];
+            if (second) result = first / second;
             break;
+        
         case '*':
-            second = [self popOperand];
-            first  = [self popOperand];
+            second = [self popElementFromStack:stack];
+            first  = [self popElementFromStack:stack];
             result = first * second;
             break;
+        
         case '-':
-            second = [self popOperand];
-            first  = [self popOperand];
+            second = [self popElementFromStack:stack];
+            first  = [self popElementFromStack:stack];
             result = first - second;
             break;
+        
         case '+':
-            second = [self popOperand];
-            first  = [self popOperand];
+            second = [self popElementFromStack:stack];
+            first  = [self popElementFromStack:stack];
             result = first + second;
             break;
+        
         case 's':
-            result = sin([self popOperand]);
+            result = sin([self popElementFromStack:stack]);
             break;
+        
         case 'c':
-            result = cos([self popOperand]);
+            result = cos([self popElementFromStack:stack]);
             break;
+        
         case 0x221A: // √
-            result = sqrt([self popOperand]);
+            first = [self popElementFromStack:stack];
+            if (first >= 0) result = sqrt(first);
             break;
+        
         case 0x03C0: // π
             result = M_PI;
-            break;
-            
+            break; 
+        
         default:
             // Ignore invalid operations!
             NSLog(@"Unkown operation received: %@", operation);
             break;
     }
-    [self pushOperand:result];
     
     return result;
 }
 
 - (void)clearStack {
-    [self.operandStack removeAllObjects];
+    [self.programStack  removeAllObjects];
 }
 
 @end
