@@ -82,18 +82,18 @@ static NSDictionary *_operations;
     if ([program isKindOfClass:[NSArray class]]) {
         stack = [program mutableCopy];
     }
-    
-    // Replace variables if needed
+    // Check each element of the program
     for (NSUInteger idx = 0; idx < [stack count]; idx++) {
         id element = [stack objectAtIndex:idx];
         
-        // Strings that are NOT operations mean it's a variable to be replaced
-        if ([element isKindOfClass:[NSString class]] && ![[self operations] objectForKey:element]) {
+        if ([self isVariable:element]) {
+            // Replace with the variable's value
             id value = [variableValues objectForKey:element];
-            if ([value isKindOfClass:[NSNumber class]])
+            if ([value isKindOfClass:[NSNumber class]]) {
                 [stack replaceObjectAtIndex:idx withObject:value];
-            else
+            } else {
                 [stack replaceObjectAtIndex:idx withObject:[NSNumber numberWithInt:0]];
+            }
         }
     }
     
@@ -102,6 +102,26 @@ static NSDictionary *_operations;
 
 + (NSString *)descriptionOfProgram:(id)program {
     return @"TODO: HF";
+}
+
++ (NSSet *)variablesUsedInProgram:(id)program {
+    NSSet *variables;
+    
+    if ([program isKindOfClass:[NSArray class]]) {
+        NSPredicate *variablesOnly = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+            return [self isVariable:evaluatedObject];
+        }];
+        variables = [NSSet setWithArray:[program filteredArrayUsingPredicate:variablesOnly]];
+    }
+    
+    return variables;
+}
+
++ (BOOL)isVariable:(id)element {
+    // Variables are strings that contain a letter and are not operations
+    return [element isKindOfClass:[NSString class]] 
+        && ([element rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location != NSNotFound) 
+        && ![[self operations] objectForKey:element];
 }
 
 + (double)popElementFromStack:(NSMutableArray *)stack {

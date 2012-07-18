@@ -44,16 +44,14 @@
 - (IBAction)operatorPressed:(UIButton *)sender {
     if (self.hasDataPending) [self enterPressed];
     double result = [self.brain performOperation:sender.currentTitle];
-    NSString *resultText = [NSString stringWithFormat:@"%g", result];
     
+    NSString *resultText = [NSString stringWithFormat:@"%g", result];
     [self updateDisplay:resultText];
     [self updateHistory:[NSString stringWithFormat:@"%@ = %@", sender.currentTitle, resultText]];
 }
 
 - (IBAction)enterPressed {
-    BOOL isVariable = ([self.display.text rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location != NSNotFound);
-    
-    if (isVariable)  {
+    if ([CalculatorAlgorithmRPN isVariable:self.display.text])  {
         [self.brain pushVariable:self.display.text];
     } else  {
         [self.brain pushOperand:[self.display.text doubleValue]];   
