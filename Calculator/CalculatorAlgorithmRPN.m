@@ -225,11 +225,14 @@ static NSDictionary *_operations;
                 case 2:
                     second = [self descriptionOfTopOfStack:stack];
                     first  = [self descriptionOfTopOfStack:stack];
+                    if ([second isEqualToString:@""]) second = @"0";
+                    if ([first isEqualToString:@""]) first = @"0";
                     result = [NSString stringWithFormat:format, first, second];
                     break;
                     
                 case 1:
                     first  = [self descriptionOfTopOfStack:stack];
+                    if ([first isEqualToString:@""]) first = @"0";
                     result = [NSString stringWithFormat:format, first];
                     break;
                     
