@@ -11,7 +11,7 @@
 
 @interface CalculatorViewController ()
 
-@property (nonatomic) BOOL inMiddleOfNumber;
+@property (nonatomic) BOOL hasDataPending;
 @property (nonatomic,  strong) CalculatorAlgorithmRPN *brain;
 
 @end
@@ -20,7 +20,7 @@
 
 @synthesize display = _display;
 @synthesize history = _history;
-@synthesize inMiddleOfNumber = _inMiddleOfNumber;
+@synthesize hasDataPending = _hasDataPending;
 @synthesize brain = _brain;
 
 - (CalculatorAlgorithmRPN *)brain {
@@ -34,15 +34,15 @@
     // Ignore duplicate dots: return if already exists
     if ([digit isEqualToString:@"."]) {
         BOOL displayHasPoint = ([self.display.text rangeOfString:@"."].location != NSNotFound);
-        if (self.inMiddleOfNumber && displayHasPoint) return;
+        if (self.hasDataPending && displayHasPoint) return;
     }
     
-    [self updateDisplay:digit shouldAppend:self.inMiddleOfNumber];
-    if (!self.inMiddleOfNumber) self.inMiddleOfNumber = TRUE;
+    [self updateDisplay:digit shouldAppend:self.hasDataPending];
+    self.hasDataPending = YES;
 }
 
 - (IBAction)operatorPressed:(UIButton *)sender {
-    if (self.inMiddleOfNumber) [self enterPressed];
+    if (self.hasDataPending) [self enterPressed];
     double result = [self.brain performOperation:sender.currentTitle];
     NSString *resultText = [NSString stringWithFormat:@"%g", result];
     
@@ -52,14 +52,14 @@
 
 - (IBAction)enterPressed {
     [self.brain pushOperand:[self.display.text doubleValue]]; 
-    self.inMiddleOfNumber = NO;
+    self.hasDataPending = NO;
 
     [self updateHistory:self.display.text];
 }
 
 - (IBAction)clearAll {
-    self.inMiddleOfNumber = NO;
     [self.brain clearStack];
+    self.hasDataPending = NO;
     
     [self updateDisplay:@"0"];
     self.history.text = @"";
@@ -71,12 +71,13 @@
     }
     if ([self.display.text isEqual:@""]) {
         [self updateDisplay:@"0"];
-        self.inMiddleOfNumber = NO;
+        self.hasDataPending = NO;
     }
 }
 
 - (IBAction)variablePressed:(UIButton *)sender {
     [self updateDisplay:sender.currentTitle];
+    self.hasDataPending = YES;
 }
 
 - (void)updateDisplay:(NSString *)text {
