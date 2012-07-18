@@ -33,6 +33,11 @@ static NSDictionary *_operations;
     [self.programStack addObject:[NSNumber numberWithDouble:operand]];
 }
 
+- (void)pushVariable:(NSString *)variable
+{
+    [self.programStack addObject:variable];
+}
+
 - (double)performOperation:(NSString *)operation
 {
     [self.programStack addObject:operation];
@@ -95,11 +100,11 @@ static NSDictionary *_operations;
     }
 
     // Replace variables if needed
-    for (NSInteger idx = 0; idx < [stack count]; idx++)
+    for (NSUInteger idx = 0; idx < [stack count]; idx++)
     {
         id element = [stack objectAtIndex:idx];
         
-        // Strings that are NOT operations mean it's variable to be replaced
+        // Strings that are NOT operations mean it's a variable to be replaced
         if ([element isKindOfClass:[NSString class]] && ![[self operations] objectForKey:element])
         {
             id value = [variableValues objectForKey:element];

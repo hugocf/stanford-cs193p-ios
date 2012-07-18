@@ -56,7 +56,13 @@
 
 - (IBAction)enterPressed
 {
-    [self.brain pushOperand:[self.display.text doubleValue]]; 
+    BOOL isVariable = ([self.display.text rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location != NSNotFound);
+    
+    if (isVariable) {
+        [self.brain pushVariable:self.display.text];
+    } else {
+        [self.brain pushOperand:[self.display.text doubleValue]];   
+    }
     self.hasDataPending = NO;
     
     [self updateHistory:self.display.text];
@@ -95,9 +101,9 @@
     [self updateDisplay:text shouldAppend:NO];
 }
 
-- (void)updateDisplay:(NSString *)text shouldAppend:(BOOL)flag
+- (void)updateDisplay:(NSString *)text shouldAppend:(BOOL)shouldAppend
 {
-    if (flag)
+    if (shouldAppend)
         self.display.text = [self.display.text stringByAppendingString:text];
     else
         self.display.text = text;
