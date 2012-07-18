@@ -37,14 +37,8 @@
         if (self.inMiddleOfNumber && displayHasPoint) return;
     }
     
-    // Process only the meaningful key presses
-    if (self.inMiddleOfNumber) {
-        [self appendToDisplay:digit];
-    }
-    else {
-        [self updateDisplay:digit];
-        self.inMiddleOfNumber = YES;
-    }
+    [self updateDisplay:digit shouldAppend:self.inMiddleOfNumber];
+    if (!self.inMiddleOfNumber) self.inMiddleOfNumber = TRUE;
 }
 
 - (IBAction)operatorPressed:(UIButton *)sender {
@@ -53,22 +47,21 @@
     NSString *resultText = [NSString stringWithFormat:@"%g", result];
     
     [self updateDisplay:resultText];
-    [self appendToHistory:sender.currentTitle];
-    [self appendToHistory:@"="];
-    [self appendToHistory:resultText];
+    [self updateHistory:[NSString stringWithFormat:@"%@ = %@", sender.currentTitle, resultText]];
 }
 
 - (IBAction)enterPressed {
     [self.brain pushOperand:[self.display.text doubleValue]]; 
-    [self appendToHistory:self.display.text];
     self.inMiddleOfNumber = NO;
+
+    [self updateHistory:self.display.text];
 }
 
 - (IBAction)clearAll {
     self.inMiddleOfNumber = NO;
     [self.brain clearStack];
     
-    self.display.text = @"0";
+    [self updateDisplay:@"0"];
     self.history.text = @"";
 }
 
@@ -82,15 +75,24 @@
     }
 }
 
+- (IBAction)variablePressed:(UIButton *)sender {
+    [self updateDisplay:sender.currentTitle];
+}
+
 - (void)updateDisplay:(NSString *)text {
-    self.display.text = text;
+    [self updateDisplay:text shouldAppend:FALSE];
 }
 
-- (void)appendToDisplay:(NSString *)text {
-    self.display.text = [self.display.text stringByAppendingString:text];
+- (void)updateDisplay:(NSString *)text shouldAppend:(BOOL)flag {
+    if (flag) {
+        self.display.text = [self.display.text stringByAppendingString:text];
+    }
+    else {
+        self.display.text = text;
+    }
 }
 
-- (void)appendToHistory:(NSString *)text {
+- (void)updateHistory:(NSString *)text {
     self.history.text = [self.history.text stringByAppendingFormat:@" %@", text];
 }
 
