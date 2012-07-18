@@ -33,7 +33,7 @@
 		9A530DCF15A5958D00409F4F /* CalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
 		9A530DD015A5958D00409F4F /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		9A530DD715A5A5D400409F4F /* CalculatorAlgorithmRPN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorAlgorithmRPN.h; sourceTree = "<group>"; };
-		9A530DD815A5A5D400409F4F /* CalculatorAlgorithmRPN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorAlgorithmRPN.m; sourceTree = "<group>"; };
+		9A530DD815A5A5D400409F4F /* CalculatorAlgorithmRPN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorAlgorithmRPN.m; sourceTree = "<group>"; wrapsLines = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
