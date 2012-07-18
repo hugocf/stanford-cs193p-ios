@@ -22,42 +22,34 @@ static NSDictionary *_operations;
 
 @synthesize programStack = _programStack;
 
-- (NSMutableArray *)programStack
-{
+- (NSMutableArray *)programStack {
     if (!_programStack) _programStack = [[NSMutableArray alloc] init];
     return _programStack;
 }
 
-- (void)pushOperand:(double)operand
-{
+- (void)pushOperand:(double)operand {
     [self.programStack addObject:[NSNumber numberWithDouble:operand]];
 }
 
-- (void)pushVariable:(NSString *)variable
-{
+- (void)pushVariable:(NSString *)variable {
     [self.programStack addObject:variable];
 }
 
-- (double)performOperation:(NSString *)operation
-{
+- (double)performOperation:(NSString *)operation {
     [self.programStack addObject:operation];
     return [CalculatorAlgorithmRPN runProgram:self.program];
 }
 
-- (id)program
-{
+- (id)program {
     return [self.programStack copy];
 }
 
-- (void)clearStack
-{
+- (void)clearStack {
     [self.programStack  removeAllObjects];
 }
 
-+ (NSDictionary *)operations
-{
-    if (!_operations)
-    {
++ (NSDictionary *)operations {
+    if (!_operations) {
         NSMutableDictionary *ops = [[NSMutableDictionary alloc] init];
         
         NSNumber *two = [NSNumber numberWithInt:2];        
@@ -80,33 +72,27 @@ static NSDictionary *_operations;
     return _operations;
 }
 
-+ (NSString *)descriptionOfProgram:(id)program
-{
++ (NSString *)descriptionOfProgram:(id)program {
     return @"TODO: HF";
 }
 
-+ (double)runProgram:(id)program
-{
++ (double)runProgram:(id)program {
     return [self runProgram:program usingVariableValues:nil];
 }
 
-+ (double)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues
-{
++ (double)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues {
     NSMutableArray *stack;
     
-    if ([program isKindOfClass:[NSArray class]])
-    {
+    if ([program isKindOfClass:[NSArray class]]) {
         stack = [program mutableCopy];
     }
-
+    
     // Replace variables if needed
-    for (NSUInteger idx = 0; idx < [stack count]; idx++)
-    {
+    for (NSUInteger idx = 0; idx < [stack count]; idx++) {
         id element = [stack objectAtIndex:idx];
         
         // Strings that are NOT operations mean it's a variable to be replaced
-        if ([element isKindOfClass:[NSString class]] && ![[self operations] objectForKey:element])
-        {
+        if ([element isKindOfClass:[NSString class]] && ![[self operations] objectForKey:element]) {
             id value = [variableValues objectForKey:element];
             if ([value isKindOfClass:[NSNumber class]])
                 [stack replaceObjectAtIndex:idx withObject:value];
@@ -118,34 +104,29 @@ static NSDictionary *_operations;
     return [self popElementFromStack:stack];
 }
 
-+ (double)popElementFromStack:(NSMutableArray *)stack
-{
++ (double)popElementFromStack:(NSMutableArray *)stack {
     double result = 0;
     
     id element = [stack lastObject];
     if (element) [stack removeLastObject];
     
-    if ([element isKindOfClass:[NSNumber class]])
-    {
+    if ([element isKindOfClass:[NSNumber class]]) {
         result = [element doubleValue];
     }
-    else if ([element isKindOfClass:[NSString class]])
-    {
+    else if ([element isKindOfClass:[NSString class]]) {
         result = [self calculateOperation:element withStack:stack];
     }
     
     return result;
 }
 
-+ (double)calculateOperation:(NSString *)operation withStack:(NSMutableArray *)stack
-{
++ (double)calculateOperation:(NSString *)operation withStack:(NSMutableArray *)stack {
     double result = 0;
     double first, second;
     unichar symbol;
     
     if ([operation length] > 0) symbol = [operation characterAtIndex:0];
-    switch (symbol)
-    {
+    switch (symbol) {
         case '/':
             second = [self popElementFromStack:stack];
             first  = [self popElementFromStack:stack];

@@ -23,19 +23,16 @@
 @synthesize hasDataPending = _hasDataPending;
 @synthesize brain = _brain;
 
-- (CalculatorAlgorithmRPN *)brain
-{
+- (CalculatorAlgorithmRPN *)brain {
     if (!_brain) _brain = [[CalculatorAlgorithmRPN alloc] init];
     return _brain;
 }
 
-- (IBAction)digitPressed:(UIButton *)sender
-{
+- (IBAction)digitPressed:(UIButton *)sender {
     NSString *digit = sender.currentTitle;
     
     // Ignore duplicate dots: return if already exists
-    if ([digit isEqualToString:@"."])
-    {
+    if ([digit isEqualToString:@"."]) {
         BOOL displayHasPoint = ([self.display.text rangeOfString:@"."].location != NSNotFound);
         if (self.hasDataPending && displayHasPoint) return;
     }
@@ -44,8 +41,7 @@
     self.hasDataPending = YES;
 }
 
-- (IBAction)operatorPressed:(UIButton *)sender
-{
+- (IBAction)operatorPressed:(UIButton *)sender {
     if (self.hasDataPending) [self enterPressed];
     double result = [self.brain performOperation:sender.currentTitle];
     NSString *resultText = [NSString stringWithFormat:@"%g", result];
@@ -54,13 +50,12 @@
     [self updateHistory:[NSString stringWithFormat:@"%@ = %@", sender.currentTitle, resultText]];
 }
 
-- (IBAction)enterPressed
-{
+- (IBAction)enterPressed {
     BOOL isVariable = ([self.display.text rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location != NSNotFound);
     
-    if (isVariable) {
+    if (isVariable)  {
         [self.brain pushVariable:self.display.text];
-    } else {
+    } else  {
         [self.brain pushOperand:[self.display.text doubleValue]];   
     }
     self.hasDataPending = NO;
@@ -68,8 +63,7 @@
     [self updateHistory:self.display.text];
 }
 
-- (IBAction)clearAll
-{
+- (IBAction)clearAll {
     [self.brain clearStack];
     self.hasDataPending = NO;
     
@@ -77,45 +71,37 @@
     self.history.text = @"";
 }
 
-- (IBAction)clearDigit
-{
-    if ([self.display.text length] > 0)
-    {
+- (IBAction)clearDigit {
+    if ([self.display.text length] > 0) {
         [self updateDisplay:[self.display.text substringToIndex:[self.display.text length]-1]];
     }
-    if ([self.display.text isEqual:@""])
-    {
+    if ([self.display.text isEqual:@""]) {
         [self updateDisplay:@"0"];
         self.hasDataPending = NO;
     }
 }
 
-- (IBAction)variablePressed:(UIButton *)sender
-{
+- (IBAction)variablePressed:(UIButton *)sender {
     [self updateDisplay:sender.currentTitle];
     self.hasDataPending = YES;
 }
 
-- (void)updateDisplay:(NSString *)text
-{
+- (void)updateDisplay:(NSString *)text {
     [self updateDisplay:text shouldAppend:NO];
 }
 
-- (void)updateDisplay:(NSString *)text shouldAppend:(BOOL)shouldAppend
-{
+- (void)updateDisplay:(NSString *)text shouldAppend:(BOOL)shouldAppend {
     if (shouldAppend)
         self.display.text = [self.display.text stringByAppendingString:text];
     else
         self.display.text = text;
 }
 
-- (void)updateHistory:(NSString *)text
-{
+- (void)updateHistory:(NSString *)text {
     self.history.text = [self.history.text stringByAppendingFormat:@" %@", text];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setDisplay:nil];
     [self setHistory:nil];
     [super viewDidUnload];
