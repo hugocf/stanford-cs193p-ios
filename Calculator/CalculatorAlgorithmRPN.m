@@ -40,12 +40,12 @@ static NSDictionary *_operations;
     return [CalculatorAlgorithmRPN runProgram:self.program];
 }
 
-- (id)program {
-    return [self.programStack copy];
-}
-
 - (void)clearStack {
     [self.programStack  removeAllObjects];
+}
+
+- (id)program {
+    return [self.programStack copy];
 }
 
 + (NSDictionary *)operations {
@@ -70,10 +70,6 @@ static NSDictionary *_operations;
     }
     
     return _operations;
-}
-
-+ (NSString *)descriptionOfProgram:(id)program {
-    return @"TODO: HF";
 }
 
 + (double)runProgram:(id)program {
@@ -102,6 +98,10 @@ static NSDictionary *_operations;
     }
     
     return [self popElementFromStack:stack];
+}
+
++ (NSString *)descriptionOfProgram:(id)program {
+    return @"TODO: HF";
 }
 
 + (double)popElementFromStack:(NSMutableArray *)stack {
