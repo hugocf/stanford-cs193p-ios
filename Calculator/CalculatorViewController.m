@@ -80,7 +80,7 @@
 }
 
 - (void)updateDisplay:(NSString *)text {
-    [self updateDisplay:text shouldAppend:FALSE];
+    [self updateDisplay:text shouldAppend:NO];
 }
 
 - (void)updateDisplay:(NSString *)text shouldAppend:(BOOL)flag {
