@@ -96,7 +96,7 @@
 }
 
 - (void)updateHistory:(NSString *)text {
-    self.history.text = [self.history.text stringByAppendingFormat:@" %@", text];
+    self.history.text = [CalculatorAlgorithmRPN descriptionOfProgram:self.brain.program];
 }
 
 - (void)viewDidUnload {

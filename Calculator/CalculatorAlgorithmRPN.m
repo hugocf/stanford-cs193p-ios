@@ -52,18 +52,18 @@ static NSDictionary *_operations;
     if (!_operations) {
         NSMutableDictionary *ops = [[NSMutableDictionary alloc] init];
         
-        NSNumber *two = [NSNumber numberWithInt:2];        
-        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"%@ ÷ %@", MY_FORMAT_STRING, nil] forKey:@"/"];
-        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"%@ × %@", MY_FORMAT_STRING, nil] forKey:@"*"];
-        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"%@ − %@", MY_FORMAT_STRING, nil] forKey:@"-"];
-        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"%@ + %@", MY_FORMAT_STRING, nil] forKey:@"+"];
+        NSNumber *two = [NSNumber numberWithUnsignedInt:2];        
+        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ ÷ %@)", MY_FORMAT_STRING, nil] forKey:@"/"];
+        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ × %@)", MY_FORMAT_STRING, nil] forKey:@"*"];
+        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ − %@)", MY_FORMAT_STRING, nil] forKey:@"-"];
+        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ + %@)", MY_FORMAT_STRING, nil] forKey:@"+"];
         
-        NSNumber *one = [NSNumber numberWithInt:1];
+        NSNumber *one = [NSNumber numberWithUnsignedInt:1];
         [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:one, MY_OPERANDS_COUNT, @"sin(%@)", MY_FORMAT_STRING, nil] forKey:@"sin"];
         [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:one, MY_OPERANDS_COUNT, @"cos(%@)", MY_FORMAT_STRING, nil] forKey:@"cos"];
         [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:one, MY_OPERANDS_COUNT, @"√(%@)",   MY_FORMAT_STRING, nil] forKey:@"√"];
         
-        NSNumber *nop = [NSNumber numberWithInt:0];
+        NSNumber *nop = [NSNumber numberWithUnsignedInt:0];
         [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:nop, MY_OPERANDS_COUNT, @"π", MY_FORMAT_STRING, nil] forKey:@"π"];
         
         _operations = [ops copy];
@@ -101,7 +101,18 @@ static NSDictionary *_operations;
 }
 
 + (NSString *)descriptionOfProgram:(id)program {
-    return @"TODO: HF";
+    NSMutableArray *stack;
+    NSString *result;
+    
+    if ([program isKindOfClass:[NSArray class]]) {
+        stack = [program mutableCopy];
+    }
+    result = [self descriptionOfTopOfStack:stack];
+    while ([stack count] != 0) {
+        result = [[self descriptionOfTopOfStack:stack] stringByAppendingFormat:@", %@", result];
+    }
+    
+    return result;
 }
 
 + (NSSet *)variablesUsedInProgram:(id)program {
@@ -189,12 +200,55 @@ static NSDictionary *_operations;
             break; 
             
         default:
-            // Ignore invalid operations!
-            NSLog(@"Unkown operation received: %@", operation);
+            NSLog(@"Unsupported operation received: %@", operation);
             break;
     }
     
     return result;
 }
 
++ (NSString *)descriptionOfTopOfStack:(NSMutableArray *)stack {
+    NSString *result = @"";
+    NSUInteger operands;
+    NSString *format, *first, *second;
+    
+    id element = [stack lastObject];
+    if (element) {
+        [stack removeLastObject];
+        
+        NSDictionary *operation = [[self operations] objectForKey:element]; 
+        if (operation) {
+            // If the element is an operation...
+            operands = [[operation objectForKey:MY_OPERANDS_COUNT] unsignedIntegerValue];
+            format = [operation objectForKey:MY_FORMAT_STRING];
+            switch (operands) {
+                case 2:
+                    second = [self descriptionOfTopOfStack:stack];
+                    first  = [self descriptionOfTopOfStack:stack];
+                    result = [NSString stringWithFormat:format, first, second];
+                    break;
+                    
+                case 1:
+                    first  = [self descriptionOfTopOfStack:stack];
+                    result = [NSString stringWithFormat:format, first];
+                    break;
+                    
+                case 0:
+                    result = format;
+                    break;
+                    
+                default:
+                    NSLog(@"Unsupported number of operands for operation %@: %@", operation, operands);
+                    break;
+            }
+        } else {
+            // If it is a regular element...
+            result = [element description];
+        }
+    }
+    
+    return result;
+}
+
 @end
+
