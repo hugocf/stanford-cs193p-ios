@@ -53,8 +53,8 @@ static NSDictionary *_operations;
         NSMutableDictionary *ops = [[NSMutableDictionary alloc] init];
         
         NSNumber *two = [NSNumber numberWithUnsignedInt:2];        
-        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ ÷ %@)", MY_FORMAT_STRING, nil] forKey:@"/"];
-        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ × %@)", MY_FORMAT_STRING, nil] forKey:@"*"];
+        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"%@ ÷ %@", MY_FORMAT_STRING, nil] forKey:@"/"];
+        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"%@ × %@", MY_FORMAT_STRING, nil] forKey:@"*"];
         [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ − %@)", MY_FORMAT_STRING, nil] forKey:@"-"];
         [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ + %@)", MY_FORMAT_STRING, nil] forKey:@"+"];
         
@@ -107,9 +107,9 @@ static NSDictionary *_operations;
     if ([program isKindOfClass:[NSArray class]]) {
         stack = [program mutableCopy];
     }
-    result = [self descriptionOfTopOfStack:stack];
+    result = [self unwrapParenthesis:[self descriptionOfTopOfStack:stack]];
     while ([stack count] != 0) {
-        result = [[self descriptionOfTopOfStack:stack] stringByAppendingFormat:@", %@", result];
+        result = [[self unwrapParenthesis:[self descriptionOfTopOfStack:stack]] stringByAppendingFormat:@", %@", result];
     }
     
     return result;
@@ -233,7 +233,7 @@ static NSDictionary *_operations;
                 case 1:
                     first  = [self descriptionOfTopOfStack:stack];
                     if ([first isEqualToString:@""]) first = @"0";
-                    result = [NSString stringWithFormat:format, first];
+                    result = [NSString stringWithFormat:format, [self unwrapParenthesis:first]];
                     break;
                     
                 case 0:
@@ -248,6 +248,16 @@ static NSDictionary *_operations;
             // If it is a regular element...
             result = [element description];
         }
+    }
+    
+    return result;
+}
+
++ (NSString *)unwrapParenthesis:(NSString *)text {
+    NSString *result = text;
+    
+    if ([text hasPrefix:@"("] && [text hasSuffix:@")"]) {
+        result = [text substringWithRange:NSMakeRange(1, [text length]-2)];
     }
     
     return result;
