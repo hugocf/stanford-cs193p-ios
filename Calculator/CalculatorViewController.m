@@ -47,7 +47,7 @@
     
     NSString *resultText = [NSString stringWithFormat:@"%g", result];
     [self updateDisplay:resultText];
-    [self updateHistory:[NSString stringWithFormat:@"%@ = %@", sender.currentTitle, resultText]];
+    [self updateHistory];
 }
 
 - (IBAction)enterPressed {
@@ -58,7 +58,7 @@
     }
     self.hasDataPending = NO;
     
-    [self updateHistory:self.display.text];
+    [self updateHistory];
 }
 
 - (IBAction)clearAll {
@@ -66,7 +66,7 @@
     self.hasDataPending = NO;
     
     [self updateDisplay:@"0"];
-    self.history.text = @"";
+    [self updateHistory];
 }
 
 - (IBAction)clearDigit {
@@ -96,7 +96,7 @@
         self.display.text = text;
 }
 
-- (void)updateHistory:(NSString *)text {
+- (void)updateHistory {
     self.history.text = [CalculatorAlgorithmRPN descriptionOfProgram:self.brain.program];
 }
 
