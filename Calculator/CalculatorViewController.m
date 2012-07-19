@@ -75,14 +75,17 @@
     [self updateVariables];
 }
 
-- (IBAction)clearDigit {
-    if ([self.display.text length] > 0) {
+- (IBAction)clearLast {
+    if (self.hasDataPending) {
         [self updateDisplay:[self.display.text substringToIndex:[self.display.text length]-1]];
-    }
-    if ([self.display.text isEqual:@""]) {
-        [self updateDisplay:@"0"];
-        self.hasDataPending = NO;
-    }
+        if ([self.display.text isEqual:@""]) {
+            [self updateDisplay:@"0"];
+            self.hasDataPending = NO;
+        }
+    } else {
+        [self.brain clearTopOfStack];
+        [self runProgram];
+    }    
 }
 
 - (IBAction)variablePressed:(UIButton *)sender {
@@ -114,13 +117,7 @@
                                    [NSNumber numberWithFloat:random_float(-10, 10)], @"b",
                                    nil];
     }
-    [self updateVariables];
-    
-    // Run the program again
-    double result = [CalculatorAlgorithmRPN runProgram:self.brain.program usingVariableValues:self.testVariableValues];
-    [self updateDisplay:[NSString stringWithFormat:@"%g", result]];
-    [self updateHistory];
-    
+    [self runProgram];
 }
 
 - (void)updateDisplay:(NSString *)text {
@@ -146,6 +143,13 @@
     }
     
     self.variables.text = text;
+}
+
+- (void)runProgram {
+    double result = [CalculatorAlgorithmRPN runProgram:self.brain.program usingVariableValues:self.testVariableValues];
+    [self updateDisplay:[NSString stringWithFormat:@"%g", result]];
+    [self updateHistory];
+    [self updateVariables];
 }
 
 - (void)viewDidUnload {

@@ -41,7 +41,11 @@ static NSDictionary *_operations;
 }
 
 - (void)clearStack {
-    [self.programStack  removeAllObjects];
+    [self.programStack removeAllObjects];
+}
+
+- (void) clearTopOfStack{
+    [self.programStack removeLastObject];
 }
 
 - (id)program {

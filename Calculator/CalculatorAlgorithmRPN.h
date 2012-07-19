@@ -14,6 +14,7 @@
 - (void)pushVariable:(NSString *)variable;
 - (double)performOperation:(NSString *)operation withVariables:(NSDictionary *)variables;
 - (void)clearStack;
+- (void)clearTopOfStack;
 
 @property (readonly) id program;
 
