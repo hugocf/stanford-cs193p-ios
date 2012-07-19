@@ -47,11 +47,8 @@
 
 - (IBAction)operatorPressed:(UIButton *)sender {
     if (self.hasDataPending) [self enterPressed];
-    double result = [self.brain performOperation:sender.currentTitle withVariables:self.testVariableValues];
-    
-    NSString *resultText = [NSString stringWithFormat:@"%g", result];
-    [self updateDisplay:resultText];
-    [self updateHistory];
+    [self.brain pushOperation:sender.currentTitle];
+    [self runProgram];
 }
 
 - (IBAction)enterPressed {

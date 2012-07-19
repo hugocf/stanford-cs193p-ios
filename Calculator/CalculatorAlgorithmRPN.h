@@ -12,7 +12,7 @@
 
 - (void)pushOperand:(double)operand;
 - (void)pushVariable:(NSString *)variable;
-- (double)performOperation:(NSString *)operation withVariables:(NSDictionary *)variables;
+- (void)pushOperation:(NSString *)operation;
 - (void)clearStack;
 - (void)clearTopOfStack;
 
