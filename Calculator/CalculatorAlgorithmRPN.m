@@ -75,11 +75,11 @@ static NSDictionary *_operations;
     return _operations;
 }
 
-+ (double)runProgram:(id)program {
++ (id)runProgram:(id)program {
     return [self runProgram:program usingVariableValues:nil];
 }
 
-+ (double)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues {
++ (id)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues {
     NSMutableArray *stack;
     
     if ([program isKindOfClass:[NSArray class]]) {
@@ -134,18 +134,18 @@ static NSDictionary *_operations;
 + (BOOL)isVariable:(id)element {
     // Variables are strings that contain a letter and are not operations
     return [element isKindOfClass:[NSString class]] 
-        && ([element rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location != NSNotFound) 
+        && ([element rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location != NSNotFound)
         && ![[self operations] objectForKey:element];
 }
 
-+ (double)popElementFromStack:(NSMutableArray *)stack {
-    double result = 0;
++ (id)popElementFromStack:(NSMutableArray *)stack {
+    id result;
     
     id element = [stack lastObject];
     if (element) [stack removeLastObject];
     
     if ([element isKindOfClass:[NSNumber class]]) {
-        result = [element doubleValue];
+        result = element;
     }
     else if ([element isKindOfClass:[NSString class]]) {
         result = [self calculateOperation:element withStack:stack];
@@ -154,57 +154,154 @@ static NSDictionary *_operations;
     return result;
 }
 
-+ (double)calculateOperation:(NSString *)operation withStack:(NSMutableArray *)stack {
-    double result = 0;
-    double first, second;
++ (id)calculateOperation:(NSString *)operation withStack:(NSMutableArray *)stack {
+    id result, firstObject, secondObject;
+    double firstValue = 0, secondValue = 0;
     unichar symbol;
-    
+
     if ([operation length] > 0) symbol = [operation characterAtIndex:0];
     switch (symbol) {
         case '/':
-            second = [self popElementFromStack:stack];
-            first  = [self popElementFromStack:stack];
-            if (second) result = first / second;
+            secondObject = [self popElementFromStack:stack];
+            firstObject  = [self popElementFromStack:stack];
+            if (!firstObject || !secondObject) {
+                result = [@"ERR: Not enough operands for " stringByAppendingString:operation];
+            } else {
+                result = [self errorInOperand:firstObject or:secondObject];
+                if (!result) {
+                    if ([secondObject isKindOfClass:[NSNumber class]]) secondValue = [secondObject doubleValue];
+                    if ([firstObject  isKindOfClass:[NSNumber class]]) firstValue  = [firstObject  doubleValue];
+                    
+                    if (secondValue == 0) {
+                        result = @"ERR: Divide by 0";
+                    } else {
+                        result = [NSNumber numberWithDouble:firstValue / secondValue];
+                    }
+                }
+            }
             break;
             
         case '*':
-            second = [self popElementFromStack:stack];
-            first  = [self popElementFromStack:stack];
-            result = first * second;
+            secondObject = [self popElementFromStack:stack];
+            firstObject  = [self popElementFromStack:stack];
+            if (!firstObject || !secondObject) {
+                result = [@"ERR: Not enough operands for " stringByAppendingString:operation];
+            } else {
+                result = [self errorInOperand:firstObject or:secondObject];
+                if (!result) {
+                    if ([secondObject isKindOfClass:[NSNumber class]]) secondValue = [secondObject doubleValue];
+                    if ([firstObject  isKindOfClass:[NSNumber class]]) firstValue  = [firstObject  doubleValue];
+                    result = [NSNumber numberWithDouble:firstValue * secondValue];
+                }
+            }
             break;
             
         case '-':
-            second = [self popElementFromStack:stack];
-            first  = [self popElementFromStack:stack];
-            result = first - second;
+            secondObject = [self popElementFromStack:stack];
+            firstObject  = [self popElementFromStack:stack];
+            if (!firstObject || !secondObject) {
+                result = [@"ERR: Not enough operands for " stringByAppendingString:operation];
+            } else {
+                result = [self errorInOperand:firstObject or:secondObject];
+                if (!result) {
+                    if ([secondObject isKindOfClass:[NSNumber class]]) secondValue = [secondObject doubleValue];
+                    if ([firstObject  isKindOfClass:[NSNumber class]]) firstValue  = [firstObject  doubleValue];
+                    result = [NSNumber numberWithDouble:firstValue - secondValue];
+                }
+            }
             break;
             
         case '+':
-            second = [self popElementFromStack:stack];
-            first  = [self popElementFromStack:stack];
-            result = first + second;
+            secondObject = [self popElementFromStack:stack];
+            firstObject  = [self popElementFromStack:stack];
+            if (!firstObject || !secondObject) {
+                result = [@"ERR: Not enough operands for " stringByAppendingString:operation];
+            } else {
+                result = [self errorInOperand:firstObject or:secondObject];
+                if (!result) {
+                    if ([secondObject isKindOfClass:[NSNumber class]]) secondValue = [secondObject doubleValue];
+                    if ([firstObject  isKindOfClass:[NSNumber class]]) firstValue  = [firstObject  doubleValue];
+                    result = [NSNumber numberWithDouble:firstValue + secondValue];
+                }
+            }
             break;
             
         case 's':
-            result = sin([self popElementFromStack:stack]);
+            firstObject  = [self popElementFromStack:stack];
+            if (!firstObject) {
+                result = [@"ERR: Not enough operands for " stringByAppendingString:operation];
+            } else {
+                result = [self errorInOperand:firstObject];
+                if (!result) {
+                    if ([firstObject isKindOfClass:[NSNumber class]]) firstValue = [firstObject doubleValue];
+                    result = [NSNumber numberWithDouble:sin(firstValue)];
+                }
+            }
             break;
             
         case 'c':
-            result = cos([self popElementFromStack:stack]);
+            firstObject  = [self popElementFromStack:stack];
+            if (!firstObject) {
+                result = [@"ERR: Not enough operands for " stringByAppendingString:operation];
+            } else {
+                result = [self errorInOperand:firstObject];
+                if (!result) {
+                    if ([firstObject isKindOfClass:[NSNumber class]]) firstValue = [firstObject doubleValue];
+                    result = [NSNumber numberWithDouble:cos(firstValue)];
+                }
+            }
             break;
             
         case 0x221A: // √
-            first = [self popElementFromStack:stack];
-            if (first >= 0) result = sqrt(first);
+            firstObject  = [self popElementFromStack:stack];
+            if (!firstObject) {
+                result = [@"ERR: Not enough operands for " stringByAppendingString:operation];
+            } else {
+                result = [self errorInOperand:firstObject];
+                if (!result) {
+                    if ([firstObject isKindOfClass:[NSNumber class]]) firstValue = [firstObject doubleValue];
+                    if (firstValue < 0) {
+                        result = @"ERR: Negative √";
+                    } else {
+                        result = [NSNumber numberWithDouble:sqrt(firstValue)];
+                    }
+                }
+            }
             break;
             
         case 0x03C0: // π
-            result = M_PI;
-            break; 
+            result = [NSNumber numberWithDouble:M_PI];
+            break;
             
         default:
-            NSLog(@"Unsupported operation received: %@", operation);
+            result = [NSString stringWithFormat:@"ERR: Unsupported operation %@", operation];
             break;
+    }
+    
+    return result;
+}
+
++ (NSString *)errorInOperand:(id)operand {
+    NSString *result;
+    
+    // If it's a string with data then it's an error
+    if ([operand isKindOfClass:[NSString class]]) {
+        operand = [operand stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if (![operand isEqualToString:@""])  {
+            result = operand;
+        }
+    }
+    
+    return result;
+}
+
++ (NSString *)errorInOperand:(id)first or:(id)second {
+    NSString *result;
+    NSString *firstError  = [self errorInOperand:first];
+    NSString *secondError = [self errorInOperand:second];
+    
+    if (firstError || secondError) {
+        result = [[NSArray arrayWithObjects:firstError, secondError, nil] componentsJoinedByString:@" "];
     }
     
     return result;
@@ -244,7 +341,7 @@ static NSDictionary *_operations;
                     break;
                     
                 default:
-                    NSLog(@"Unsupported number of operands for operation %@: %@", operation, operands);
+                    NSLog(@"ERR: Unsupported number of operands for operation %@: %@", operation, operands);
                     break;
             }
         } else {

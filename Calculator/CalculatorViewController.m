@@ -143,10 +143,17 @@
 }
 
 - (void)runProgram {
-    double result = [CalculatorAlgorithmRPN runProgram:self.brain.program usingVariableValues:self.testVariableValues];
-    [self updateDisplay:[NSString stringWithFormat:@"%g", result]];
-    [self updateHistory];
-    [self updateVariables];
+    id result = [CalculatorAlgorithmRPN runProgram:self.brain.program usingVariableValues:self.testVariableValues];
+    
+    if ([result isKindOfClass:[NSNumber class]]) {
+        [self updateDisplay:[NSString stringWithFormat:@"%@", result]];
+        [self updateHistory];
+        [self updateVariables];
+        
+    } else if ([result isKindOfClass:[NSString class]]) {
+        [self.brain clearTopOfStack];
+        self.history.text = result;
+    }
 }
 
 - (void)viewDidUnload {
