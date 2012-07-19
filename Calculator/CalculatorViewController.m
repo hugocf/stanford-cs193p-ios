@@ -80,6 +80,7 @@
 }
 
 - (IBAction)variablePressed:(UIButton *)sender {
+    if (self.hasDataPending) [self enterPressed];
     [self updateDisplay:sender.currentTitle];
     [self enterPressed];
 }
