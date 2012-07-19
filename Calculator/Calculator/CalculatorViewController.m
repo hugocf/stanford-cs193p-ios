@@ -8,7 +8,8 @@
 
 #import "CalculatorViewController.h"
 #import "CalculatorAlgorithmRPN.h"
-#define random_float(smallNumber, bigNumber) ((((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * (bigNumber - smallNumber)) + smallNumber) 
+#define random_float_precision 1000
+#define random_float_uniform(min, max)  ((((float) arc4random_uniform((max - min) * random_float_precision)) / random_float_precision) + min)
 
 @interface CalculatorViewController ()
 
@@ -118,8 +119,8 @@
                                    nil];
     } else if ([sender.currentTitle isEqualToString:@"[RND]"]) {
         self.testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSNumber numberWithFloat:random_float(-10, 10)], @"a", 
-                                   [NSNumber numberWithFloat:random_float(-10, 10)], @"b",
+                                   [NSNumber numberWithFloat:random_float_uniform(-10, 10)], @"a", 
+                                   [NSNumber numberWithFloat:random_float_uniform(-10, 10)], @"b",
                                    nil];
     }
     [self runProgram];
