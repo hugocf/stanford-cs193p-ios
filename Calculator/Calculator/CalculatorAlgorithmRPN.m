@@ -22,36 +22,44 @@ static NSDictionary *_operations;
 
 @synthesize programStack = _programStack;
 
-- (NSMutableArray *)programStack {
+- (NSMutableArray *)programStack
+{
     if (!_programStack) _programStack = [[NSMutableArray alloc] init];
     return _programStack;
 }
 
-- (void)pushOperand:(double)operand {
+- (void)pushOperand:(double)operand
+{
     [self.programStack addObject:[NSNumber numberWithDouble:operand]];
 }
 
-- (void)pushVariable:(NSString *)variable {
+- (void)pushVariable:(NSString *)variable
+{
     [self.programStack addObject:variable];
 }
 
-- (void)pushOperation:(NSString *)operation {
+- (void)pushOperation:(NSString *)operation
+{
     [self.programStack addObject:operation];
 }
 
-- (void)clearStack {
+- (void)clearStack
+{
     [self.programStack removeAllObjects];
 }
 
-- (void) clearTopOfStack{
+- (void)clearTopOfStack
+{
     [self.programStack removeLastObject];
 }
 
-- (id)program {
+- (id)program
+{
     return [self.programStack copy];
 }
 
-+ (NSDictionary *)operations {
++ (NSDictionary *)operations
+{
     if (!_operations) {
         NSMutableDictionary *ops = [[NSMutableDictionary alloc] init];
         
@@ -75,11 +83,13 @@ static NSDictionary *_operations;
     return _operations;
 }
 
-+ (id)runProgram:(id)program {
++ (id)runProgram:(id)program
+{
     return [self runProgram:program usingVariableValues:nil];
 }
 
-+ (id)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues {
++ (id)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues
+{
     NSMutableArray *stack;
     
     if ([program isKindOfClass:[NSArray class]]) {
@@ -103,7 +113,8 @@ static NSDictionary *_operations;
     return [self popElementFromStack:stack];
 }
 
-+ (NSString *)descriptionOfProgram:(id)program {
++ (NSString *)descriptionOfProgram:(id)program
+{
     NSMutableArray *stack;
     NSString *result;
     
@@ -118,7 +129,8 @@ static NSDictionary *_operations;
     return result;
 }
 
-+ (NSSet *)variablesUsedInProgram:(id)program {
++ (NSSet *)variablesUsedInProgram:(id)program
+{
     NSSet *variables;
     
     if ([program isKindOfClass:[NSArray class]]) {
@@ -131,14 +143,16 @@ static NSDictionary *_operations;
     return variables;
 }
 
-+ (BOOL)isVariable:(id)element {
++ (BOOL)isVariable:(id)element
+{
     // Variables are strings that contain a letter and are not operations
     return [element isKindOfClass:[NSString class]] 
         && ([element rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location != NSNotFound)
         && ![[self operations] objectForKey:element];
 }
 
-+ (id)popElementFromStack:(NSMutableArray *)stack {
++ (id)popElementFromStack:(NSMutableArray *)stack 
+{
     id result;
     
     id element = [stack lastObject];
@@ -154,7 +168,8 @@ static NSDictionary *_operations;
     return result;
 }
 
-+ (id)calculateOperation:(NSString *)operation withStack:(NSMutableArray *)stack {
++ (id)calculateOperation:(NSString *)operation withStack:(NSMutableArray *)stack
+{
     id result, firstObject, secondObject;
     double firstValue = 0, secondValue = 0;
     unichar symbol;
@@ -281,7 +296,8 @@ static NSDictionary *_operations;
     return result;
 }
 
-+ (NSString *)errorInOperand:(id)operand {
++ (NSString *)errorInOperand:(id)operand
+{
     NSString *result;
     
     // If it's a string with data then it's an error
@@ -295,7 +311,8 @@ static NSDictionary *_operations;
     return result;
 }
 
-+ (NSString *)errorInOperand:(id)first or:(id)second {
++ (NSString *)errorInOperand:(id)first or:(id)second
+{
     NSString *result;
     NSString *firstError  = [self errorInOperand:first];
     NSString *secondError = [self errorInOperand:second];
@@ -307,7 +324,8 @@ static NSDictionary *_operations;
     return result;
 }
 
-+ (NSString *)descriptionOfTopOfStack:(NSMutableArray *)stack {
++ (NSString *)descriptionOfTopOfStack:(NSMutableArray *)stack
+{
     NSString *result = @"";
     NSUInteger operands;
     NSString *format, *first, *second;
@@ -353,7 +371,8 @@ static NSDictionary *_operations;
     return result;
 }
 
-+ (NSString *)unwrapParenthesis:(NSString *)text {
++ (NSString *)unwrapParenthesis:(NSString *)text
+{
     NSString *result = text;
     
     if ([text hasPrefix:@"("] && [text hasSuffix:@")"]) {

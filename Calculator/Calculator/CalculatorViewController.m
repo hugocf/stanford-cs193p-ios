@@ -27,12 +27,14 @@
 @synthesize brain = _brain;
 @synthesize testVariableValues = _testVariableValues;
 
-- (CalculatorAlgorithmRPN *)brain {
+- (CalculatorAlgorithmRPN *)brain
+{
     if (!_brain) _brain = [[CalculatorAlgorithmRPN alloc] init];
     return _brain;
 }
 
-- (IBAction)digitPressed:(UIButton *)sender {
+- (IBAction)digitPressed:(UIButton *)sender
+{
     NSString *digit = sender.currentTitle;
     
     // Ignore duplicate dots: return if already exists
@@ -45,13 +47,15 @@
     self.hasDataPending = YES;
 }
 
-- (IBAction)operatorPressed:(UIButton *)sender {
+- (IBAction)operatorPressed:(UIButton *)sender
+{
     if (self.hasDataPending) [self enterPressed];
     [self.brain pushOperation:sender.currentTitle];
     [self runProgram];
 }
 
-- (IBAction)enterPressed {
+- (IBAction)enterPressed
+{
     if ([CalculatorAlgorithmRPN isVariable:self.display.text])  {
         [self.brain pushVariable:self.display.text];
     } else  {
@@ -62,7 +66,8 @@
     [self updateHistory];
 }
 
-- (IBAction)clearAll {
+- (IBAction)clearAll
+{
     [self.brain clearStack];
     self.testVariableValues = nil;
     self.hasDataPending = NO;
@@ -72,7 +77,8 @@
     [self updateVariables];
 }
 
-- (IBAction)clearLast {
+- (IBAction)clearLast
+{
     if (self.hasDataPending) {
         [self updateDisplay:[self.display.text substringToIndex:[self.display.text length]-1]];
         if ([self.display.text isEqual:@""]) {
@@ -85,14 +91,16 @@
     }    
 }
 
-- (IBAction)variablePressed:(UIButton *)sender {
+- (IBAction)variablePressed:(UIButton *)sender
+{
     if (self.hasDataPending) [self enterPressed];
     [self updateDisplay:sender.currentTitle];
     [self enterPressed];
     [self updateVariables];
 }
 
-- (IBAction)testVariablesPressed:(UIButton *)sender {
+- (IBAction)testVariablesPressed:(UIButton *)sender
+{
     if ([sender.currentTitle isEqualToString:@"[T1]"]) {
         self.testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [NSNumber numberWithInt:1], @"a", 
@@ -117,22 +125,26 @@
     [self runProgram];
 }
 
-- (void)updateDisplay:(NSString *)text {
+- (void)updateDisplay:(NSString *)text
+{
     [self updateDisplay:text shouldAppend:NO];
 }
 
-- (void)updateDisplay:(NSString *)text shouldAppend:(BOOL)shouldAppend {
+- (void)updateDisplay:(NSString *)text shouldAppend:(BOOL)shouldAppend
+{
     if (shouldAppend)
         self.display.text = [self.display.text stringByAppendingString:text];
     else
         self.display.text = text;
 }
 
-- (void)updateHistory {
+- (void)updateHistory
+{
     self.history.text = [CalculatorAlgorithmRPN descriptionOfProgram:self.brain.program];
 }
 
-- (void)updateVariables {
+- (void)updateVariables
+{
     NSString *text = @"";
     
     for (NSString *var in [CalculatorAlgorithmRPN variablesUsedInProgram:self.brain.program]) {
@@ -142,7 +154,8 @@
     self.variables.text = text;
 }
 
-- (void)runProgram {
+- (void)runProgram
+{
     id result = [CalculatorAlgorithmRPN runProgram:self.brain.program usingVariableValues:self.testVariableValues];
     
     if ([result isKindOfClass:[NSNumber class]]) {
@@ -156,7 +169,8 @@
     }
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     [self setDisplay:nil];
     [self setHistory:nil];
     [self setVariables:nil];
