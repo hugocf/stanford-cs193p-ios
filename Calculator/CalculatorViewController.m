@@ -8,11 +8,13 @@
 
 #import "CalculatorViewController.h"
 #import "CalculatorAlgorithmRPN.h"
+#define random_float(smallNumber, bigNumber) ((((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * (bigNumber - smallNumber)) + smallNumber) 
 
 @interface CalculatorViewController ()
 
 @property (nonatomic) BOOL hasDataPending;
 @property (nonatomic,  strong) CalculatorAlgorithmRPN *brain;
+@property (nonatomic) NSDictionary *testVariableValues;
 
 @end
 
@@ -20,8 +22,10 @@
 
 @synthesize display = _display;
 @synthesize history = _history;
+@synthesize variables = _variables;
 @synthesize hasDataPending = _hasDataPending;
 @synthesize brain = _brain;
+@synthesize testVariableValues = _testVariableValues;
 
 - (CalculatorAlgorithmRPN *)brain {
     if (!_brain) _brain = [[CalculatorAlgorithmRPN alloc] init];
@@ -43,7 +47,7 @@
 
 - (IBAction)operatorPressed:(UIButton *)sender {
     if (self.hasDataPending) [self enterPressed];
-    double result = [self.brain performOperation:sender.currentTitle];
+    double result = [self.brain performOperation:sender.currentTitle withVariables:self.testVariableValues];
     
     NSString *resultText = [NSString stringWithFormat:@"%g", result];
     [self updateDisplay:resultText];
@@ -63,10 +67,12 @@
 
 - (IBAction)clearAll {
     [self.brain clearStack];
+    self.testVariableValues = nil;
     self.hasDataPending = NO;
     
     [self updateDisplay:@"0"];
     [self updateHistory];
+    [self updateVariables];
 }
 
 - (IBAction)clearDigit {
@@ -83,6 +89,38 @@
     if (self.hasDataPending) [self enterPressed];
     [self updateDisplay:sender.currentTitle];
     [self enterPressed];
+    [self updateVariables];
+}
+
+- (IBAction)testVariablesPressed:(UIButton *)sender {
+    if ([sender.currentTitle isEqualToString:@"[T1]"]) {
+        self.testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSNumber numberWithInt:1], @"a", 
+                                   [NSNumber numberWithInt:2], @"b",
+                                   nil];
+    } else if ([sender.currentTitle isEqualToString:@"[T2]"]) {
+        self.testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSNumber numberWithInt:-1], @"a", 
+                                   [NSNumber numberWithInt:-2], @"b",
+                                   nil];
+    } else if ([sender.currentTitle isEqualToString:@"[NIL]"]) {
+        self.testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   nil, @"a", 
+                                   nil, @"b",
+                                   nil];
+    } else if ([sender.currentTitle isEqualToString:@"[RND]"]) {
+        self.testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSNumber numberWithFloat:random_float(-10, 10)], @"a", 
+                                   [NSNumber numberWithFloat:random_float(-10, 10)], @"b",
+                                   nil];
+    }
+    [self updateVariables];
+    
+    // Run the program again
+    double result = [CalculatorAlgorithmRPN runProgram:self.brain.program usingVariableValues:self.testVariableValues];
+    [self updateDisplay:[NSString stringWithFormat:@"%g", result]];
+    [self updateHistory];
+    
 }
 
 - (void)updateDisplay:(NSString *)text {
@@ -100,9 +138,20 @@
     self.history.text = [CalculatorAlgorithmRPN descriptionOfProgram:self.brain.program];
 }
 
+- (void)updateVariables {
+    NSString *text = @"";
+    
+    for (NSString *var in [CalculatorAlgorithmRPN variablesUsedInProgram:self.brain.program]) {
+        text = [text stringByAppendingFormat:@" %@ = %@ ", var, [self.testVariableValues objectForKey:var]];
+    }
+    
+    self.variables.text = text;
+}
+
 - (void)viewDidUnload {
     [self setDisplay:nil];
     [self setHistory:nil];
+    [self setVariables:nil];
     [super viewDidUnload];
 }
 

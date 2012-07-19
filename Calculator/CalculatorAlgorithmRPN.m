@@ -35,9 +35,9 @@ static NSDictionary *_operations;
     [self.programStack addObject:variable];
 }
 
-- (double)performOperation:(NSString *)operation {
+- (double)performOperation:(NSString *)operation withVariables:(NSDictionary *)variables {
     [self.programStack addObject:operation];
-    return [CalculatorAlgorithmRPN runProgram:self.program];
+    return [CalculatorAlgorithmRPN runProgram:self.program usingVariableValues:variables];
 }
 
 - (void)clearStack {
