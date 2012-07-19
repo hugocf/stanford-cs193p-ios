@@ -53,8 +53,8 @@ static NSDictionary *_operations;
         NSMutableDictionary *ops = [[NSMutableDictionary alloc] init];
         
         NSNumber *two = [NSNumber numberWithUnsignedInt:2];        
-        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"%@ ÷ %@", MY_FORMAT_STRING, nil] forKey:@"/"];
-        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"%@ × %@", MY_FORMAT_STRING, nil] forKey:@"*"];
+        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ ÷ %@)", MY_FORMAT_STRING, nil] forKey:@"/"];
+        [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ × %@)", MY_FORMAT_STRING, nil] forKey:@"*"];
         [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ − %@)", MY_FORMAT_STRING, nil] forKey:@"-"];
         [ops setValue:[NSDictionary dictionaryWithObjectsAndKeys:two, MY_OPERANDS_COUNT, @"(%@ + %@)", MY_FORMAT_STRING, nil] forKey:@"+"];
         
