@@ -18,9 +18,38 @@
 
 @implementation FaceView
 
+@synthesize scale = _scale;
+
+- (CGFloat)scale
+{
+    if (!_scale) {
+        return FACE_SIZE_FACTOR;
+    } else {
+        return _scale;
+    }
+}
+
+- (void)setScale:(CGFloat)scale
+{
+    if (_scale != scale) {
+        _scale = scale;
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)pinch:(UIPinchGestureRecognizer *)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateChanged
+        || gesture.scale == UIGestureRecognizerStateEnded)
+    {
+        self.scale *= gesture.scale;
+        gesture.scale = 1.0; 
+    }
+}
+
 - (void)setup
 {
-    ;
+    self.contentMode = UIViewContentModeRedraw;
 }
 
 - (void)awakeFromNib
@@ -58,7 +87,7 @@
     midPoint.y = self.bounds.origin.y + self.bounds.size.height / 2;
     
     CGFloat size = ((self.bounds.size.width < self.bounds.size.height)? self.bounds.size.width : self.bounds.size.height) / 2;
-    size *= FACE_SIZE_FACTOR;
+    size *= self.scale;
     
     CGContextSetLineWidth(context, 5.0);
     [[UIColor blueColor] setStroke];
