@@ -84,9 +84,9 @@
 				9A2FEA3915B895D700E73338 /* HappinessAppDelegate.m */,
 				9A2FEA3B15B895D700E73338 /* MainStoryboard.storyboard */,
 				9A2FEA3E15B895D700E73338 /* HappinessViewController.h */,
+				9A2FEA3F15B895D700E73338 /* HappinessViewController.m */,
 				9A2FEA4615B897B500E73338 /* FaceView.h */,
 				9A2FEA4715B897B500E73338 /* FaceView.m */,
-				9A2FEA3F15B895D700E73338 /* HappinessViewController.m */,
 				9A2FEA3015B895D700E73338 /* Supporting Files */,
 			);
 			path = Happiness;
@@ -282,6 +282,7 @@
 				9A2FEA4515B895D700E73338 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
