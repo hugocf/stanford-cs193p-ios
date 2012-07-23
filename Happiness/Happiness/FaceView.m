@@ -19,6 +19,7 @@
 @implementation FaceView
 
 @synthesize scale = _scale;
+@synthesize dataSource = _dataSource;
 
 - (CGFloat)scale
 {
@@ -117,7 +118,11 @@
     mouthCP1.x = midPoint.x - size * MOUTH_POSITION_H / 3;
     mouthCP2.x = midPoint.x + size * MOUTH_POSITION_H / 3;
     
-    float smileDirection = 1.0;
+    // Direction: Happy or Smile?
+    float smileDirection = [self.dataSource smileForFaceView:self];
+    if (smileDirection <= -1) smileDirection = -1;
+    if (smileDirection >= 1) smileDirection = 1;
+    
     CGFloat smileOffset = size * MOUTH_SIZE_FACTOR * smileDirection;
     mouthCP1.y += smileOffset;
     mouthCP2.y += smileOffset;
