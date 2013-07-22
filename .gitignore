@@ -1,5 +1,7 @@
-# https://github.com/github/gitignore/blob/master/Objective-C.gitignore
-build/*
+# https://raw.github.com/github/gitignore/master/Objective-C.gitignore
+# Xcode
+.DS_Store
+*/build/*
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -8,9 +10,12 @@ build/*
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
 xcuserdata
 profile
 *.moved-aside
 DerivedData
+.idea/
+*.hmap
+
+#CocoaPods
+Pods
