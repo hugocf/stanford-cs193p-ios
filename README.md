@@ -1,4 +1,5 @@
-# Stanford CS 193P - iPad and iPhone Application Development (by Paul Hegarty)
+# Stanford CS 193P - iPad and iPhone Application Development
+*by Paul Hegarty*
 
 ## Stanford's class page
 
