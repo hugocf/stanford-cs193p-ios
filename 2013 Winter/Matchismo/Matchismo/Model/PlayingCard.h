@@ -18,3 +18,4 @@
 + (NSUInteger)maxRank;
 
 @end
+
