@@ -7,45 +7,58 @@
 //
 
 #import "CardGameViewController.h"
+#import "CardMatchingGame.h"
 #import "PlayingDeck.h"
 
 @interface CardGameViewController ()
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *flipsDisplay;
+@property (weak, nonatomic) IBOutlet UILabel *scoreDisplay;
 @property (nonatomic) int flipsCount;
-@property (strong, nonatomic) PlayingDeck *deck;
+@property (strong, nonatomic) CardMatchingGame *game;
 
 @end
 
 @implementation CardGameViewController
 
-- (PlayingDeck *)deck
+- (CardMatchingGame *)game
 {
-    if (!_deck) _deck = [[PlayingDeck alloc] init];
-    return _deck;
+    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
+                                                           fromDeck:[[PlayingDeck alloc] init]];
+    return _game;
 }
 
 - (void)setCardButtons:(NSArray *)cardButtons
 {
     _cardButtons = cardButtons;
-    for (UIButton *cardButton in cardButtons) {
-        Card *card = [self.deck drawRandomCard];
+    [self updateUI];
+}
+
+- (void)updateUI
+{
+    for (UIButton *cardButton in self.cardButtons) {
+        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        cardButton.selected = card.isFaceUp;
+        cardButton.enabled = !card.isUnplayable;
+        cardButton.alpha = (card.isUnplayable)? 0.3 : 1.0;
     }
+    self.scoreDisplay.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
 }
 
 - (void)setFlipsCount:(int)count
 {
     _flipsCount = count;
     self.flipsDisplay.text = [NSString stringWithFormat:@"Flips: %d", self.flipsCount];
-    NSLog(@"HF: Flips updated to %d", self.flipsCount);
 }
 
 - (IBAction)flipCard:(UIButton *)sender
 {
-    sender.selected = !sender.isSelected;
+    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipsCount++;
+    [self updateUI];
 }
 
 @end
