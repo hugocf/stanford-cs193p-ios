@@ -70,11 +70,11 @@
                         card.unplayable = YES;
                         otherCard.unplayable = YES;
                         roundScore += cardScore * SCORE_MATCH_BONUS;
-                        msg = [NSString stringWithFormat:@"Matched %@ & %@\n%d point(s)", card, otherCard, roundScore];
+                        msg = [NSString stringWithFormat:@"Matched %@ & %@ (%d points)", card, otherCard, roundScore];
                     } else {
                         otherCard.faceup = NO;
                         roundScore += SCORE_MISMATCH_PENALTY;
-                        msg = [NSString stringWithFormat:@"%@ & %@ don't match\n%d point(s)", card, otherCard, roundScore];
+                        msg = [NSString stringWithFormat:@"%@ & %@ don't match (%d points)", card, otherCard, roundScore];
                     }
                     break; // nothing more to do here: already found 1 card face up!
                 }
