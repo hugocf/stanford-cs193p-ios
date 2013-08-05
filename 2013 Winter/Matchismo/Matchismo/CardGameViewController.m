@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *flipsDisplay;
 @property (weak, nonatomic) IBOutlet UILabel *scoreDisplay;
+@property (weak, nonatomic) IBOutlet UILabel *messageDisplay;
 @property (nonatomic) int flipsCount;
 @property (strong, nonatomic) CardMatchingGame *game;
 
@@ -46,6 +47,7 @@
         cardButton.alpha = (card.isUnplayable)? 0.3 : 1.0;
     }
     self.scoreDisplay.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.messageDisplay.text = self.game.lastMessage;
 }
 
 - (void)setFlipsCount:(int)count

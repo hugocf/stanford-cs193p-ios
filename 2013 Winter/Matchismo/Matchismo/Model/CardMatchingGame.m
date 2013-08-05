@@ -11,13 +11,14 @@
 @interface CardMatchingGame()
 
 @property (readwrite, nonatomic) int score;
+@property (readwrite, nonatomic) NSString *lastMessage;
 @property (nonatomic) NSMutableArray *cards;
 
 @end
 
 @implementation CardMatchingGame
 {}
-#pragma mark - Designated Initializer
+#pragma mark - Initializers
 
 - (id)initWithCardCount:(NSUInteger)count fromDeck:(Deck *)deck
 {
@@ -43,17 +44,26 @@
     return _cards;
 }
 
-#define SCORE_FLIP_COST         1
+#define SCORE_FLIP_COST         -1
 #define SCORE_MISMATCH_PENALTY  2
 #define SCORE_MATCH_BONUS       4
 
+/**
+ * The "brain" of the game.
+ *
+ * This is where the actual game rules are defined.
+ * Sets the `lastMessage` property to describe what has been going on in the game.
+ */
 - (void)flipCardAtIndex:(NSUInteger)index
 {
+    NSString *msg;
     Card *card = [self cardAtIndex:index];
+    
     if (!card.isUnplayable) {
-        if (!card.isFaceUp) {
+        if (card.isFaceUp) {
+            self.lastMessage = @"";
+        } else {
             // play the game
-            self.score -= SCORE_FLIP_COST;
             for (Card *otherCard in self.cards) {
                 if (otherCard.isFaceUp && !otherCard.isUnplayable) {
                     int matchScore = [card match:@[otherCard]];
@@ -68,6 +78,11 @@
                     break; // nothing more to do here: already found 1 card face up!
                 }
             }
+            self.score += SCORE_FLIP_COST;
+            if (!msg) {
+                msg = [NSString stringWithFormat:@"Flipped up %@\n%d point(s)", card, SCORE_FLIP_COST];
+            }
+            self.lastMessage = msg;
         }
         // flip it!
         card.faceup = !card.faceup;
