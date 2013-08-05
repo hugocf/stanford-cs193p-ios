@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipsDisplay;
 @property (weak, nonatomic) IBOutlet UILabel *scoreDisplay;
 @property (weak, nonatomic) IBOutlet UILabel *messageDisplay;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeSelector;
 @property (nonatomic) int flipsCount;
 @property (strong, nonatomic) CardMatchingGame *game;
 
@@ -58,15 +59,21 @@
 
 - (IBAction)flipCard:(UIButton *)sender
 {
+    self.gameModeSelector.enabled = NO;
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipsCount++;
     [self updateUI];
 }
 
 - (IBAction)dealGame {
+    self.gameModeSelector.enabled = YES;
     self.game = nil;
     [self updateUI];
 }
 
-@end
+- (IBAction)changeGameMode:(UISegmentedControl *)sender
+{
+    NSLog(@"HF: Game Mode => %d", sender.selectedSegmentIndex);
+}
 
+@end

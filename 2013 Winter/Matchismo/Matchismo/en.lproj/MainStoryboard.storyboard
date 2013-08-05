@@ -295,12 +295,16 @@
                                     <segment title="2 cards"/>
                                     <segment title="3 cards"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeGameMode:" destination="2" eventType="valueChanged" id="LvJ-Sy-7NN"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="flipsDisplay" destination="klz-0G-aZL" id="vPU-K5-DDn"/>
+                        <outlet property="gameModeSelector" destination="v6d-Ue-pm2" id="eXH-UX-gCS"/>
                         <outlet property="messageDisplay" destination="apu-eK-WRi" id="qlz-lT-CGh"/>
                         <outlet property="scoreDisplay" destination="PdG-gF-0zd" id="9Ia-8b-Z3L"/>
                         <outletCollection property="cardButtons" destination="PDS-WA-x5S" id="gwW-Fc-VnL"/>
@@ -333,8 +337,10 @@
         <class className="CardGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changeGameMode:" candidateClass="UISegmentedControl"/>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gameModeSelector" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="messageDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreDisplay" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
