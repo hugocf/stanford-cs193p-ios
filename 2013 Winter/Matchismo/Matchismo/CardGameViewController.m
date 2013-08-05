@@ -63,5 +63,10 @@
     [self updateUI];
 }
 
+- (IBAction)dealGame {
+    self.game = nil;
+    [self updateUI];
+}
+
 @end
 
