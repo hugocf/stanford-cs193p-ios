@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreDisplay;
 @property (weak, nonatomic) IBOutlet UILabel *messageDisplay;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeSelector;
+@property (weak, nonatomic) IBOutlet UISlider *messageHistory;
 @property (nonatomic) int flipsCount;
 @property (strong, nonatomic) CardMatchingGame *game;
 
@@ -68,7 +69,12 @@
 {
     self.gameModeSelector.enabled = NO;
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-    if (sender.isEnabled && !sender.isSelected) self.flipsCount++;
+    if (sender.isEnabled && !sender.isSelected) {
+        self.flipsCount++;
+        self.messageHistory.maximumValue = self.flipsCount;
+        self.messageHistory.value = self.flipsCount;
+        self.messageDisplay.alpha = 1.0;
+    }
     [self updateUI];
 }
 
@@ -76,12 +82,21 @@
     self.gameModeSelector.enabled = YES;
     self.game = nil;
     self.flipsCount = 0;
+    self.messageHistory.maximumValue = self.flipsCount;
     [self updateUI];
 }
 
 - (IBAction)changeGameMode:(UISegmentedControl *)sender
 {
     self.game.numCardsToMatch = (sender.selectedSegmentIndex)? 3 : 2;
+}
+
+- (IBAction)timeTravel:(UISlider *)sender {
+    if ([sender maximumValue] > 0) {
+        int index = round([sender value]);
+        self.messageDisplay.text = self.game.lastMessages[index];
+        self.messageDisplay.alpha = 0.3;
+    }
 }
 
 @end

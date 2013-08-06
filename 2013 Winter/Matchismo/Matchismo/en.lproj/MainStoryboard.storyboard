@@ -299,6 +299,13 @@
                                     <action selector="changeGameMode:" destination="2" eventType="valueChanged" id="LvJ-Sy-7NN"/>
                                 </connections>
                             </segmentedControl>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="0.0" id="MD7-Fo-LU0">
+                                <rect key="frame" x="102" y="20" width="118" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="timeTravel:" destination="2" eventType="valueChanged" id="pmW-o4-zX4"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -306,6 +313,7 @@
                         <outlet property="flipsDisplay" destination="klz-0G-aZL" id="vPU-K5-DDn"/>
                         <outlet property="gameModeSelector" destination="v6d-Ue-pm2" id="eXH-UX-gCS"/>
                         <outlet property="messageDisplay" destination="apu-eK-WRi" id="qlz-lT-CGh"/>
+                        <outlet property="messageHistory" destination="MD7-Fo-LU0" id="dN4-ik-1bY"/>
                         <outlet property="scoreDisplay" destination="PdG-gF-0zd" id="9Ia-8b-Z3L"/>
                         <outletCollection property="cardButtons" destination="PDS-WA-x5S" id="gwW-Fc-VnL"/>
                         <outletCollection property="cardButtons" destination="gmE-L0-BO7" id="KCf-Rx-tmf"/>
@@ -339,9 +347,11 @@
             <relationships>
                 <relationship kind="action" name="changeGameMode:" candidateClass="UISegmentedControl"/>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
+                <relationship kind="action" name="timeTravel:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="flipsDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="gameModeSelector" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="messageDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="messageHistory" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="scoreDisplay" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
             </relationships>

@@ -114,7 +114,7 @@
 
 - (NSMutableArray *)messages
 {
-    if (!_messages) _messages = [[NSMutableArray alloc] init];
+    if (!_messages) _messages = [[NSMutableArray alloc] initWithObjects:@"", nil];
     return _messages;
 }
 
