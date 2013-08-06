@@ -49,10 +49,10 @@
 #define SCORE_MATCH_BONUS       4
 
 /**
- * The "brain" of the game.
- *
- * This is where the actual game rules are defined.
- * Sets the `lastMessage` property to describe what has been going on in the game.
+ The "brain" of the game.
+ 
+ This is where the actual game rules are defined.
+ Sets the `lastMessage` property to describe what has been going on in the game.
  */
 - (void)flipCardAtIndex:(NSUInteger)index
 {
