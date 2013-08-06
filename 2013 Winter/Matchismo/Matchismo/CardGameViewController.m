@@ -73,7 +73,7 @@
 
 - (IBAction)changeGameMode:(UISegmentedControl *)sender
 {
-    NSLog(@"HF: Game Mode => %d", sender.selectedSegmentIndex);
+    self.game.numCardsToMatch = (sender.selectedSegmentIndex)? 3 : 2;
 }
 
 @end

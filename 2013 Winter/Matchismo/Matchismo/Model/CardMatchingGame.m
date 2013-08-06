@@ -20,7 +20,7 @@
 {}
 #pragma mark - Initializers
 
-- (id)initWithCardCount:(NSUInteger)count fromDeck:(Deck *)deck
+- (id)initWithCardCount:(NSUInteger)count fromDeck:(Deck *)deck matchCards:(NSUInteger)numCards
 {
     self = [super init];
     if (self) {
@@ -32,8 +32,14 @@
                 self.cards[i] = card;
             }
         }
+        self.numCardsToMatch = numCards;
     }
     return self;
+}
+
+- (id)initWithCardCount:(NSUInteger)count fromDeck:(Deck *)deck
+{
+    return [self initWithCardCount:count fromDeck:deck matchCards:2];
 }
 
 #pragma mark -
