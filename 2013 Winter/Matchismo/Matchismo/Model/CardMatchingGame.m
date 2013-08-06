@@ -11,7 +11,7 @@
 @interface CardMatchingGame()
 
 @property (readwrite, nonatomic) int score;
-@property (readwrite, nonatomic) NSString *lastMessage;
+@property (nonatomic) NSMutableArray *messages;
 @property (nonatomic) NSMutableArray *cards;
 
 @end
@@ -103,13 +103,29 @@
         // Flip it!
         card.faceup = !card.faceup;
         self.score += roundScore;
-        self.lastMessage = msg;
+        [self.messages addObject:msg];
     }
 }
 
 - (Card *)cardAtIndex:(NSUInteger)index
 {
     return (index < self.cards.count)? self.cards[index] : nil;
+}
+
+- (NSMutableArray *)messages
+{
+    if (!_messages) _messages = [[NSMutableArray alloc] init];
+    return _messages;
+}
+
+- (NSString *)lastMessage
+{
+    return [self.messages lastObject];
+}
+
+-  (NSArray *)lastMessages
+{
+    return [self.messages copy];
 }
 
 @end

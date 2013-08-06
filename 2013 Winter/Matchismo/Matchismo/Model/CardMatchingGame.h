@@ -22,6 +22,7 @@
 
 @property (readonly, nonatomic) int score;
 @property (readonly, nonatomic) NSString *lastMessage;
+@property (readonly, nonatomic) NSArray *lastMessages;
 @property (nonatomic) int numCardsToMatch;
 
 - (void)flipCardAtIndex:(NSUInteger)index;
