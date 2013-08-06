@@ -66,24 +66,30 @@
     int roundScore = 0;
     Card *card = [self cardAtIndex:index];
     
+    BOOL(^isCardInPlay)(id, NSUInteger, BOOL*) = ^(id obj, NSUInteger idx, BOOL *stop) {
+        return (BOOL)(![(Card *)obj isUnplayable] && [(Card *)obj isFaceUp]);
+    };
+    
     if (!card.isUnplayable) {
         if (!card.isFaceUp) {
-            // play the game
-            for (Card *otherCard in self.cards) {
-                if (otherCard.isFaceUp && !otherCard.isUnplayable) {
-                    int cardScore = [card match:@[otherCard]];
-                    if (cardScore) {
-                        card.unplayable = YES;
-                        otherCard.unplayable = YES;
-                        roundScore += cardScore * SCORE_MATCH_BONUS;
-                        msg = [NSString stringWithFormat:@"Matched %@ & %@ (%d points)", card, otherCard, roundScore];
-                    } else {
-                        otherCard.faceup = NO;
-                        roundScore += SCORE_MISMATCH_PENALTY;
-                        msg = [NSString stringWithFormat:@"%@ & %@ don't match (%d points)", card, otherCard, roundScore];
-                    }
-                    break; // nothing more to do here: already found 1 card face up!
-                }
+            // Play the game
+            NSArray *cardsInPlay = [self.cards objectsAtIndexes:[self.cards indexesOfObjectsPassingTest:isCardInPlay]];
+            NSString *otherCards = [cardsInPlay componentsJoinedByString:@", "];
+            
+            int cardScore = [card match:cardsInPlay];
+            if (cardScore) {
+                card.unplayable = YES;
+                [cardsInPlay enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    [obj setUnplayable:YES];
+                }];
+                roundScore += cardScore * SCORE_MATCH_BONUS * (self.numCardsToMatch - 1);
+                msg = [NSString stringWithFormat:@"Matched %@ with %@ (%d points)", card, otherCards, roundScore];
+            } else {
+                [cardsInPlay enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    [obj setFaceup:NO];
+                }];
+                roundScore += SCORE_MISMATCH_PENALTY * (self.numCardsToMatch - 1);
+                msg = [NSString stringWithFormat:@"%@ with %@ don't match (%d points)", card, otherCards, roundScore];
             }
             roundScore += SCORE_FLIP_COST;
             if (!msg) {
@@ -92,7 +98,7 @@
         } else {
             msg = @"";
         }
-        // flip it!
+        // Flip it!
         card.faceup = !card.faceup;
         self.score += roundScore;
         self.lastMessage = msg;
