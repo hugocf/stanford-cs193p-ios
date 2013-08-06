@@ -64,20 +64,20 @@
 - (int)match:(NSArray *)otherCards
 {
     int score = 0;
-    BOOL(^sameSuit)(id, NSUInteger, BOOL*);
-    BOOL(^sameRank)(id, NSUInteger, BOOL*);
+    BOOL(^isSameSuit)(id, NSUInteger, BOOL*);
+    BOOL(^isSameRank)(id, NSUInteger, BOOL*);
     
     // Define the matching block conditions
-    sameSuit = ^(id obj, NSUInteger idx, BOOL *stop) {
+    isSameSuit = ^(id obj, NSUInteger idx, BOOL *stop) {
         return [self.suit isEqualToString:[obj suit]];
     };
-    sameRank = ^(id obj, NSUInteger idx, BOOL *stop) {
+    isSameRank = ^(id obj, NSUInteger idx, BOOL *stop) {
         return (BOOL)(self.rank == [obj rank]);
     };
     
     // Does suit or rank match in all cards?
-    BOOL suitsMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:sameSuit].count);
-    BOOL ranksMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:sameRank].count);
+    BOOL suitsMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:isSameSuit].count);
+    BOOL ranksMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:isSameRank].count);
     
     // Give out points
     if (suitsMatch) {
