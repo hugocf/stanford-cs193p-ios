@@ -68,6 +68,7 @@
 - (IBAction)dealGame {
     self.gameModeSelector.enabled = YES;
     self.game = nil;
+    self.flipsCount = 0;
     [self updateUI];
 }
 
