@@ -62,7 +62,7 @@
 {
     self.gameModeSelector.enabled = NO;
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-    self.flipsCount++;
+    if (sender.isEnabled && !sender.isSelected) self.flipsCount++;
     [self updateUI];
 }
 
