@@ -62,15 +62,28 @@
 }
 
 - (int)match:(NSArray *)otherCards
- {
+{
     int score = 0;
-    if (otherCards.count == 1) {
-        PlayingCard *otherCard = [otherCards lastObject];
-        if ([self.suit isEqualToString:otherCard.suit]) {
-            score = 1;
-        } else if (self.rank == otherCard.rank) {
-            score = 4;
-        }
+    BOOL(^sameSuit)(id, NSUInteger, BOOL*);
+    BOOL(^sameRank)(id, NSUInteger, BOOL*);
+    
+    // Define the matching block conditions
+    sameSuit = ^(id obj, NSUInteger idx, BOOL *stop) {
+        return [self.suit isEqualToString:[obj suit]];
+    };
+    sameRank = ^(id obj, NSUInteger idx, BOOL *stop) {
+        return (BOOL)(self.rank == [obj rank]);
+    };
+    
+    // Does suit or rank match in all cards?
+    BOOL suitsMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:sameSuit].count);
+    BOOL ranksMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:sameRank].count);
+    
+    // Give out points
+    if (suitsMatch) {
+        score = 1;
+    } else if (ranksMatch) {
+        score = 4;
     }
     return score;
 }
