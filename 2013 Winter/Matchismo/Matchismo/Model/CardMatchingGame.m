@@ -74,7 +74,7 @@
         if (!card.isFaceUp) {
             // Play the game
             NSArray *cardsInPlay = [self.cards objectsAtIndexes:[self.cards indexesOfObjectsPassingTest:isCardInPlay]];
-            NSString *otherCardNames = [cardsInPlay componentsJoinedByString:@", "];
+            NSString *otherCardNames = [cardsInPlay componentsJoinedByString:@" "];
             
             if (cardsInPlay.count == self.numCardsToMatch - 1) {
                 int cardScore = [card match:cardsInPlay];
