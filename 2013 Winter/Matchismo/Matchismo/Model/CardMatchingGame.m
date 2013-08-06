@@ -97,13 +97,13 @@
             if (!msg) {
                 msg = [NSString stringWithFormat:@"Flipped up %@", card];
             }
-        } else {
-            msg = @"";
         }
         // Flip it!
         card.faceup = !card.faceup;
         self.score += roundScore;
-        [self.messages addObject:msg];
+        if (msg) {
+            [self.messages addObject:msg];
+        }
     }
 }
 
@@ -114,7 +114,7 @@
 
 - (NSMutableArray *)messages
 {
-    if (!_messages) _messages = [[NSMutableArray alloc] initWithObjects:@"", nil];
+    if (!_messages) _messages = [[NSMutableArray alloc] init];
     return _messages;
 }
 

@@ -70,11 +70,12 @@
     self.gameModeSelector.enabled = NO;
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     if (sender.isEnabled && !sender.isSelected) {
+        // Card flipped up
         self.flipsCount++;
-        self.messageHistory.maximumValue = self.game.lastMessages.count;
-        self.messageHistory.value = self.game.lastMessages.count;
-        self.messageDisplay.alpha = 1.0;
     }
+    self.messageHistory.maximumValue = self.game.lastMessages.count;
+    self.messageHistory.value = self.game.lastMessages.count;
+    self.messageDisplay.alpha = 1.0;
     [self updateUI];
 }
 
@@ -92,10 +93,10 @@
 }
 
 - (IBAction)timeTravel:(UISlider *)sender {
-    if ([sender maximumValue] > 0) {
+    if (sender.maximumValue > 0) {
         int index = round([sender value]);
-        self.messageDisplay.text = self.game.lastMessages[index];
-        self.messageDisplay.alpha = 0.3;
+        self.messageDisplay.text = (!index)? @"" : self.game.lastMessages[index - 1];
+        self.messageDisplay.alpha = (index == sender.maximumValue)? 1.0 : 0.3;
     }
 }
 
