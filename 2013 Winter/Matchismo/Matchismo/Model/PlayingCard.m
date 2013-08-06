@@ -67,23 +67,25 @@
     BOOL(^isSameSuit)(id, NSUInteger, BOOL*);
     BOOL(^isSameRank)(id, NSUInteger, BOOL*);
     
-    // Define the matching block conditions
-    isSameSuit = ^(id obj, NSUInteger idx, BOOL *stop) {
-        return [self.suit isEqualToString:[obj suit]];
-    };
-    isSameRank = ^(id obj, NSUInteger idx, BOOL *stop) {
-        return (BOOL)(self.rank == [obj rank]);
-    };
-    
-    // Does suit or rank match in all cards?
-    BOOL suitsMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:isSameSuit].count);
-    BOOL ranksMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:isSameRank].count);
-    
-    // Give out points
-    if (suitsMatch) {
-        score = 1;
-    } else if (ranksMatch) {
-        score = 4;
+    if (otherCards.count > 0) {
+        // Define the matching block conditions
+        isSameSuit = ^(id obj, NSUInteger idx, BOOL *stop) {
+            return [self.suit isEqualToString:[obj suit]];
+        };
+        isSameRank = ^(id obj, NSUInteger idx, BOOL *stop) {
+            return (BOOL)(self.rank == [obj rank]);
+        };
+        
+        // Does suit or rank match in all cards?
+        BOOL suitsMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:isSameSuit].count);
+        BOOL ranksMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:isSameRank].count);
+        
+        // Give out points
+        if (suitsMatch) {
+            score = 1;
+        } else if (ranksMatch) {
+            score = 4;
+        }
     }
     return score;
 }
