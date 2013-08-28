@@ -16,7 +16,6 @@
 		9A530DCE15A5958D00409F4F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A530DCC15A5958D00409F4F /* MainStoryboard.storyboard */; };
 		9A530DD115A5958D00409F4F /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A530DD015A5958D00409F4F /* CalculatorViewController.m */; };
 		9A530DD915A5A5D400409F4F /* CalculatorAlgorithmRPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A530DD815A5A5D400409F4F /* CalculatorAlgorithmRPN.m */; };
-		9AE6BC2D179D449A004F2E34 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AE6BC2C179D449A004F2E34 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		9A530DD015A5958D00409F4F /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		9A530DD715A5A5D400409F4F /* CalculatorAlgorithmRPN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorAlgorithmRPN.h; sourceTree = "<group>"; };
 		9A530DD815A5A5D400409F4F /* CalculatorAlgorithmRPN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorAlgorithmRPN.m; sourceTree = "<group>"; wrapsLines = 0; };
-		9AE6BC2C179D449A004F2E34 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +53,6 @@
 		9A530DAB15A5958D00409F4F = {
 			isa = PBXGroup;
 			children = (
-				9AE6BC2C179D449A004F2E34 /* Default-568h@2x.png */,
 				9A530DC015A5958D00409F4F /* Calculator */,
 				9A530DB915A5958D00409F4F /* Frameworks */,
 				9A530DB715A5958D00409F4F /* Products */,
@@ -160,7 +157,6 @@
 			files = (
 				9A530DC515A5958D00409F4F /* InfoPlist.strings in Resources */,
 				9A530DCE15A5958D00409F4F /* MainStoryboard.storyboard in Resources */,
-				9AE6BC2D179D449A004F2E34 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
