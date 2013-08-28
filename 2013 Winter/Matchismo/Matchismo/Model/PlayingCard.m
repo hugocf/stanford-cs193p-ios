@@ -70,10 +70,10 @@
     if (otherCards.count > 0) {
         // Define the matching block conditions
         isSameSuit = ^(id obj, NSUInteger idx, BOOL *stop) {
-            return [self.suit isEqualToString:[obj suit]];
+            return (BOOL)([obj isKindOfClass:[PlayingCard class]]? [self.suit isEqualToString:[obj suit]] : NO);
         };
         isSameRank = ^(id obj, NSUInteger idx, BOOL *stop) {
-            return (BOOL)(self.rank == [obj rank]);
+            return (BOOL)([obj isKindOfClass:[PlayingCard class]]? self.rank == [obj rank] : NO);
         };
         
         // Does suit or rank match in all cards?
