@@ -75,6 +75,20 @@
     [self addLabelAttributes:attributes range:range];
 }
 
+// get attributes to the selected word in self.label
+- (id)getSelectedWordAttribute:(NSString *)attribute
+{
+    // next two lines added after lecture
+    NSRange range = [[self.label.attributedText string] rangeOfString:[self selectedWord]];
+    if (range.location != NSNotFound) {
+        NSDictionary *attributes = [self.label.attributedText attributesAtIndex:range.location // was 0 in lecture
+                                                                 effectiveRange:NULL];
+        return attributes[attribute];
+    } else {
+        return nil;
+    }
+}
+
 - (IBAction)underline
 {
     [self addSelectedWordAttributes:@{ NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle)}];
@@ -88,6 +102,10 @@
 - (IBAction)changeColor:(UIButton *)sender
 {
     [self addSelectedWordAttributes:@{ NSForegroundColorAttributeName : sender.backgroundColor }];
+    // colour stroke also if it shows the outline with no fill
+    if ([[self getSelectedWordAttribute:NSStrokeWidthAttributeName] intValue] > 0) {
+        [self addSelectedWordAttributes:@{ NSStrokeColorAttributeName : sender.backgroundColor }];
+    }
 }
 
 - (IBAction)changeFont:(UIButton *)sender
@@ -110,7 +128,8 @@
 // added after lecture
 - (IBAction)outline
 {
-    [self addSelectedWordAttributes:@{ NSStrokeWidthAttributeName : @5 }]; // stroke only, no fill
+    [self addSelectedWordAttributes:@{ NSStrokeWidthAttributeName : @5, // stroke only, no fill
+                                       NSStrokeColorAttributeName : [self getSelectedWordAttribute:NSForegroundColorAttributeName]}];
 }
 
 // added after lecture
