@@ -111,15 +111,9 @@
 - (IBAction)changeFont:(UIButton *)sender
 {
     CGFloat fontSize = [UIFont systemFontSize];
-
-    // next two lines added after lecture
-    NSRange range = [[self.label.attributedText string] rangeOfString:[self selectedWord]];
-    if (range.location != NSNotFound) {
-        NSDictionary *attributes = [self.label.attributedText attributesAtIndex:range.location // was 0 in lecture
-                                                                 effectiveRange:NULL];
-        UIFont *existingFont = attributes[NSFontAttributeName];
-        if (existingFont) fontSize = existingFont.pointSize;
-    }
+    
+    UIFont *existingFont = [self getSelectedWordAttribute:NSFontAttributeName];
+    if (existingFont) fontSize = existingFont.pointSize;
 
     UIFont *font = [sender.titleLabel.font fontWithSize:fontSize];
     [self addSelectedWordAttributes:@{ NSFontAttributeName : font }];
