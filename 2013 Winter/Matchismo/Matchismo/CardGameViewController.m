@@ -93,6 +93,7 @@
     self.flipsCount = 0;
     self.messageHistory.maximumValue = self.flipsCount;
     [self updateUI];
+    self.gameResult = nil;
 }
 
 - (IBAction)changeGameMode:(UISegmentedControl *)sender
