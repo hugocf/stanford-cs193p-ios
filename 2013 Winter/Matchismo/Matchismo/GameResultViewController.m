@@ -7,6 +7,7 @@
 //
 
 #import "GameResultViewController.h"
+#import "GameResult.h"
 
 @implementation GameResultViewController
 
@@ -25,6 +26,21 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     [self setup];
     return self;
+}
+
+#pragma mark - Lifecycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateUI];
+}
+
+#pragma mark - Methods
+
+- (void)updateUI
+{
+    self.display.text = [[GameResult allGameResults] componentsJoinedByString:@"\n"];
 }
 
 @end

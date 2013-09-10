@@ -79,6 +79,16 @@
 
 #pragma mark - Methods
 
+- (NSDictionary *)asPropertyList
+{
+    return @{ KEY_START : self.start, KEY_END : self.end, KEY_SCORE : @(self.score) };
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ (%0g) = %d points", self.start, round(self.duration), self.score];
+}
+
 - (void)synchronize
 {
     // Fetch
@@ -89,11 +99,6 @@
     // Store
     [[NSUserDefaults standardUserDefaults] setObject:allGameResults forKey:KEY_ALL_RESULTS];
     [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (NSDictionary *)asPropertyList
-{
-    return @{ KEY_START : self.start, KEY_END : self.end, KEY_SCORE : @(self.score) };
 }
 
 @end
