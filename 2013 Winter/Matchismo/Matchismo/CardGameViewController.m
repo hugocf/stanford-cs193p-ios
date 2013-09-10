@@ -78,8 +78,7 @@
     self.gameModeSelector.enabled = NO;
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     if (sender.isEnabled && !sender.isSelected) {
-        // Card flipped up
-        self.flipsCount++;
+        self.flipsCount++; // Card flipped up
     }
     self.messageHistory.maximumValue = self.game.lastMessages.count;
     self.messageHistory.value = self.game.lastMessages.count;
