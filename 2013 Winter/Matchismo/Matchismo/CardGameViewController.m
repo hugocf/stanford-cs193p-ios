@@ -9,6 +9,7 @@
 #import "CardGameViewController.h"
 #import "CardMatchingGame.h"
 #import "PlayingDeck.h"
+#import "GameResult.h"
 
 @interface CardGameViewController ()
 
@@ -20,10 +21,17 @@
 @property (weak, nonatomic) IBOutlet UISlider *messageHistory;
 @property (nonatomic) int flipsCount;
 @property (strong, nonatomic) CardMatchingGame *game;
+@property (strong, nonatomic) GameResult *gameResult;
 
 @end
 
 @implementation CardGameViewController
+
+- (GameResult *)gameResult
+{
+    if (!_gameResult) _gameResult = [[GameResult alloc] init];
+    return _gameResult;
+}
 
 - (CardMatchingGame *)game
 {
@@ -77,6 +85,7 @@
     self.messageHistory.value = self.game.lastMessages.count;
     self.messageDisplay.alpha = 1.0;
     [self updateUI];
+    self.gameResult.score = self.game.score; 
 }
 
 - (IBAction)dealGame {
