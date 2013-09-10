@@ -328,7 +328,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Game" id="vW9-sK-jfg"/>
+                    <tabBarItem key="tabBarItem" title="Game" image="spade.png" id="vW9-sK-jfg"/>
                     <connections>
                         <outlet property="flipsDisplay" destination="klz-0G-aZL" id="vPU-K5-DDn"/>
                         <outlet property="gameModeSelector" destination="v6d-Ue-pm2" id="eXH-UX-gCS"/>
@@ -379,13 +379,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Scores" id="DAD-Iv-8cP"/>
+                    <tabBarItem key="tabBarItem" title="Scores" image="hash.png" id="DAD-Iv-8cP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIY-uo-S0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="114" y="677"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hash.png" width="30" height="30"/>
+        <image name="spade.png" width="30" height="30"/>
+    </resources>
     <classes>
         <class className="CardGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
