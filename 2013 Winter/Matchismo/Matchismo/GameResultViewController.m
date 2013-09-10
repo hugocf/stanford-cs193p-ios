@@ -10,6 +10,9 @@
 #import "GameResult.h"
 
 @implementation GameResultViewController
+{}
+
+#pragma mark - Boilerplate template (for reference)
 
 - (void)setup
 {
