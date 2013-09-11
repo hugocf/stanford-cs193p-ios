@@ -37,10 +37,18 @@
 
 #pragma mark - Properties
 
+@synthesize criteriaForSorting = _criteriaForSorting;
+
 - (SEL)criteriaForSorting
 {
     if (!_criteriaForSorting) _criteriaForSorting = @selector(compareDateDescending:);
     return _criteriaForSorting;
+}
+
+- (void)setCriteriaForSorting:(SEL)criteriaForSorting
+{
+    _criteriaForSorting = criteriaForSorting;
+    [self updateUI];
 }
 
 #pragma mark - Methods
@@ -63,7 +71,6 @@
         default:
             self.criteriaForSorting = @selector(compareDateDescending:);
     }
-    [self updateUI];
 }
 
 #pragma mark - Lifecycle
