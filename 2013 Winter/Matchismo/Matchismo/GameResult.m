@@ -101,7 +101,10 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ (%0g)\t= %d points", self.start, round(self.duration), self.score];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    return [NSString stringWithFormat:@"%@ (%0g)\t= %d points", [formatter stringFromDate:self.start], round(self.duration), self.score];
 }
 
 - (void)synchronize
