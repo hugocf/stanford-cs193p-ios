@@ -84,9 +84,24 @@
     return @{ KEY_START : self.start, KEY_END : self.end, KEY_SCORE : @(self.score) };
 }
 
+- (NSComparisonResult)compareDateDescending:(GameResult *)otherResult
+{
+    return [otherResult.start compare:self.start];
+}
+
+- (NSComparisonResult)compareDurationAscending:(GameResult *)otherResult
+{
+    return [@(self.duration) compare:@(otherResult.duration)];
+}
+
+- (NSComparisonResult)compareScoreDescending:(GameResult *)otherResult
+{
+    return [@(otherResult.score) compare:@(self.score)];
+}
+
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ (%0g) = %d points", self.start, round(self.duration), self.score];
+    return [NSString stringWithFormat:@"%@ (%0g)\t= %d points", self.start, round(self.duration), self.score];
 }
 
 - (void)synchronize

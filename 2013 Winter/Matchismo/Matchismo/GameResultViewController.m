@@ -9,6 +9,10 @@
 #import "GameResultViewController.h"
 #import "GameResult.h"
 
+@interface GameResultViewController()
+@property (nonatomic) SEL criteriaForSorting;
+@end
+
 @implementation GameResultViewController
 {}
 
@@ -31,19 +35,43 @@
     return self;
 }
 
-#pragma mark - Lifecycle
+#pragma mark - Properties
 
-- (void)viewWillAppear:(BOOL)animated
+- (SEL)criteriaForSorting
 {
-    [super viewWillAppear:animated];
-    [self updateUI];
+    if (!_criteriaForSorting) _criteriaForSorting = @selector(compareDateDescending:);
+    return _criteriaForSorting;
 }
 
 #pragma mark - Methods
 
 - (void)updateUI
 {
-    self.display.text = [[GameResult allGameResults] componentsJoinedByString:@"\n"];
+    self.display.text = [[[GameResult allGameResults] sortedArrayUsingSelector:self.criteriaForSorting] componentsJoinedByString:@"\n"];
+}
+
+- (IBAction)defineSortingCriteria:(UIButton *)sender
+{
+    int tag = sender.tag;
+    switch (tag) {
+        case 2:
+            self.criteriaForSorting = @selector(compareScoreDescending:);
+            break;
+        case 3:
+            self.criteriaForSorting = @selector(compareDurationAscending:);
+            break;
+        default:
+            self.criteriaForSorting = @selector(compareDateDescending:);
+    }
+    [self updateUI];
+}
+
+#pragma mark - Lifecycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateUI];
 }
 
 @end
