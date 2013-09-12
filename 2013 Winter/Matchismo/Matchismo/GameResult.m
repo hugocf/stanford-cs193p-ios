@@ -86,7 +86,7 @@
 
 - (NSComparisonResult)compareDateDescending:(GameResult *)otherResult
 {
-    return [otherResult.start compare:self.start];
+    return [otherResult.start compare:self.end];
 }
 
 - (NSComparisonResult)compareDurationAscending:(GameResult *)otherResult
@@ -104,7 +104,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    return [NSString stringWithFormat:@"%@ (%0g)\t= %d points", [formatter stringFromDate:self.start], round(self.duration), self.score];
+    return [NSString stringWithFormat:@"%@ (%0g)\t= %d points", [formatter stringFromDate:self.end], round(self.duration), self.score];
 }
 
 - (void)synchronize
