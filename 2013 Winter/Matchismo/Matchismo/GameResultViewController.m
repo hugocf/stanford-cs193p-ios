@@ -73,7 +73,7 @@
     }
 }
 
-#pragma mark - Lifecycle
+#pragma mark - UIViewController
 
 - (void)viewWillAppear:(BOOL)animated
 {
