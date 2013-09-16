@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CardMatchingGame;
 
 @interface CardGameViewController : UIViewController
-
+{
+    @protected
+    CardMatchingGame *_game;
+}
 @end

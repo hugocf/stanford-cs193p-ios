@@ -7,7 +7,21 @@
 //
 
 #import "SetGameViewController.h"
+#import "SetMatchingGame.h"
+#import "SetDeck.h"
+
+@interface CardGameViewController ()
+@property (strong, nonatomic) NSArray *cardButtons;
+@end
 
 @implementation SetGameViewController
+
+- (CardMatchingGame *)game
+{
+    if (!_game) _game = [[SetMatchingGame alloc] initWithCardCount:super.cardButtons.count
+                                                           fromDeck:[[SetDeck alloc] init]
+                                                         matchCards:3];
+    return _game;
+}
 
 @end

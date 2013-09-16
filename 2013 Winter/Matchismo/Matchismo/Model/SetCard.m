@@ -66,4 +66,13 @@
                           color:[SetCard validColors][0]];
 }
 
+#pragma mark - Methods
+
+- (NSString *)contents
+{
+    return [@"" stringByPaddingToLength:self.number
+                             withString:self.symbol
+                        startingAtIndex:0];
+}
+
 @end
