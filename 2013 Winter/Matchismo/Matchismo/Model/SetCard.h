@@ -20,17 +20,23 @@ typedef enum {
 */
 @interface SetCard : Card
 
+/** Designated initializer. */
+- (id)initWithNumber:(int)number
+              symbol:(NSString *)symbol
+             shading:(ShadingType)shading
+               color:(UIColor *)color;
+
 /** number = one, two, or three. */
-@property (nonatomic) int number;
+@property (readonly, nonatomic) int number;
 
 /** symbol = diamond, squiggle, oval. */
-@property (strong, nonatomic) NSString *symbol;
+@property (readonly, strong, nonatomic) NSString *symbol;
 
 /** shading = solid, striped, or open. */
-@property (nonatomic) ShadingType shading;
+@property (readonly, nonatomic) ShadingType shading;
 
 /** color = red, green, or purple. */
-@property (strong, nonatomic) UIColor *color;
+@property (readonly, strong, nonatomic) UIColor *color;
 
 /** List of UIColors allowed for the Set cards. */
 + (NSArray *)validColors;

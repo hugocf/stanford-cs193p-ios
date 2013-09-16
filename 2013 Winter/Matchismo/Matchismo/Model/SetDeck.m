@@ -19,12 +19,10 @@
             for (NSString *symbol in [SetCard validSymbols]) {
                 for (NSNumber *shade in [SetCard validShadings]) {
                     for (UIColor *color in [SetCard validColors]) {
-                        // Create an single card
-                        SetCard *card = [[SetCard alloc] init];
-                        card.number = number;
-                        card.symbol = symbol;
-                        card.shading = (ShadingType)shade;
-                        card.color = color;
+                        SetCard *card = [[SetCard alloc] initWithNumber:number
+                                                                 symbol:symbol
+                                                                shading:(ShadingType)shade
+                                                                  color:color];
                         [self addCard:card atTop:YES];
                     }
                 }

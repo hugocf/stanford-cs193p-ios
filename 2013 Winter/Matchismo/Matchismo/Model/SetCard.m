@@ -34,27 +34,36 @@
     return shades;
 }
 
-#pragma mark - Properties
+#pragma mark - Initialization
 
-- (void)setNumber:(int)number
+- (id)initWithNumber:(int)number
+              symbol:(NSString *)symbol
+             shading:(ShadingType)shading
+               color:(UIColor *)color
 {
-    if (number >= 1 && number <= 3) {
+    self = [super init];
+    if (self) {
+        // validate params
+        if (number >= 1 && number <= 3) return nil;
+        if ([[SetCard validSymbols] containsObject:symbol]) return nil;
+        if ([[SetCard validColors] containsObject:color]) return nil;
+        
+        // define the card
         _number = number;
-    }
-}
-
-- (void)setSymbol:(NSString *)symbol
-{
-    if ([[SetCard validSymbols] containsObject:symbol]) {
         _symbol = symbol;
-    }
-}
-
-- (void)setColor:(UIColor *)color
-{
-    if ([[SetCard validColors] containsObject:color]) {
+        _shading = shading;
         _color = color;
     }
+    return self;
+}
+
+- (id)init
+{
+    // "resonable" settings for a default card
+    return [self initWithNumber:1
+                         symbol:[SetCard validSymbols][0]
+                        shading:(ShadingType)[SetCard validShadings][0]
+                          color:[SetCard validColors][0]];
 }
 
 @end
