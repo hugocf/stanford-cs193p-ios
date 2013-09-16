@@ -23,7 +23,7 @@
                                                                  symbol:symbol
                                                                 shading:(ShadingType)shade
                                                                   color:color];
-                        [self addCard:card atTop:YES];
+                        if (card) [self addCard:card atTop:YES];
                     }
                 }
             }

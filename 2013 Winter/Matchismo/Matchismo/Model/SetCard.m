@@ -44,9 +44,9 @@
     self = [super init];
     if (self) {
         // validate params
-        if (number >= 1 && number <= 3) return nil;
-        if ([[SetCard validSymbols] containsObject:symbol]) return nil;
-        if ([[SetCard validColors] containsObject:color]) return nil;
+        if (!(number >= 1 && number <= 3)) return nil;
+        if (![[SetCard validSymbols] containsObject:symbol]) return nil;
+        if (![[SetCard validColors] containsObject:color]) return nil;
         
         // define the card
         _number = number;
