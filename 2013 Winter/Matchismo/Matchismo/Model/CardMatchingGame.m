@@ -76,23 +76,31 @@
             NSArray *cardsInPlay = [self.cards objectsAtIndexes:[self.cards indexesOfObjectsPassingTest:isCardInPlay]];
             NSString *otherCardNames = [cardsInPlay componentsJoinedByString:@" "];
             
+            // Check for a match if enough cards are flipped
             if (cardsInPlay.count == self.numCardsToMatch - 1) {
                 int cardScore = [card match:cardsInPlay];
-                if (cardScore) {
+                if (cardScore > 0) {
+                    // Cards match
                     card.unplayable = YES;
                     [cardsInPlay enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                         [obj setUnplayable:YES];
                     }];
                     roundScore += cardScore * SCORE_MATCH_BONUS * (self.numCardsToMatch - 1);
-                    msg = [NSString stringWithFormat:@"Matched %@ with %@ (%d points)", card, otherCardNames, roundScore];
+                    msg = [NSString stringWithFormat:@"Matched %@ with %@ (%+d)", card, otherCardNames, roundScore];
                 } else {
+                    // Cards don't match
                     [cardsInPlay enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                         [obj setFaceup:NO];
                     }];
-                    roundScore += SCORE_MISMATCH_PENALTY * (self.numCardsToMatch - 1);
-                    msg = [NSString stringWithFormat:@"%@ with %@ don't match (%d points)", card, otherCardNames, roundScore];
+                    if (cardScore < 0) {
+                        roundScore += SCORE_MISMATCH_PENALTY * -cardScore;
+                    } else {
+                        roundScore += SCORE_MISMATCH_PENALTY * (self.numCardsToMatch - 1);
+                    }
+                    msg = [NSString stringWithFormat:@"%@ with %@ don't match (%+d)", card, otherCardNames, roundScore];
                 }
             }
+            // Score penalty for flipping a card
             roundScore += SCORE_FLIP_COST;
             if (!msg) {
                 msg = [NSString stringWithFormat:@"Flipped up %@", card];
@@ -123,7 +131,7 @@
     return [self.messages lastObject];
 }
 
--  (NSArray *)lastMessages
+- (NSArray *)lastMessages
 {
     return [self.messages copy];
 }
