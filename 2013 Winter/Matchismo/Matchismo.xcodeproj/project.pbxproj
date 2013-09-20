@@ -185,6 +185,7 @@
 				9ACB17CD17B180E9005C8FDB /* cardback.png */,
 			);
 			name = Images;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		9ABB0D4117AC319200D3697D /* Games */ = {
