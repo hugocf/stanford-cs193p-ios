@@ -43,7 +43,7 @@ typedef enum {
 - (id)initWithNumber:(int)number
               symbol:(NSString *)symbol
              shading:(ShadingType)shading
-               color:(UIColor *)color;
+               color:(UIColor *)color;  // FIXME: should be defined as enum type to keep the model UIKit independent
 
 /** number = one, two, or three. */
 @property (readonly, nonatomic) int number;
@@ -61,7 +61,7 @@ typedef enum {
 + (NSArray *)validColors;
 
 /** List of ShadingType enums allowed for the Set cards. */
-+ (NSArray *)validShadings;
++ (NSArray *)validShadings; // FIXME: No need for this as the enum type already defines what is valid
 
 /** List of NSString symbols allowed for the Set cards. */
 + (NSArray *)validSymbols;
