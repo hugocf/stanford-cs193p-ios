@@ -9,7 +9,6 @@
 #import "SetCard.h"
 
 @implementation SetCard
-{}
 
 #pragma mark - Class
 

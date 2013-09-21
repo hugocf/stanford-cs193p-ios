@@ -17,7 +17,7 @@
 @end
 
 @implementation CardMatchingGame
-{}
+
 #pragma mark - Initializers
 
 - (id)initWithCardCount:(NSUInteger)count fromDeck:(Deck *)deck matchCards:(NSUInteger)numCards

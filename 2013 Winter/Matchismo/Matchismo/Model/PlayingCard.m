@@ -9,7 +9,7 @@
 #import "PlayingCard.h"
 
 @implementation PlayingCard
-{}
+
 #pragma mark - Class
 
 + (NSArray *)validSuits

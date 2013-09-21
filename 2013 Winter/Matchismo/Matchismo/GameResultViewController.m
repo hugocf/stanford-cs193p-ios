@@ -14,7 +14,6 @@
 @end
 
 @implementation GameResultViewController
-{}
 
 #pragma mark - Boilerplate template (for reference)
 

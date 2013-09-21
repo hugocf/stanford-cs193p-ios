@@ -16,7 +16,7 @@
 @end
 
 @implementation GameResult
-{}
+
 #define KEY_ALL_RESULTS @"GameResult.AllResults"
 #define KEY_START   @"StartDate"
 #define KEY_END     @"EndDate"
