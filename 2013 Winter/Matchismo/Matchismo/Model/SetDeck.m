@@ -17,11 +17,11 @@
     if (self) {
         for (int number = 1; number <= 3; number++) {
             for (NSString *symbol in [SetCard validSymbols]) {
-                for (int shade = 0; shade < CARD_SHADING_TYPE_COUNT; shade++) {
+                for (CardShadingType shade = 0; shade < CARD_SHADING_TYPE_COUNT; shade++) {
                     for (UIColor *color in [SetCard validColors]) {
                         SetCard *card = [[SetCard alloc] initWithNumber:number
                                                                  symbol:symbol
-                                                                shading:(CardShadingType)shade
+                                                                shading:shade
                                                                   color:color];
                         if (card) [self addCard:card atTop:YES];
                     }
