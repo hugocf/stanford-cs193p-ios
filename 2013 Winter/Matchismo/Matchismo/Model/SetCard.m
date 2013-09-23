@@ -38,13 +38,6 @@
     return (cards.count == [[NSSet setWithArray:[cards valueForKey:property]] count]);
 }
 
-+ (NSArray *)validColors
-{
-    static NSArray *colors = nil;
-    if (!colors) colors = @[[UIColor redColor], [UIColor greenColor], [UIColor purpleColor]];
-    return colors;
-}
-
 + (NSArray *)validSymbols
 {
     static NSArray *symbols = nil;
@@ -57,14 +50,13 @@
 - (id)initWithNumber:(int)number
               symbol:(NSString *)symbol
              shading:(CardShadingType)shading
-               color:(UIColor *)color
+               color:(CardColorType)color
 {
     self = [super init];
     if (self) {
         // validate params
         if (!(number >= 1 && number <= 3)) return nil;
         if (![[SetCard validSymbols] containsObject:symbol]) return nil;
-        if (![[SetCard validColors] containsObject:color]) return nil;
         
         // define the card
         _number = number;
@@ -81,7 +73,7 @@
     return [self initWithNumber:1
                          symbol:[SetCard validSymbols][0]
                         shading:CardShadingSolid
-                          color:[SetCard validColors][0]];
+                          color:CardColorRed];
 }
 
 #pragma mark - Methods

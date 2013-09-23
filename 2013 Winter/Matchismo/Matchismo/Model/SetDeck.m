@@ -18,7 +18,7 @@
         for (int number = 1; number <= 3; number++) {
             for (NSString *symbol in [SetCard validSymbols]) {
                 for (CardShadingType shade = 0; shade < CARD_SHADING_TYPE_COUNT; shade++) {
-                    for (UIColor *color in [SetCard validColors]) {
+                    for (CardColorType color = 0; color < CARD_COLOR_TYPE_COUNT; color++) {
                         SetCard *card = [[SetCard alloc] initWithNumber:number
                                                                  symbol:symbol
                                                                 shading:shade

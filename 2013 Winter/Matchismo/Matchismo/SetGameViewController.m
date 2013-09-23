@@ -38,20 +38,37 @@
         
         // Style the title
         UIFont *font = [UIFont systemFontOfSize:14.0]; // 12.0 = default system font size
-        UIColor *fillColor = card.color;
-        UIColor *strokeColor = card.color;
-        NSNumber *strokeWidth = @0;  // default to solid
+        UIColor *cardColor, *fillColor, *strokeColor;
+        NSNumber *strokeWidth;
+        
+        switch (card.color) {
+            case CardColorPurple:
+                cardColor = [UIColor purpleColor];
+                break;
+            case CardColorGreen:
+                cardColor = [UIColor greenColor];
+                break;
+            case CardColorRed:   // follow-through
+            default:
+                cardColor = [UIColor redColor];
+                break;
+        }
         
         switch (card.shading) {
             case CardShadingOpen:
+                fillColor = strokeColor = cardColor;
                 strokeWidth = @5;
                 break;
             case CardShadingStriped:
-                fillColor = [card.color colorWithAlphaComponent:0.10];
+                fillColor = [cardColor colorWithAlphaComponent:0.10];
+                strokeColor = cardColor;
                 strokeWidth = @-5;
                 break;
             case CardShadingSolid:  // follow-through
-            default: ;              // do nothing
+            default:
+                fillColor = strokeColor = cardColor;
+                strokeWidth = @0;
+                break;
         }
         
         // Set title with the given attributes

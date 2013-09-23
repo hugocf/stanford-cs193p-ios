@@ -16,6 +16,13 @@ typedef enum {
     CARD_SHADING_TYPE_COUNT
 } CardShadingType;
 
+typedef enum {
+    CardColorRed,
+    CardColorGreen,
+    CardColorPurple,
+    CARD_COLOR_TYPE_COUNT
+} CardColorType;
+
 /**
  The Set cards vary in four features: number, symbol, shading, and color.
  
@@ -46,7 +53,7 @@ typedef enum {
 - (id)initWithNumber:(int)number
               symbol:(NSString *)symbol
              shading:(CardShadingType)shading
-               color:(UIColor *)color;  // FIXME: should be defined as enum type to keep the model UIKit independent
+               color:(CardColorType)color;
 
 /** number = one, two, or three. */
 @property (readonly, nonatomic) int number;
@@ -58,10 +65,7 @@ typedef enum {
 @property (readonly, nonatomic) CardShadingType shading;
 
 /** color = red, green, or purple. */
-@property (readonly, strong, nonatomic) UIColor *color;
-
-/** List of UIColors allowed for the Set cards. */
-+ (NSArray *)validColors;
+@property (readonly, nonatomic) CardColorType color;
 
 /** List of NSString symbols allowed for the Set cards. */
 + (NSArray *)validSymbols;
