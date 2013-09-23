@@ -56,7 +56,7 @@
 
 - (id)initWithNumber:(int)number
               symbol:(NSString *)symbol
-             shading:(ShadingType)shading
+             shading:(CardShadingType)shading
                color:(UIColor *)color
 {
     self = [super init];
@@ -80,7 +80,7 @@
     // "resonable" settings for a default card
     return [self initWithNumber:1
                          symbol:[SetCard validSymbols][0]
-                        shading:ShadingSolid
+                        shading:CardShadingSolid
                           color:[SetCard validColors][0]];
 }
 

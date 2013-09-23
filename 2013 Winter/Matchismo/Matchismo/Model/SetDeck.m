@@ -21,7 +21,7 @@
                     for (UIColor *color in [SetCard validColors]) {
                         SetCard *card = [[SetCard alloc] initWithNumber:number
                                                                  symbol:symbol
-                                                                shading:(ShadingType)shade
+                                                                shading:(CardShadingType)shade
                                                                   color:color];
                         if (card) [self addCard:card atTop:YES];
                     }

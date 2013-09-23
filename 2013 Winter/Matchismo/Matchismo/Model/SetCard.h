@@ -10,11 +10,11 @@
 #import "Card.h"
 
 typedef enum {
-    ShadingSolid,
-    ShadingStriped,
-    ShadingOpen,
+    CardShadingSolid,
+    CardShadingStriped,
+    CardShadingOpen,
     CARD_SHADING_TYPE_COUNT
-} ShadingType;
+} CardShadingType;
 
 /**
  The Set cards vary in four features: number, symbol, shading, and color.
@@ -45,7 +45,7 @@ typedef enum {
 /** Designated initializer. */
 - (id)initWithNumber:(int)number
               symbol:(NSString *)symbol
-             shading:(ShadingType)shading
+             shading:(CardShadingType)shading
                color:(UIColor *)color;  // FIXME: should be defined as enum type to keep the model UIKit independent
 
 /** number = one, two, or three. */
@@ -55,7 +55,7 @@ typedef enum {
 @property (readonly, strong, nonatomic) NSString *symbol;
 
 /** shading = solid, striped, or open. */
-@property (readonly, nonatomic) ShadingType shading;
+@property (readonly, nonatomic) CardShadingType shading;
 
 /** color = red, green, or purple. */
 @property (readonly, strong, nonatomic) UIColor *color;

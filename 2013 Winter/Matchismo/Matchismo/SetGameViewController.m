@@ -43,15 +43,15 @@
         NSNumber *strokeWidth = @0;  // default to solid
         
         switch (card.shading) {
-            case ShadingOpen:
+            case CardShadingOpen:
                 strokeWidth = @5;
                 break;
-            case ShadingStriped:
+            case CardShadingStriped:
                 fillColor = [card.color colorWithAlphaComponent:0.10];
                 strokeWidth = @-5;
                 break;
-            case ShadingSolid:  // follow-through
-            default: ;          // do nothing
+            case CardShadingSolid:  // follow-through
+            default: ;              // do nothing
         }
         
         // Set title with the given attributes
