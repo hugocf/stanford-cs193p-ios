@@ -31,54 +31,55 @@
 
 #pragma mark - Methods
 
+- (NSAttributedString *)attributedStringFor:(SetCard *)card
+{
+    UIFont *font = [UIFont systemFontOfSize:14.0]; // 12.0 = default system font size
+    UIColor *cardColor, *fillColor, *strokeColor;
+    NSNumber *strokeWidth;
+    
+    switch (card.color) {
+        case CardColorPurple:
+            cardColor = [UIColor purpleColor];
+            break;
+        case CardColorGreen:
+            cardColor = [UIColor greenColor];
+            break;
+        case CardColorRed:   // follow-through
+        default:
+            cardColor = [UIColor redColor];
+            break;
+    }
+    
+    switch (card.shading) {
+        case CardShadingOpen:
+            fillColor = strokeColor = cardColor;
+            strokeWidth = @5;
+            break;
+        case CardShadingStriped:
+            fillColor = [cardColor colorWithAlphaComponent:0.10];
+            strokeColor = cardColor;
+            strokeWidth = @-5;
+            break;
+        case CardShadingSolid:  // follow-through
+        default:
+            fillColor = strokeColor = cardColor;
+            strokeWidth = @0;
+            break;
+    }
+    
+    NSDictionary *attributes = @{ NSFontAttributeName: font,
+                                  NSForegroundColorAttributeName: fillColor,
+                                  NSStrokeColorAttributeName: strokeColor,
+                                  NSStrokeWidthAttributeName: strokeWidth };
+    return [[NSAttributedString alloc] initWithString:card.contents
+                                           attributes:attributes];
+}
+
 - (void)updateUI
 {
     for (UIButton *cardButton in self.cardButtons) {
         SetCard *card = (SetCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        
-        // Style the title
-        UIFont *font = [UIFont systemFontOfSize:14.0]; // 12.0 = default system font size
-        UIColor *cardColor, *fillColor, *strokeColor;
-        NSNumber *strokeWidth;
-        
-        switch (card.color) {
-            case CardColorPurple:
-                cardColor = [UIColor purpleColor];
-                break;
-            case CardColorGreen:
-                cardColor = [UIColor greenColor];
-                break;
-            case CardColorRed:   // follow-through
-            default:
-                cardColor = [UIColor redColor];
-                break;
-        }
-        
-        switch (card.shading) {
-            case CardShadingOpen:
-                fillColor = strokeColor = cardColor;
-                strokeWidth = @5;
-                break;
-            case CardShadingStriped:
-                fillColor = [cardColor colorWithAlphaComponent:0.10];
-                strokeColor = cardColor;
-                strokeWidth = @-5;
-                break;
-            case CardShadingSolid:  // follow-through
-            default:
-                fillColor = strokeColor = cardColor;
-                strokeWidth = @0;
-                break;
-        }
-        
-        // Set title with the given attributes
-        NSDictionary *attributes = @{ NSFontAttributeName: font,
-                                      NSForegroundColorAttributeName: fillColor,
-                                      NSStrokeColorAttributeName: strokeColor,
-                                      NSStrokeWidthAttributeName: strokeWidth };
-        NSAttributedString *title = [[NSAttributedString alloc] initWithString:card.contents
-                                                                    attributes:attributes];
-        [cardButton setAttributedTitle:title forState:UIControlStateNormal];
+        [cardButton setAttributedTitle:[self attributedStringFor:card] forState:UIControlStateNormal];
         
         // Style the button
         if (card.isUnplayable) {
