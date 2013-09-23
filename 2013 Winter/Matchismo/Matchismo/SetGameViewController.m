@@ -36,25 +36,29 @@
     for (UIButton *cardButton in self.cardButtons) {
         SetCard *card = (SetCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         
-        // Base title atributes
-        UIFont *font = [UIFont systemFontOfSize:14.0]; // default font size = 12.0
-        NSDictionary *attributes = @{ NSFontAttributeName: font,
-                                      NSForegroundColorAttributeName: card.color,
-                                      NSStrokeColorAttributeName: card.color,
-                                      NSStrokeWidthAttributeName: @0 };  // default to solid
-        // Tweak for shadings
+        // Style the title
+        UIFont *font = [UIFont systemFontOfSize:14.0]; // 12.0 = default system font size
+        UIColor *fillColor = card.color;
+        UIColor *strokeColor = card.color;
+        NSNumber *strokeWidth = @0;  // default to solid
+        
         switch (card.shading) {
             case ShadingOpen:
-                [attributes setValue:@5 forKey:NSStrokeWidthAttributeName];
+                strokeWidth = @5;
                 break;
             case ShadingStriped:
-                [attributes setValue:@-5 forKey:NSStrokeWidthAttributeName];
-                [attributes setValue:[card.color colorWithAlphaComponent:0.25] forKey:NSForegroundColorAttributeName];
+                fillColor = [card.color colorWithAlphaComponent:0.10];
+                strokeWidth = @-5;
                 break;
             case ShadingSolid:  // follow-through
             default: ;          // do nothing
         }
+        
         // Set title with the given attributes
+        NSDictionary *attributes = @{ NSFontAttributeName: font,
+                                      NSForegroundColorAttributeName: fillColor,
+                                      NSStrokeColorAttributeName: strokeColor,
+                                      NSStrokeWidthAttributeName: strokeWidth };
         NSAttributedString *title = [[NSAttributedString alloc] initWithString:card.contents
                                                                     attributes:attributes];
         [cardButton setAttributedTitle:title forState:UIControlStateNormal];
@@ -76,7 +80,7 @@
         cardButton.enabled = !card.isUnplayable;
     }
     self.scoreDisplay.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    self.messageDisplay.text = self.game.lastMessage;
+    self.messageDisplay.text = self.game.lastMessage; // FIXME: Status message also needs styling?
 }
 
 @end

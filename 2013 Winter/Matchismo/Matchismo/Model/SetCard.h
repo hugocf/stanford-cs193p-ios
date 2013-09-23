@@ -12,7 +12,8 @@
 typedef enum {
     ShadingSolid,
     ShadingStriped,
-    ShadingOpen
+    ShadingOpen,
+    CARD_SHADING_TYPE_COUNT
 } ShadingType;
 
 /**
@@ -61,9 +62,6 @@ typedef enum {
 
 /** List of UIColors allowed for the Set cards. */
 + (NSArray *)validColors;
-
-/** List of ShadingType enums allowed for the Set cards. */
-+ (NSArray *)validShadings; // FIXME: No need for this as the enum type already defines what is valid
 
 /** List of NSString symbols allowed for the Set cards. */
 + (NSArray *)validSymbols;

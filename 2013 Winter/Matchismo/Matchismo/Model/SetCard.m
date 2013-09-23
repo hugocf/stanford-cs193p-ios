@@ -52,13 +52,6 @@
     return symbols;
 }
 
-+ (NSArray *)validShadings
-{
-    static NSArray *shades = nil;
-    if (!shades) shades = @[@(ShadingSolid), @(ShadingStriped), @(ShadingOpen)];
-    return shades;
-}
-
 #pragma mark - Initialization
 
 - (id)initWithNumber:(int)number
@@ -87,7 +80,7 @@
     // "resonable" settings for a default card
     return [self initWithNumber:1
                          symbol:[SetCard validSymbols][0]
-                        shading:(ShadingType)[SetCard validShadings][0]
+                        shading:ShadingSolid
                           color:[SetCard validColors][0]];
 }
 
