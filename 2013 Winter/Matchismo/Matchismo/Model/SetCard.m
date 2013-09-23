@@ -48,7 +48,7 @@
 + (NSArray *)validSymbols
 {
     static NSArray *symbols = nil;
-    if (!symbols) symbols = @[@"▲", @"●", @"◼"];
+    if (!symbols) symbols = @[@"▲", @"●", @"■"];
     return symbols;
 }
 
@@ -95,9 +95,7 @@
 
 - (NSString *)contents
 {
-    return [@"" stringByPaddingToLength:self.number
-                             withString:self.symbol
-                        startingAtIndex:0];
+    return [@"" stringByPaddingToLength:self.number withString:self.symbol startingAtIndex:0];
 }
 
 - (int)match:(NSArray *)otherCards

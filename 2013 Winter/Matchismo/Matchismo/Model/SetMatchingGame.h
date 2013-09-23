@@ -7,6 +7,8 @@
 //
 
 #import "CardMatchingGame.h"
+#import "SetDeck.h"
+#import "SetCard.h"
 
 @interface SetMatchingGame : CardMatchingGame
 
