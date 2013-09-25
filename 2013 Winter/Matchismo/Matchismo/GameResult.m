@@ -104,14 +104,6 @@
     return [@(otherResult.score) compare:@(self.score)];
 }
 
-- (NSString *)description
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
-    return [NSString stringWithFormat:@"%@:\t%d\t@ %@ (%0g)", self.gameName, self.score, [formatter stringFromDate:self.end], round(self.duration)];
-}
-
 - (void)synchronize
 {
     // Fetch
@@ -122,6 +114,16 @@
     // Store
     [[NSUserDefaults standardUserDefaults] setObject:allGameResults forKey:KEY_ALL_RESULTS];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - NSObject
+
+- (NSString *)description
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    return [NSString stringWithFormat:@"%@:\t%d\t@ %@ (%0g)", self.gameName, self.score, [formatter stringFromDate:self.end], round(self.duration)];
 }
 
 @end
