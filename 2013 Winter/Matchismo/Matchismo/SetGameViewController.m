@@ -9,6 +9,7 @@
 #import "SetGameViewController.h"
 #import "SetMatchingGame.h"
 #import "SetDeck.h"
+#import "PlayResult.h"
 
 @interface CardGameViewController ()
 // Make it visible from the subclass?
@@ -99,7 +100,7 @@
     }
     // Update scoreboard
     self.scoreDisplay.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    self.messageDisplay.text = self.game.lastMessage; // FIXME: Status message also needs styling?
+    self.messageDisplay.text = [[self.game lastPlay] description]; // FIXME: Status message also needs styling
 }
 
 @end

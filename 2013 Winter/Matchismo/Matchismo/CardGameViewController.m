@@ -10,6 +10,7 @@
 #import "CardMatchingGame.h"
 #import "PlayingDeck.h"
 #import "GameResult.h"
+#import "PlayResult.h"
 
 @interface CardGameViewController ()
 
@@ -64,7 +65,7 @@
         cardButton.alpha = (card.isUnplayable)? 0.3 : 1.0;
     }
     self.scoreDisplay.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    self.messageDisplay.text = self.game.lastMessage;
+    self.messageDisplay.text = [[self.game lastPlay] description];
 }
 
 - (void)setFlipsCount:(int)count
@@ -80,8 +81,8 @@
     if (sender.isEnabled && !sender.isSelected) {
         self.flipsCount++; // Card flipped up
     }
-    self.messageHistory.maximumValue = self.game.lastMessages.count;
-    self.messageHistory.value = self.game.lastMessages.count;
+    self.messageHistory.maximumValue = [self.game lastPlays].count;
+    self.messageHistory.value = [self.game lastPlays].count;
     self.messageDisplay.alpha = 1.0;
     [self updateUI];
     self.gameResult.score = self.game.score; 
@@ -104,7 +105,7 @@
 - (IBAction)timeTravel:(UISlider *)sender {
     if (sender.maximumValue > 0) {
         int index = round([sender value]);
-        self.messageDisplay.text = (!index)? @"" : self.game.lastMessages[index - 1];
+        self.messageDisplay.text = (!index)? @"" : [[self.game lastPlays][index - 1] description];
         self.messageDisplay.alpha = (index == sender.maximumValue)? 1.0 : 0.3;
     }
 }

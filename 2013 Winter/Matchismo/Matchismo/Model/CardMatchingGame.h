@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Deck.h"
 #import "Card.h"
+@class PlayResult;
 
 @interface CardMatchingGame : NSObject
 
@@ -21,9 +22,11 @@
                fromDeck:(Deck *)deck;
 
 @property (readonly, nonatomic) int score;
-@property (readonly, nonatomic) NSString *lastMessage;
-@property (readonly, nonatomic) NSArray *lastMessages;
 @property (nonatomic) int numCardsToMatch;
+
+- (PlayResult *)lastPlay;
+
+- (NSArray *)lastPlays;
 
 - (void)flipCardAtIndex:(NSUInteger)index;
 

@@ -7,11 +7,12 @@
 //
 
 #import "CardMatchingGame.h"
+#import "PlayResult.h"
 
 @interface CardMatchingGame()
 
 @property (readwrite, nonatomic) int score;
-@property (nonatomic) NSMutableArray *messages;
+@property (nonatomic) NSMutableArray *plays;
 @property (nonatomic) NSMutableArray *cards;
 
 @end
@@ -58,12 +59,12 @@
  The "brain" of the game.
  
  This is where the actual game rules are defined.
- Sets the `lastMessage` property to describe what has been going on in the game.
+ Stores que result of each play to describe what has been going on in the game.
  */
 - (void)flipCardAtIndex:(NSUInteger)index
 {
-    NSString *msg;
-    int roundScore = 0;
+    PlayResult *playResult;
+    int playScore = 0;
     Card *card = [self cardAtIndex:index];
     
     BOOL(^isCardInPlay)(id, NSUInteger, BOOL*) = ^(id obj, NSUInteger idx, BOOL *stop) {
@@ -74,7 +75,6 @@
         if (!card.isFaceUp) {
             // Play the game
             NSArray *cardsInPlay = [self.cards objectsAtIndexes:[self.cards indexesOfObjectsPassingTest:isCardInPlay]];
-            NSString *otherCardNames = [cardsInPlay componentsJoinedByString:@" "];
             
             // Check for a match if enough cards are flipped
             if (cardsInPlay.count == self.numCardsToMatch - 1) {
@@ -85,32 +85,38 @@
                     [cardsInPlay enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                         [obj setUnplayable:YES];
                     }];
-                    roundScore += cardScore * SCORE_MATCH_BONUS * (self.numCardsToMatch - 1);
-                    msg = [NSString stringWithFormat:@"Matched %@ with %@ (%+d)", card, otherCardNames, roundScore];
+                    playScore += cardScore * SCORE_MATCH_BONUS * (self.numCardsToMatch - 1);
+                    playResult = [[PlayResult alloc] initWithCards:[@[card] arrayByAddingObjectsFromArray:cardsInPlay]
+                                                     outcome:PlayStatusCardsMatch
+                                                       score:playScore];
                 } else {
                     // Cards don't match
                     [cardsInPlay enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                         [obj setFaceup:NO];
                     }];
                     if (cardScore < 0) {
-                        roundScore += SCORE_MISMATCH_PENALTY * -cardScore;
+                        playScore += SCORE_MISMATCH_PENALTY * -cardScore;
                     } else {
-                        roundScore += SCORE_MISMATCH_PENALTY * (self.numCardsToMatch - 1);
+                        playScore += SCORE_MISMATCH_PENALTY * (self.numCardsToMatch - 1);
                     }
-                    msg = [NSString stringWithFormat:@"%@ with %@ don't match (%+d)", card, otherCardNames, roundScore];
+                    playResult = [[PlayResult alloc] initWithCards:[@[card] arrayByAddingObjectsFromArray:cardsInPlay]
+                                                           outcome:PlayStatusCardsMismatch
+                                                             score:playScore];
                 }
             }
             // Score penalty for flipping a card
-            roundScore += SCORE_FLIP_COST;
-            if (!msg) {
-                msg = [NSString stringWithFormat:@"Flipped up %@", card];
+            playScore += SCORE_FLIP_COST;
+            if (!playResult) {
+                playResult = [[PlayResult alloc] initWithCards:@[card]
+                                                       outcome:PlayStatusCardFlipped
+                                                         score:playScore];
             }
         }
         // Flip it!
         card.faceup = !card.faceup;
-        self.score += roundScore;
-        if (msg) {
-            [self.messages addObject:msg];
+        self.score += playScore;
+        if (playResult) {
+            [self.plays addObject:playResult];
         }
     }
 }
@@ -120,20 +126,20 @@
     return (index < self.cards.count)? self.cards[index] : nil;
 }
 
-- (NSMutableArray *)messages
+- (NSMutableArray *)plays
 {
-    if (!_messages) _messages = [[NSMutableArray alloc] init];
-    return _messages;
+    if (!_plays) _plays = [[NSMutableArray alloc] init];
+    return _plays;
 }
 
-- (NSString *)lastMessage
+- (NSString *)lastPlay
 {
-    return [self.messages lastObject];
+    return [self.plays lastObject];
 }
 
-- (NSArray *)lastMessages
+- (NSArray *)lastPlays
 {
-    return [self.messages copy];
+    return [self.plays copy];
 }
 
 @end
