@@ -97,6 +97,7 @@
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
     }
+    // Update scoreboard
     self.scoreDisplay.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.messageDisplay.text = self.game.lastMessage; // FIXME: Status message also needs styling?
 }
