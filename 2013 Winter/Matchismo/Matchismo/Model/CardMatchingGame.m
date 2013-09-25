@@ -14,6 +14,7 @@
 @property (readwrite, nonatomic) int score;
 @property (nonatomic) NSMutableArray *plays;
 @property (nonatomic) NSMutableArray *cards;
+@property (nonatomic, readonly) ScoreDefinitions weights;
 
 @end
 
@@ -21,7 +22,10 @@
 
 #pragma mark - Initializers
 
-- (id)initWithCardCount:(NSUInteger)count fromDeck:(Deck *)deck matchCards:(NSUInteger)numCards
+- (id)initWithCardCount:(NSUInteger)count
+               fromDeck:(Deck *)deck
+             matchCount:(NSUInteger)numCards
+         bonusPenalties:(ScoreDefinitions)scoreSettings
 {
     self = [super init];
     if (self) {
@@ -34,17 +38,20 @@
             }
         }
         self.numCardsToMatch = numCards;
+        _weights = scoreSettings;
     }
     return self;
 }
 
 - (id)initWithCardCount:(NSUInteger)count fromDeck:(Deck *)deck
 {
-    return [self initWithCardCount:count fromDeck:deck matchCards:2];
+    return [self initWithCardCount:count
+                          fromDeck:deck
+                        matchCount:2
+                    bonusPenalties:(ScoreDefinitions){-1, -1, 1}];
 }
 
 #pragma mark - Properties
-
 
 - (NSMutableArray *)cards
 {
@@ -59,10 +66,6 @@
 }
 
 #pragma mark - Methods
-
-#define SCORE_FLIP_COST         -1
-#define SCORE_MISMATCH_PENALTY  -2
-#define SCORE_MATCH_BONUS       4
 
 /**
  The "brain" of the game.
@@ -94,7 +97,7 @@
                     [cardsInPlay enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                         [obj setUnplayable:YES];
                     }];
-                    playScore += cardScore * SCORE_MATCH_BONUS * (self.numCardsToMatch - 1);
+                    playScore += cardScore * self.weights.matchBonus * (self.numCardsToMatch - 1);
                     playResult = [[PlayResult alloc] initWithCards:[@[card] arrayByAddingObjectsFromArray:cardsInPlay]
                                                      outcome:PlayStatusCardsMatch
                                                        score:playScore];
@@ -104,9 +107,9 @@
                         [obj setFaceup:NO];
                     }];
                     if (cardScore < 0) {
-                        playScore += SCORE_MISMATCH_PENALTY * -cardScore;
+                        playScore += self.weights.mismatchPenalty * -cardScore;
                     } else {
-                        playScore += SCORE_MISMATCH_PENALTY * (self.numCardsToMatch - 1);
+                        playScore += self.weights.mismatchPenalty * (self.numCardsToMatch - 1);
                     }
                     playResult = [[PlayResult alloc] initWithCards:[@[card] arrayByAddingObjectsFromArray:cardsInPlay]
                                                            outcome:PlayStatusCardsMismatch
@@ -114,7 +117,7 @@
                 }
             }
             // Score penalty for flipping a card
-            playScore += SCORE_FLIP_COST;
+            playScore += self.weights.flipCost;
             if (!playResult) {
                 playResult = [[PlayResult alloc] initWithCards:@[card]
                                                        outcome:PlayStatusCardFlipped

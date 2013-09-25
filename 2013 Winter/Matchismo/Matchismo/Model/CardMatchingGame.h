@@ -11,12 +11,19 @@
 #import "Card.h"
 @class PlayResult;
 
+typedef struct {
+    NSInteger flipCost;
+    NSInteger mismatchPenalty;
+    NSInteger matchBonus;
+} ScoreDefinitions;
+
 @interface CardMatchingGame : NSObject
 
 /** Designated Initializer */
 - (id)initWithCardCount:(NSUInteger)count
                fromDeck:(Deck *)deck
-             matchCards:(NSUInteger)numCards;
+             matchCount:(NSUInteger)numCards
+         bonusPenalties:(ScoreDefinitions)scoreSettings;
 
 - (id)initWithCardCount:(NSUInteger)count
                fromDeck:(Deck *)deck;

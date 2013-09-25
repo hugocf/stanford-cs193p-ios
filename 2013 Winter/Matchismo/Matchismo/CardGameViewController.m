@@ -38,7 +38,8 @@
 {
     if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                            fromDeck:[[PlayingDeck alloc] init]
-                                                         matchCards:(self.gameModeSelector.selectedSegmentIndex)? 3 : 2];
+                                                         matchCount:(self.gameModeSelector.selectedSegmentIndex)? 3 : 2
+                                                     bonusPenalties:(ScoreDefinitions){-1, -2, 4}];
     return _game;
 }
 

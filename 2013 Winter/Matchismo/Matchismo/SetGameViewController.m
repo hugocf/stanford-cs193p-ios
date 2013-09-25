@@ -26,7 +26,8 @@
 {
     if (!_game) _game = [[SetMatchingGame alloc] initWithCardCount:super.cardButtons.count
                                                            fromDeck:[[SetDeck alloc] init]
-                                                         matchCards:3];
+                                                         matchCount:3
+                                                    bonusPenalties:(ScoreDefinitions){-3, -3, 4}];
     return _game;
 }
 
