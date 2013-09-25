@@ -43,13 +43,22 @@
     return [self initWithCardCount:count fromDeck:deck matchCards:2];
 }
 
-#pragma mark -
+#pragma mark - Properties
+
 
 - (NSMutableArray *)cards
 {
     if (!_cards) _cards = [[NSMutableArray alloc] init];
     return _cards;
 }
+
+- (NSMutableArray *)plays
+{
+    if (!_plays) _plays = [[NSMutableArray alloc] init];
+    return _plays;
+}
+
+#pragma mark - Methods
 
 #define SCORE_FLIP_COST         -1
 #define SCORE_MISMATCH_PENALTY  -2
@@ -124,12 +133,6 @@
 - (Card *)cardAtIndex:(NSUInteger)index
 {
     return (index < self.cards.count)? self.cards[index] : nil;
-}
-
-- (NSMutableArray *)plays
-{
-    if (!_plays) _plays = [[NSMutableArray alloc] init];
-    return _plays;
 }
 
 - (NSString *)lastPlay
