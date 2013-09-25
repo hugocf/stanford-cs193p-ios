@@ -123,7 +123,7 @@
         
         // Style the button
         if (card.isUnplayable) {
-            cardButton.alpha = 0.3;
+            cardButton.alpha = 0.0;
             [cardButton setBackgroundColor:[UIColor lightGrayColor]];
         } else if (card.isFaceUp) {
             cardButton.alpha = 0.75;
