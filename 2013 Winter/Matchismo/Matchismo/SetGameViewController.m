@@ -105,6 +105,16 @@
     return finalText;
 }
 
+- (IBAction)timeTravel:(UISlider *)sender {
+    if (sender.maximumValue > 0) {
+        int index = round([sender value]);
+        if (index) {
+            self.messageDisplay.attributedText = [self attributedStringForResult:[self.game lastPlays][index - 1]];
+            self.messageDisplay.alpha = (index == sender.maximumValue)? 1.0 : 0.3;
+        }
+    }
+}
+
 - (void)updateUI
 {
     for (UIButton *cardButton in self.cardButtons) {
