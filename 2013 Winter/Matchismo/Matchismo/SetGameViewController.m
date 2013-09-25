@@ -36,7 +36,7 @@
 {
     UIColor *cardColor, *fillColor, *strokeColor;
     NSNumber *strokeWidth;
-    
+    // color
     switch (card.color) {
         case CardColorPurple:
             cardColor = [UIColor purpleColor];
@@ -49,7 +49,7 @@
             cardColor = [UIColor redColor];
             break;
     }
-    
+    // shading
     switch (card.shading) {
         case CardShadingOpen:
             fillColor = strokeColor = cardColor;
@@ -66,10 +66,12 @@
             strokeWidth = @0;
             break;
     }
+    // compose
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0],
+                                 NSForegroundColorAttributeName: fillColor,
+                                 NSStrokeColorAttributeName: strokeColor,
+                                 NSStrokeWidthAttributeName: strokeWidth};
     
-    NSDictionary *attributes = @{ NSForegroundColorAttributeName: fillColor,
-                                  NSStrokeColorAttributeName: strokeColor,
-                                  NSStrokeWidthAttributeName: strokeWidth };
     return [[NSAttributedString alloc] initWithString:card.contents
                                            attributes:attributes];
 }
@@ -94,7 +96,11 @@
         [finalText appendAttributedString:scoreText];
         // defaults
         UIFont *font = [UIFont systemFontOfSize:14.0]; // 12.0 = default system font size
-        [finalText addAttributes:@{NSFontAttributeName: font} range:(NSRange){0, [finalText length]}];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.alignment = NSTextAlignmentCenter;
+        [finalText addAttributes:@{NSFontAttributeName: font,
+                                   NSParagraphStyleAttributeName: paragraphStyle}
+                           range:(NSRange){0, [finalText length]}];
     }
     return finalText;
 }
