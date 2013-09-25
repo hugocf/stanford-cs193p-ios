@@ -30,7 +30,10 @@
 
 - (GameResult *)gameResult
 {
-    if (!_gameResult) _gameResult = [[GameResult alloc] init];
+    if (!_gameResult) {
+        _gameResult = [[GameResult alloc] init];
+        _gameResult.gameName = self.game.description;
+    }
     return _gameResult;
 }
 

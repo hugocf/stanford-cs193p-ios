@@ -10,4 +10,11 @@
 
 @implementation SetMatchingGame
 
+#pragma mark - NSObject
+
+- (NSString *)description
+{
+    return @"Sets";
+}
+
 @end

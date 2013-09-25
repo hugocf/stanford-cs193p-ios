@@ -21,6 +21,7 @@
 #define KEY_START   @"StartDate"
 #define KEY_END     @"EndDate"
 #define KEY_SCORE   @"Score"
+#define KEY_GAME    @"GameName"
 
 #pragma mark - Class
 
@@ -57,6 +58,7 @@
             _start = plist[KEY_START];
             _end = plist[KEY_END];
             _score = [plist[KEY_SCORE] intValue];
+            _gameName = plist[KEY_GAME];
             if (!_start || !_end) self = nil;
         } 
     }
@@ -81,7 +83,10 @@
 
 - (NSDictionary *)asPropertyList
 {
-    return @{ KEY_START : self.start, KEY_END : self.end, KEY_SCORE : @(self.score) };
+    return @{KEY_START: self.start,
+             KEY_END: self.end,
+             KEY_SCORE: @(self.score),
+             KEY_GAME: self.gameName};
 }
 
 - (NSComparisonResult)compareDateDescending:(GameResult *)otherResult
@@ -104,7 +109,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    return [NSString stringWithFormat:@"%@ (%0g)\t= %d points", [formatter stringFromDate:self.end], round(self.duration), self.score];
+    return [NSString stringWithFormat:@"%@:\t%d\t@ %@ (%0g)", self.gameName, self.score, [formatter stringFromDate:self.end], round(self.duration)];
 }
 
 - (void)synchronize

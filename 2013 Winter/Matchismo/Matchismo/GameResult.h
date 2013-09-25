@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GameResult : NSObject 
+@interface GameResult : NSObject
 
 + (NSArray *)allGameResults; // of GameResult
 
@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSDate *end;
 @property (readonly, nonatomic) NSTimeInterval  duration;
 @property (nonatomic) int score;
+@property (nonatomic) NSString *gameName;
 
 - (NSComparisonResult)compareDateDescending:(GameResult *)otherResult;
 - (NSComparisonResult)compareDurationAscending:(GameResult *)otherResult;

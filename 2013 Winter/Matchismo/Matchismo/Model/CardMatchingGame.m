@@ -148,4 +148,11 @@
     return [self.plays copy];
 }
 
+#pragma mark - NSObject
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Card[%d]", self.numCardsToMatch];
+}
+
 @end
