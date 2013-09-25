@@ -32,9 +32,8 @@
 
 #pragma mark - Methods
 
-- (NSAttributedString *)attributedStringFor:(SetCard *)card
+- (NSAttributedString *)attributedStringForCard:(SetCard *)card
 {
-    UIFont *font = [UIFont systemFontOfSize:14.0]; // 12.0 = default system font size
     UIColor *cardColor, *fillColor, *strokeColor;
     NSNumber *strokeWidth;
     
@@ -68,19 +67,43 @@
             break;
     }
     
-    NSDictionary *attributes = @{ NSFontAttributeName: font,
-                                  NSForegroundColorAttributeName: fillColor,
+    NSDictionary *attributes = @{ NSForegroundColorAttributeName: fillColor,
                                   NSStrokeColorAttributeName: strokeColor,
                                   NSStrokeWidthAttributeName: strokeWidth };
     return [[NSAttributedString alloc] initWithString:card.contents
                                            attributes:attributes];
 }
 
+- (NSAttributedString *)attributedStringForResult:(PlayResult *)result
+{
+    NSMutableAttributedString *finalText = [[NSMutableAttributedString alloc] init];
+    if (result) {
+        // outcome
+        NSAttributedString *resultText = [[NSAttributedString alloc] initWithString:[result outcomeString]];
+        // cards
+        NSMutableAttributedString *cardsText = [[NSMutableAttributedString alloc] init];
+        [result.cards enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [cardsText appendAttributedString:[[NSAttributedString alloc] initWithString:@"  "]];
+            [cardsText appendAttributedString:[self attributedStringForCard:(SetCard *)obj]];
+        }];
+        // score
+        NSAttributedString *scoreText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"  (%+d)", result.score]];
+        // compose
+        [finalText appendAttributedString:resultText];
+        [finalText appendAttributedString:cardsText];
+        [finalText appendAttributedString:scoreText];
+        // defaults
+        UIFont *font = [UIFont systemFontOfSize:14.0]; // 12.0 = default system font size
+        [finalText addAttributes:@{NSFontAttributeName: font} range:(NSRange){0, [finalText length]}];
+    }
+    return finalText;
+}
+
 - (void)updateUI
 {
     for (UIButton *cardButton in self.cardButtons) {
         SetCard *card = (SetCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        [cardButton setAttributedTitle:[self attributedStringFor:card] forState:UIControlStateNormal];
+        [cardButton setAttributedTitle:[self attributedStringForCard:card] forState:UIControlStateNormal];
         
         // Style the button
         if (card.isUnplayable) {
@@ -100,7 +123,7 @@
     }
     // Update scoreboard
     self.scoreDisplay.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    self.messageDisplay.text = [[self.game lastPlay] description]; // FIXME: Status message also needs styling
+    self.messageDisplay.attributedText = [self attributedStringForResult:[self.game lastPlay]];
 }
 
 @end

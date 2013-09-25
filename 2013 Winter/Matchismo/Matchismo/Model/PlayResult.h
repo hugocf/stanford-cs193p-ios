@@ -34,4 +34,6 @@ typedef NS_ENUM(NSUInteger, PlayStatus) {
 
 - (NSString *)description;
 
+- (NSString *)outcomeString;
+
 @end

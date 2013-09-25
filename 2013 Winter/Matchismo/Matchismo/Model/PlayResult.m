@@ -28,20 +28,26 @@
     return [self initWithCards:nil outcome:0 score:0];
 }
 
+#pragma mark - Methods
+
+
 #pragma mark - NSObject
+
+- (NSString *)outcomeString
+{
+    NSString *translation = @"";
+    switch (self.outcome) {
+        case PlayStatusCardFlipped:     translation = @"Flipped"; break;
+        case PlayStatusCardsMatch:      translation = @"Matched"; break;
+        case PlayStatusCardsMismatch:   translation = @"Didn't match"; break;
+    }
+    return translation;
+}
 
 - (NSString *)description
 {
     NSString *cardNames = [self.cards componentsJoinedByString:@" "];
-    NSString *whatHappened = @"";
-    
-    switch (self.outcome) {
-        case PlayStatusCardFlipped:     whatHappened = @"Flipped"; break;
-        case PlayStatusCardsMatch:      whatHappened = @"Matched"; break;
-        case PlayStatusCardsMismatch:   whatHappened = @"Didn't match"; break;
-    }
-    
-    return [NSString stringWithFormat:@"%@ %@ (%+d)", whatHappened, cardNames, self.score];
+    return [NSString stringWithFormat:@"%@ %@ (%+d)", [self outcomeString], cardNames, self.score];
 }
 
 @end
