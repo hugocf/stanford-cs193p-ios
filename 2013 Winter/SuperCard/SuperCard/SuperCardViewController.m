@@ -28,7 +28,13 @@
 
 - (IBAction)swipeCard:(UISwipeGestureRecognizer *)sender
 {
-    self.playingCard.faceUp = !self.playingCard.isFaceUp;
+    [UIView transitionWithView:self.playingCard
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+                        self.playingCard.faceUp = !self.playingCard.isFaceUp;
+                    }
+                    completion:nil];
 }
 
 @end
