@@ -8,6 +8,10 @@
 
 #import "PlayingCardView.h"
 
+@interface PlayingCardView()
+@property (nonatomic) CGFloat faceScaleFactor;
+@end
+
 @implementation PlayingCardView
 
 #pragma mark - Initialization
@@ -16,6 +20,7 @@
 #define CARD_CORNER_TEXT_SCALE 0.20
 #define CARD_CORNER_TEXT_X 2.0
 #define CARD_CORNER_TEXT_Y 2.0
+#define DEFAULT_CARD_FACE_SCALE 0.90
 
 - (void)setup
 {
@@ -23,6 +28,20 @@
 }
 
 #pragma mark - Properties
+
+@synthesize faceScaleFactor = _faceScaleFactor;
+
+- (CGFloat)faceScaleFactor
+{
+    if (!_faceScaleFactor) _faceScaleFactor = DEFAULT_CARD_FACE_SCALE;
+    return _faceScaleFactor;
+}
+
+- (void)setFaceScaleFactor:(CGFloat)faceScaleFactor
+{
+    _faceScaleFactor = faceScaleFactor;
+    [self setNeedsDisplay];
+}
 
 - (void)setRank:(NSUInteger)rank
 {
@@ -127,6 +146,15 @@
             [roundedRect fill];         // fills the entire rect
                                         // (so the clipping doesn't matter)
             break;
+    }
+    
+    // Card centre
+    UIImage *faceImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit]];
+    if (faceImage) {
+        CGRect imageInset = CGRectInset(self.bounds,
+                                        self.bounds.size.width * (1.0 - self.faceScaleFactor),
+                                        self.bounds.size.height * (1.0 - self.faceScaleFactor));
+        [faceImage drawInRect:imageInset];
     }
     
     // Card corners
