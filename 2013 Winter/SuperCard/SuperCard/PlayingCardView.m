@@ -86,6 +86,16 @@
     [self popContext];
 }
 
+- (void)pinch:(UIPinchGestureRecognizer *)gesture
+{
+     if (gesture.state == UIGestureRecognizerStateChanged
+         || gesture.state == UIGestureRecognizerStateEnded)
+     {
+         self.faceScaleFactor *= gesture.scale;
+         gesture.scale = 1.0;
+     }
+}
+
 - (void)pushAndRotatecontext
 {
     // Push

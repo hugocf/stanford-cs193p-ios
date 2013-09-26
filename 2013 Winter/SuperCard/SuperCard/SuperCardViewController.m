@@ -22,6 +22,8 @@
     _playingCard = playingCard;
     playingCard.rank = 13; // K
     playingCard.suit = @"♥";
+    [playingCard addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.playingCard
+                                                                                action:@selector(pinch:)]];
 }
 
 #pragma mark - Methods
