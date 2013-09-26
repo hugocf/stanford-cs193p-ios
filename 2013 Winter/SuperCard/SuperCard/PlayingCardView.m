@@ -148,17 +148,21 @@
             break;
     }
     
-    // Card centre
-    UIImage *faceImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit]];
-    if (faceImage) {
-        CGRect imageInset = CGRectInset(self.bounds,
-                                        self.bounds.size.width * (1.0 - self.faceScaleFactor),
-                                        self.bounds.size.height * (1.0 - self.faceScaleFactor));
-        [faceImage drawInRect:imageInset];
+    if (self.faceUp) {
+        // Card centre
+        UIImage *faceImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit]];
+        if (faceImage) {
+            CGRect imageInset = CGRectInset(self.bounds,
+                                            self.bounds.size.width * (1.0 - self.faceScaleFactor),
+                                            self.bounds.size.height * (1.0 - self.faceScaleFactor));
+            [faceImage drawInRect:imageInset];
+        }
+        // Card corners
+        [self drawCorners];
+    } else {
+        // Card back
+        [[UIImage imageNamed:@"cardback"] drawInRect:self.bounds];
     }
-    
-    // Card corners
-    [self drawCorners];
 }
 
 @end

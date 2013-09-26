@@ -15,13 +15,20 @@
 
 @implementation SuperCardViewController
 
-#pragma mark - <#Class#><#Initialization#><#Properties#><#Methods#><#NSClassName#>
+#pragma mark - Properties
 
 - (void)setPlayingCard:(PlayingCardView *)playingCard
 {
     _playingCard = playingCard;
     playingCard.rank = 13; // K
     playingCard.suit = @"♥";
+}
+
+#pragma mark - Methods
+
+- (IBAction)swipeCard:(UISwipeGestureRecognizer *)sender
+{
+    self.playingCard.faceUp = !self.playingCard.isFaceUp;
 }
 
 @end
