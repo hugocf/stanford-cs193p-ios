@@ -44,7 +44,7 @@
 
 #pragma mark - Methods
 
-- (void)drawCorner
+- (void)drawCorners
 {
     // Typography
     UIFont *textFont = [UIFont systemFontOfSize:self.bounds.size.width * CARD_CORNER_TEXT_SCALE];
@@ -60,7 +60,27 @@
     CGRect textBounts;
     textBounts.origin = CGPointMake(CARD_CORNER_TEXT_X, CARD_CORNER_TEXT_Y);
     textBounts.size = [cornerText size];
-    [cornerText drawInRect:textBounts];
+    
+    [cornerText drawInRect:textBounts]; // top-left corner
+    [self pushAndRotatecontext];
+    [cornerText drawInRect:textBounts]; // bottom-right corner
+    [self popContext];
+}
+
+- (void)pushAndRotatecontext
+{
+    // Push
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    // Move
+    CGContextTranslateCTM(context, self.bounds.size.width, self.bounds.size.height);
+    // Rotate
+    CGContextRotateCTM(context, M_PI);
+}
+
+- (void)popContext
+{
+    CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 
 - (NSString *)rankAsString
@@ -110,8 +130,7 @@
     }
     
     // Card corners
-    [self drawCorner];
-    
+    [self drawCorners];
 }
 
 @end
