@@ -167,6 +167,8 @@
                                             self.bounds.size.height * (1.0 - self.faceScaleFactor));
             [faceImage drawInRect:imageInset];
         }
+        // TODO: Add else clause here to handle the "pips" (i.e. when an image isn't found)
+        
         // Card corners
         [self drawCorners];
     } else {

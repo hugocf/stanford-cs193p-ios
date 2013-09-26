@@ -20,6 +20,7 @@
 - (void)setPlayingCard:(PlayingCardView *)playingCard
 {
     _playingCard = playingCard;
+    // TODO: Import Matchismo model and draw a random paying card every time it flips
     playingCard.rank = 13; // K
     playingCard.suit = @"♥";
     [playingCard addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.playingCard
