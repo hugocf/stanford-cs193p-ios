@@ -115,11 +115,11 @@
 		9A6061D217F47A8900BB4055 /* SuperCard */ = {
 			isa = PBXGroup;
 			children = (
+				9A6061DE17F47A8900BB4055 /* Main.storyboard */,
 				9A60620117F47B9600BB4055 /* PlayingCardView.h */,
 				9A60620217F47B9600BB4055 /* PlayingCardView.m */,
 				9A6061DB17F47A8900BB4055 /* SuperCardAppDelegate.h */,
 				9A6061DC17F47A8900BB4055 /* SuperCardAppDelegate.m */,
-				9A6061DE17F47A8900BB4055 /* Main.storyboard */,
 				9A6061E117F47A8900BB4055 /* SuperCardViewController.h */,
 				9A6061E217F47A8900BB4055 /* SuperCardViewController.m */,
 				9A6061E417F47A8900BB4055 /* Images.xcassets */,
@@ -467,6 +467,7 @@
 				9A6061FD17F47A8900BB4055 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A6061FE17F47A8900BB4055 /* Build configuration list for PBXNativeTarget "SuperCardTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +476,7 @@
 				9A60620017F47A8900BB4055 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
