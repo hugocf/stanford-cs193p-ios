@@ -13,6 +13,9 @@
 #pragma mark - Initialization
 
 #define CARD_CORNER_RADIUS 12.0
+#define CARD_CORNER_TEXT_SCALE 0.20
+#define CARD_CORNER_TEXT_X 2.0
+#define CARD_CORNER_TEXT_Y 2.0
 
 - (void)setup
 {
@@ -37,6 +40,32 @@
 {
     _faceUp = faceUp;
     [self setNeedsDisplay];
+}
+
+#pragma mark - Methods
+
+- (void)drawCorner
+{
+    // Typography
+    UIFont *textFont = [UIFont systemFontOfSize:self.bounds.size.width * CARD_CORNER_TEXT_SCALE];
+    NSMutableParagraphStyle *textStyle = [[NSMutableParagraphStyle alloc] init];
+    textStyle.alignment = NSTextAlignmentCenter;
+    NSDictionary *textAttributes = @{NSFontAttributeName: textFont,
+                                     NSParagraphStyleAttributeName: textStyle};
+    // Data
+    NSString *cardValue = [NSString stringWithFormat:@"%@\n%@", self.rankAsString, self.suit];
+    NSAttributedString *cornerText = [[NSAttributedString alloc] initWithString:cardValue
+                                                                     attributes:textAttributes];
+    // Drawing
+    CGRect textBounts;
+    textBounts.origin = CGPointMake(CARD_CORNER_TEXT_X, CARD_CORNER_TEXT_Y);
+    textBounts.size = [cornerText size];
+    [cornerText drawInRect:textBounts];
+}
+
+- (NSString *)rankAsString
+{
+    return @[@"?", @"A", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K"][self.rank];
 }
 
 #pragma mark - NSObject(UIKit)
@@ -79,6 +108,10 @@
                                         // (so the clipping doesn't matter)
             break;
     }
+    
+    // Card corners
+    [self drawCorner];
+    
 }
 
 @end
