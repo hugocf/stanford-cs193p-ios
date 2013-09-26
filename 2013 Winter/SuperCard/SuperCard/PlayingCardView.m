@@ -60,14 +60,25 @@
     // Card boundaries
     UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:CARD_CORNER_RADIUS];
     
-    // Only draw inside the card
-    [roundedRect addClip];
-    
-    // Card color
-    [[UIColor whiteColor] setFill];
-    UIRectFill(self.bounds);
+    // Draw border
     [[UIColor blackColor] setFill];
-    [roundedRect stroke]; 
+    [roundedRect stroke];
+    
+    // White fill + Transparent corners
+    [[UIColor whiteColor] setFill];
+    // 2 approaches could be used...
+    switch (1) {
+        case 1:
+            // approach #1 (class)
+            [roundedRect addClip];      // draw only inside the card
+            UIRectFill(self.bounds);    // fill out entire view with white (but gets clipped)
+            break;
+        case 2:
+            // approach #2 (docs)
+            [roundedRect fill];         // fills the entire rect
+                                        // (so the clipping doesn't matter)
+            break;
+    }
 }
 
 @end
