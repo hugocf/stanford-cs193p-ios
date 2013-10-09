@@ -269,6 +269,7 @@
 				9A52916718057DCC005F0DD8 /* Sources */,
 				9A52916818057DCC005F0DD8 /* Frameworks */,
 				9A52916918057DCC005F0DD8 /* Resources */,
+				9A52917E18057E88005F0DD8 /* TODO & FIXME comments as warnings */,
 			);
 			buildRules = (
 			);
@@ -360,6 +361,20 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		9A52916618057B89005F0DD8 /* TODO & FIXME comments as warnings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "TODO & FIXME comments as warnings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
+		};
+		9A52917E18057E88005F0DD8 /* TODO & FIXME comments as warnings */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
