@@ -51,6 +51,7 @@
 		9A29D2BE179FFBBB00163DCC /* PlayingDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingDeck.m; path = Model/PlayingDeck.m; sourceTree = "<group>"; };
 		9A3565B117F2451300DD2625 /* PlayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayResult.h; path = Model/PlayResult.h; sourceTree = "<group>"; };
 		9A3565B217F2451300DD2625 /* PlayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayResult.m; path = Model/PlayResult.m; sourceTree = "<group>"; };
+		9A52916418057A80005F0DD8 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		9A620287179D4667000329A2 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A62028A179D4667000329A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A62028C179D4667000329A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,6 +157,7 @@
 				9A62029C179D4667000329A2 /* Default.png */,
 				9A62029E179D4667000329A2 /* Default@2x.png */,
 				9A6202A0179D4667000329A2 /* Default-568h@2x.png */,
+				9A52916418057A80005F0DD8 /* Warnings.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -317,6 +319,7 @@
 /* Begin XCBuildConfiguration section */
 		9A6202A8179D4667000329A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A52916418057A80005F0DD8 /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -348,6 +351,7 @@
 		};
 		9A6202A9179D4667000329A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A52916418057A80005F0DD8 /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
