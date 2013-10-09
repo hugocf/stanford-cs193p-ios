@@ -25,9 +25,9 @@ typedef enum {
 
 /**
  The Set cards vary in four features: number, symbol, shading, and color.
- 
- // TODO How to make the paragraphs split in Xcode 5 quick help?
- // TODO How to separate the "overview/summary" from the "discussion"?
+
+ // TODO: How to make the paragraphs split in Xcode 5 quick help?
+ // TODO: How to separate the "overview/summary" from the "discussion"?
  A set consists of three cards which satisfy all of these conditions:
  
  - They all have the same number, or they have three different numbers.
