@@ -13,10 +13,8 @@
 // http://stackoverflow.com/questions/19136767/generate-gcda-files-with-xcode5-ios7-simulator-and-xctest
 #ifdef DEBUG
 + (void)initialize {
-    if([self class] == [CardGameAppDelegate class]) {
-        [[NSUserDefaults standardUserDefaults] setValue:@"GcovTestObserver"
-                                                 forKey:@"XCTestObserverClass"];
-    }
+    [[NSUserDefaults standardUserDefaults] setValue:@"XCTestLog,GcovTestObserver"
+                                             forKey:@"XCTestObserverClass"];
 }
 #endif
 

@@ -32,7 +32,6 @@
 		9A6202B3179FEC9B000329A2 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6202B2179FEC9B000329A2 /* Deck.m */; };
 		9A8D55FE17DF7AF800550917 /* GameResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D55FD17DF7AF800550917 /* GameResultViewController.m */; };
 		9A8D560117DF7D2100550917 /* GameResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D560017DF7D2100550917 /* GameResult.m */; };
-		9AB74B9218064EE10073499A /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB74B9018064EE10073499A /* GcovTestObserver.m */; };
 		9AB74B9B18065A8E0073499A /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6202B2179FEC9B000329A2 /* Deck.m */; };
 		9AB74B9C18065A8E0073499A /* PlayingDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A29D2BE179FFBBB00163DCC /* PlayingDeck.m */; };
 		9AB74B9D18065A8E0073499A /* SetDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2673DB17E237C000E2C708 /* SetDeck.m */; };
@@ -48,6 +47,7 @@
 		9AB74BAC180663EE0073499A /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A29D2BB179FF5AB00163DCC /* PlayingCard.m */; };
 		9AB74BAD180663EE0073499A /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2673D817E237B200E2C708 /* SetCard.m */; };
 		9ABB0D4417AC31B300D3697D /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB0D4317AC31B300D3697D /* CardMatchingGame.m */; };
+		9AF6753C1806EA050006894F /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF6753B1806EA050006894F /* GcovTestObserver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,9 +105,9 @@
 		9A8D55FF17DF7D2100550917 /* GameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameResult.h; path = Controllers/GameResult.h; sourceTree = "<group>"; };
 		9A8D560017DF7D2100550917 /* GameResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameResult.m; path = Controllers/GameResult.m; sourceTree = "<group>"; };
 		9AB74B8A18062CA80073499A /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		9AB74B9018064EE10073499A /* GcovTestObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcovTestObserver.m; sourceTree = "<group>"; };
 		9ABB0D4217AC31B300D3697D /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		9ABB0D4317AC31B300D3697D /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
+		9AF6753B1806EA050006894F /* GcovTestObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcovTestObserver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,7 @@
 		9A52917018057DCC005F0DD8 /* Matchismo Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9AB74B9018064EE10073499A /* GcovTestObserver.m */,
+				9AF6753B1806EA050006894F /* GcovTestObserver.m */,
 				9A52917618057DCC005F0DD8 /* Matchismo_Tests.m */,
 				9A52917118057DCC005F0DD8 /* Supporting Files */,
 			);
@@ -424,6 +424,7 @@
 				9AB74BAA180663EE0073499A /* CardGameAppDelegate.m in Sources */,
 				9AB74BAB180663EE0073499A /* Card.m in Sources */,
 				9AB74BAC180663EE0073499A /* PlayingCard.m in Sources */,
+				9AF6753C1806EA050006894F /* GcovTestObserver.m in Sources */,
 				9AB74BAD180663EE0073499A /* SetCard.m in Sources */,
 				9AB74B9B18065A8E0073499A /* Deck.m in Sources */,
 				9AB74B9C18065A8E0073499A /* PlayingDeck.m in Sources */,
@@ -435,7 +436,6 @@
 				9AB74BA218065A8E0073499A /* SetGameViewController.m in Sources */,
 				9AB74BA318065A8E0073499A /* GameResult.m in Sources */,
 				9AB74BA418065A8E0073499A /* GameResultViewController.m in Sources */,
-				9AB74B9218064EE10073499A /* GcovTestObserver.m in Sources */,
 				9A52917718057DCC005F0DD8 /* Matchismo_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
