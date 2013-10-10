@@ -89,6 +89,7 @@
 		9A8D55FD17DF7AF800550917 /* GameResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameResultViewController.m; path = Controllers/GameResultViewController.m; sourceTree = "<group>"; };
 		9A8D55FF17DF7D2100550917 /* GameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameResult.h; path = Controllers/GameResult.h; sourceTree = "<group>"; };
 		9A8D560017DF7D2100550917 /* GameResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameResult.m; path = Controllers/GameResult.m; sourceTree = "<group>"; };
+		9AB74B8A18062CA80073499A /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		9ABB0D4217AC31B300D3697D /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		9ABB0D4317AC31B300D3697D /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,6 +234,7 @@
 				9A620293179D4667000329A2 /* InfoPlist.strings */,
 				9A620296179D4667000329A2 /* main.m */,
 				9A620298179D4667000329A2 /* Matchismo-Prefix.pch */,
+				9AB74B8A18062CA80073499A /* Debug.xcconfig */,
 				9A52916418057A80005F0DD8 /* Warnings.xcconfig */,
 			);
 			name = "Supporting Files";
@@ -529,7 +531,7 @@
 		};
 		9A6202A8179D4667000329A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A52916418057A80005F0DD8 /* Warnings.xcconfig */;
+			baseConfigurationReference = 9AB74B8A18062CA80073499A /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

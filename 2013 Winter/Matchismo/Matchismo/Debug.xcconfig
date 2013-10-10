@@ -1,0 +1,16 @@
+//
+//  Settings.xcconfig
+//
+//  Created by Hugo Ferreira on 2013/10/10.
+//  Copyright (c) 2013 Mindclick. All rights reserved.
+//
+
+#include "Warnings.xcconfig"
+
+// Override some of the warnings settings
+GCC_TREAT_WARNINGS_AS_ERRORS = NO
+
+// Setup code coverage analysis
+// http://blog.nwoolls.com/2013/02/08/visualizing-code-coverage-with-xcode/
+GCC_GENERATE_TEST_COVERAGE_FILES = YES
+GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES
