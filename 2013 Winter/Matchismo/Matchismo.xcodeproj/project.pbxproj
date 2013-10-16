@@ -14,11 +14,11 @@
 		9A29D2BC179FF5AB00163DCC /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A29D2BB179FF5AB00163DCC /* PlayingCard.m */; };
 		9A29D2BF179FFBBB00163DCC /* PlayingDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A29D2BE179FFBBB00163DCC /* PlayingDeck.m */; };
 		9A3565B317F2451300DD2625 /* PlayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3565B217F2451300DD2625 /* PlayResult.m */; };
+		9A49FAF7180E96C400A9602A /* PayingCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A49FAF6180E96C400A9602A /* PayingCardTests.m */; };
 		9A52916D18057DCC005F0DD8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A52916C18057DCC005F0DD8 /* XCTest.framework */; };
 		9A52916E18057DCC005F0DD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62028C179D4667000329A2 /* Foundation.framework */; };
 		9A52916F18057DCC005F0DD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62028A179D4667000329A2 /* UIKit.framework */; };
 		9A52917518057DCC005F0DD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A52917318057DCC005F0DD8 /* InfoPlist.strings */; };
-		9A52917718057DCC005F0DD8 /* Matchismo_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A52917618057DCC005F0DD8 /* Matchismo_Tests.m */; };
 		9A52918118058201005F0DD8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A52918018058201005F0DD8 /* Images.xcassets */; };
 		9A62028B179D4667000329A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62028A179D4667000329A2 /* UIKit.framework */; };
 		9A62028D179D4667000329A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62028C179D4667000329A2 /* Foundation.framework */; };
@@ -75,12 +75,12 @@
 		9A29D2BE179FFBBB00163DCC /* PlayingDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingDeck.m; sourceTree = "<group>"; };
 		9A3565B117F2451300DD2625 /* PlayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayResult.h; sourceTree = "<group>"; };
 		9A3565B217F2451300DD2625 /* PlayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayResult.m; sourceTree = "<group>"; };
+		9A49FAF6180E96C400A9602A /* PayingCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayingCardTests.m; sourceTree = "<group>"; };
 		9A52916418057A80005F0DD8 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		9A52916B18057DCC005F0DD8 /* Matchismo Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Matchismo Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A52916C18057DCC005F0DD8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9A52917218057DCC005F0DD8 /* Matchismo Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Matchismo Tests-Info.plist"; sourceTree = "<group>"; };
 		9A52917418057DCC005F0DD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9A52917618057DCC005F0DD8 /* Matchismo_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Matchismo_Tests.m; sourceTree = "<group>"; };
 		9A52917818057DCC005F0DD8 /* Matchismo Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Matchismo Tests-Prefix.pch"; sourceTree = "<group>"; };
 		9A52918018058201005F0DD8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9A620287179D4667000329A2 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				9AF6753B1806EA050006894F /* GcovTestObserver.m */,
-				9A52917618057DCC005F0DD8 /* Matchismo_Tests.m */,
+				9A49FAF6180E96C400A9602A /* PayingCardTests.m */,
 				9A52917118057DCC005F0DD8 /* Supporting Files */,
 			);
 			path = "Matchismo Tests";
@@ -424,6 +424,7 @@
 				9AB74BAA180663EE0073499A /* CardGameAppDelegate.m in Sources */,
 				9AB74BAB180663EE0073499A /* Card.m in Sources */,
 				9AB74BAC180663EE0073499A /* PlayingCard.m in Sources */,
+				9A49FAF7180E96C400A9602A /* PayingCardTests.m in Sources */,
 				9AF6753C1806EA050006894F /* GcovTestObserver.m in Sources */,
 				9AB74BAD180663EE0073499A /* SetCard.m in Sources */,
 				9AB74B9B18065A8E0073499A /* Deck.m in Sources */,
@@ -436,7 +437,6 @@
 				9AB74BA218065A8E0073499A /* SetGameViewController.m in Sources */,
 				9AB74BA318065A8E0073499A /* GameResult.m in Sources */,
 				9AB74BA418065A8E0073499A /* GameResultViewController.m in Sources */,
-				9A52917718057DCC005F0DD8 /* Matchismo_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
