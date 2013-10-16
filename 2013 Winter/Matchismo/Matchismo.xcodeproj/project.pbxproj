@@ -412,7 +412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "open -g -a Xcoverage.app \"$OBJECT_FILE_DIR-normal/$CURRENT_ARCH\"";
+			shellScript = "open -g -a Xcoverage.app \"$OBJECT_FILE_DIR-normal/$CURRENT_ARCH\" >/dev/null 2>&1 || true";
 		};
 /* End PBXShellScriptBuildPhase section */
 
