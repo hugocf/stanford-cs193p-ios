@@ -20,7 +20,7 @@
 or,
     '+classMethod only defined for abstract class. Define +[MySubclass classMethod]! (in MDKExceptionsTest.m:44)'
 */
-static inline void MDKInvalidAbstractInvocation(SEL selector, id object, const char *func, const char *file, int line) {
+static inline void _MDKInvalidAbstractInvocation(SEL selector, id object, const char *func, const char *file, int line) {
     char sign = func[0];
     const char *method = sel_getName(selector);
     NSString *fileName = [[NSString stringWithUTF8String:file] lastPathComponent];
@@ -28,13 +28,13 @@ static inline void MDKInvalidAbstractInvocation(SEL selector, id object, const c
                                                    sign, method, sign, [object class], method, fileName, line];
     @throw [NSException exceptionWithName:NSInvalidArgumentException reason:message userInfo:nil];
 }
-#define RaiseInvalidAbstractInvocation() MDKInvalidAbstractInvocation(_cmd, self, __func__, __FILE__, __LINE__)
+#define RaiseInvalidAbstractInvocation() _MDKInvalidAbstractInvocation(_cmd, self, __func__, __FILE__, __LINE__)
 
 /*
     *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: 
     '-[MyAbstract init] cannot instantiate abstract class directly. Use a subclass instead! (in MDKExceptionsTest.m:25)'
 */
-static inline void MDKInvalidAbstractInstantiationForClass(Class abstract, id object, const char *func, const char *file, int line) {
+static inline void _MDKInvalidAbstractInstantiationForClass(Class abstract, id object, const char *func, const char *file, int line) {
     if ([object class] == abstract) {
         NSString *fileName = [[NSString stringWithUTF8String:file] lastPathComponent];
         NSString *message = [NSString stringWithFormat:@"%s cannot instantiate abstract class directly. Use a subclass instead! (in %@:%d)",
@@ -42,4 +42,4 @@ static inline void MDKInvalidAbstractInstantiationForClass(Class abstract, id ob
         @throw [NSException exceptionWithName:NSInvalidArgumentException reason:message userInfo:nil];
     }
 }
-#define RaiseInvalidAbstractInstantiationForClass(CLASS) MDKInvalidAbstractInstantiationForClass(CLASS, self, __func__, __FILE__, __LINE__)
+#define RaiseInvalidAbstractInstantiationForClass(CLASS) _MDKInvalidAbstractInstantiationForClass(CLASS, self, __func__, __FILE__, __LINE__)
