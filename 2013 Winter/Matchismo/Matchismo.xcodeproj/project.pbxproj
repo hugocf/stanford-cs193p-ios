@@ -102,6 +102,7 @@
 		9A6202B1179FEC9B000329A2 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
 		9A6202B2179FEC9B000329A2 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		9A69FC43180FF125000707E7 /* SetCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardTests.m; sourceTree = "<group>"; };
+		9A69FC4818102C6C000707E7 /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
 		9A8D55FC17DF7AF800550917 /* GameResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameResultViewController.h; path = Controllers/GameResultViewController.h; sourceTree = "<group>"; };
 		9A8D55FD17DF7AF800550917 /* GameResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameResultViewController.m; path = Controllers/GameResultViewController.m; sourceTree = "<group>"; };
 		9A8D55FF17DF7D2100550917 /* GameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameResult.h; path = Controllers/GameResult.h; sourceTree = "<group>"; };
@@ -250,6 +251,7 @@
 		9A620291179D4667000329A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A69FC4818102C6C000707E7 /* Abstract.h */,
 				9A620292179D4667000329A2 /* Matchismo-Info.plist */,
 				9A620293179D4667000329A2 /* InfoPlist.strings */,
 				9A620296179D4667000329A2 /* main.m */,

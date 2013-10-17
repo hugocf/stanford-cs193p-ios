@@ -8,3 +8,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+// Custom definitions
+#import "Abstract.h"
