@@ -71,7 +71,7 @@
     }
 }
 
-#pragma mark - Test Cases
+#pragma mark - Standard Operations
 
 - (void)testCardsCanBeTurnedAround
 {
@@ -86,6 +86,34 @@
     self.aceDiamonds.unplayable = YES;
     XCTAssertTrue(self.aceDiamonds.isUnplayable, @"Cards must be able to be disabled for the game");
 }
+
+#pragma mark - Cards Creation
+
+- (void)testCannotCreateCardsWithInvalidRank
+{
+    for (NSString *suit in [PlayingCard validSuits]) {
+        PlayingCard *negativeCard = [self createCardRank:(NSUInteger)-1 withSuit:suit];
+        PlayingCard *zeroRankCard = [self createCardRank:0 withSuit:suit];
+        PlayingCard *hugeRankCard = [self createCardRank:[PlayingCard maxRank]+1 withSuit:suit];
+        XCTAssertEqual(negativeCard.rank, self.defaultCard.rank);
+        XCTAssertEqual(zeroRankCard.rank, self.defaultCard.rank);
+        XCTAssertEqual(hugeRankCard.rank, self.defaultCard.rank);
+    }
+}
+
+- (void)testCannotCreateCardsWithInvalidSuit
+{
+    for (NSUInteger rank = 1; rank < [PlayingCard maxRank]; rank++) {
+        PlayingCard *nilCard = [self createCardRank:rank withSuit:nil];
+        PlayingCard *emptyCard = [self createCardRank:rank withSuit:@""];
+        PlayingCard *gibberishCard = [self createCardRank:rank withSuit:@"$%&TG$%#"];
+        XCTAssertEqual(nilCard.suit, self.defaultCard.suit);
+        XCTAssertEqual(emptyCard.suit, self.defaultCard.suit);
+        XCTAssertEqual(gibberishCard.suit, self.defaultCard.suit);
+    }
+}
+
+#pragma mark - Matching Cards
 
 - (void)testCardsMatchThemselves
 {
@@ -126,30 +154,6 @@
                 XCTAssertFalse([oneCard match:@[anotherCard]], @"Cards %@ and %@ did should not match", oneCard, anotherCard);
             }
         }
-    }
-}
-
-- (void)testCannotCreateCardsWithInvalidRank
-{
-    for (NSString *suit in [PlayingCard validSuits]) {
-        PlayingCard *negativeCard = [self createCardRank:(NSUInteger)-1 withSuit:suit];
-        PlayingCard *zeroRankCard = [self createCardRank:0 withSuit:suit];
-        PlayingCard *hugeRankCard = [self createCardRank:[PlayingCard maxRank]+1 withSuit:suit];
-        XCTAssertEqual(negativeCard.rank, self.defaultCard.rank);
-        XCTAssertEqual(zeroRankCard.rank, self.defaultCard.rank);
-        XCTAssertEqual(hugeRankCard.rank, self.defaultCard.rank);
-    }
-}
-
-- (void)testCannotCreateCardsWithInvalidSuit
-{
-    for (NSUInteger rank = 1; rank < [PlayingCard maxRank]; rank++) {
-        PlayingCard *nilCard = [self createCardRank:rank withSuit:nil];
-        PlayingCard *emptyCard = [self createCardRank:rank withSuit:@""];
-        PlayingCard *gibberishCard = [self createCardRank:rank withSuit:@"$%&TG$%#"];
-        XCTAssertEqual(nilCard.suit, self.defaultCard.suit);
-        XCTAssertEqual(emptyCard.suit, self.defaultCard.suit);
-        XCTAssertEqual(gibberishCard.suit, self.defaultCard.suit);
     }
 }
 
