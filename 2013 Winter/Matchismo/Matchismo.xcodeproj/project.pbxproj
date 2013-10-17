@@ -32,6 +32,9 @@
 		9A6202B3179FEC9B000329A2 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6202B2179FEC9B000329A2 /* Deck.m */; };
 		9A69FC44180FF125000707E7 /* SetCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC43180FF125000707E7 /* SetCardTests.m */; };
 		9A69FC4718102AE6000707E7 /* BaseCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC4618102AE6000707E7 /* BaseCardTests.m */; };
+		9A69FC4A18103A0D000707E7 /* BaseDeckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC4918103A0C000707E7 /* BaseDeckTests.m */; };
+		9A69FC4C181043BD000707E7 /* TestHelpers.h in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC4B181043BD000707E7 /* TestHelpers.h */; };
+		9A69FC4E1810449B000707E7 /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC4D1810449B000707E7 /* TestHelpers.m */; };
 		9A8D55FE17DF7AF800550917 /* GameResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D55FD17DF7AF800550917 /* GameResultViewController.m */; };
 		9A8D560117DF7D2100550917 /* GameResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D560017DF7D2100550917 /* GameResult.m */; };
 		9AB74B9B18065A8E0073499A /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6202B2179FEC9B000329A2 /* Deck.m */; };
@@ -105,6 +108,9 @@
 		9A69FC43180FF125000707E7 /* SetCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardTests.m; sourceTree = "<group>"; };
 		9A69FC4618102AE6000707E7 /* BaseCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCardTests.m; sourceTree = "<group>"; };
 		9A69FC4818102C6C000707E7 /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
+		9A69FC4918103A0C000707E7 /* BaseDeckTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDeckTests.m; sourceTree = "<group>"; };
+		9A69FC4B181043BD000707E7 /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
+		9A69FC4D1810449B000707E7 /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
 		9A8D55FC17DF7AF800550917 /* GameResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameResultViewController.h; path = Controllers/GameResultViewController.h; sourceTree = "<group>"; };
 		9A8D55FD17DF7AF800550917 /* GameResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameResultViewController.m; path = Controllers/GameResultViewController.m; sourceTree = "<group>"; };
 		9A8D55FF17DF7D2100550917 /* GameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameResult.h; path = Controllers/GameResult.h; sourceTree = "<group>"; };
@@ -143,7 +149,10 @@
 			isa = PBXGroup;
 			children = (
 				9AF6753B1806EA050006894F /* GcovTestObserver.m */,
+				9A69FC4B181043BD000707E7 /* TestHelpers.h */,
+				9A69FC4D1810449B000707E7 /* TestHelpers.m */,
 				9A69FC4618102AE6000707E7 /* BaseCardTests.m */,
+				9A69FC4918103A0C000707E7 /* BaseDeckTests.m */,
 				9A49FAF6180E96C400A9602A /* PayingCardTests.m */,
 				9A69FC43180FF125000707E7 /* SetCardTests.m */,
 				9A52917118057DCC005F0DD8 /* Supporting Files */,
@@ -416,6 +425,7 @@
 			files = (
 				9AB74BAA180663EE0073499A /* CardGameAppDelegate.m in Sources */,
 				9AB74BAB180663EE0073499A /* Card.m in Sources */,
+				9A69FC4A18103A0D000707E7 /* BaseDeckTests.m in Sources */,
 				9AB74BAC180663EE0073499A /* PlayingCard.m in Sources */,
 				9A49FAF7180E96C400A9602A /* PayingCardTests.m in Sources */,
 				9AF6753C1806EA050006894F /* GcovTestObserver.m in Sources */,
@@ -426,12 +436,14 @@
 				9A69FC44180FF125000707E7 /* SetCardTests.m in Sources */,
 				9AB74B9E18065A8E0073499A /* PlayResult.m in Sources */,
 				9AB74B9F18065A8E0073499A /* CardMatchingGame.m in Sources */,
+				9A69FC4E1810449B000707E7 /* TestHelpers.m in Sources */,
 				9A69FC4718102AE6000707E7 /* BaseCardTests.m in Sources */,
 				9AB74BA018065A8E0073499A /* SetMatchingGame.m in Sources */,
 				9AB74BA118065A8E0073499A /* CardGameViewController.m in Sources */,
 				9AB74BA218065A8E0073499A /* SetGameViewController.m in Sources */,
 				9AB74BA318065A8E0073499A /* GameResult.m in Sources */,
 				9AB74BA418065A8E0073499A /* GameResultViewController.m in Sources */,
+				9A69FC4C181043BD000707E7 /* TestHelpers.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

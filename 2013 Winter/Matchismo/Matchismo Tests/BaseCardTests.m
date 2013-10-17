@@ -7,17 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#include "Card.h"
-
-#pragma mark - Test Support
-
-@interface CardSubclass : Card
-@end
-
-@implementation CardSubclass
-@end
-
-#pragma mark - Test Suite
+#include "TestHelpers.h"
 
 @interface BaseCardTests : XCTestCase
 
