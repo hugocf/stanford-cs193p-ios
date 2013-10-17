@@ -301,7 +301,6 @@
 				9A52916718057DCC005F0DD8 /* Sources */,
 				9A52916818057DCC005F0DD8 /* Frameworks */,
 				9A52916918057DCC005F0DD8 /* Resources */,
-				9AB74BA918065B8E0073499A /* Show Test Coverage Report */,
 			);
 			buildRules = (
 			);
@@ -399,20 +398,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
-		};
-		9AB74BA918065B8E0073499A /* Show Test Coverage Report */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Show Test Coverage Report";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "open -g -a Xcoverage.app \"$OBJECT_FILE_DIR-normal/$CURRENT_ARCH\" >/dev/null 2>&1 || true";
 		};
 /* End PBXShellScriptBuildPhase section */
 
