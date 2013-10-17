@@ -8,14 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+/** Abstract class. */
 @interface Card : NSObject
+
+///--------------------------------------------------------------------------------
+/// @name Methods to Implement in a Subclass
+///--------------------------------------------------------------------------------
+
+- (int)match:(NSArray *)otherCards;
+
+///--------------------------------------------------------------------------------
+/// @name Card Information
+///--------------------------------------------------------------------------------
 
 @property (strong, nonatomic) NSString *contents;
 @property (nonatomic, getter = isFaceUp) BOOL faceup;
 @property (nonatomic, getter = isUnplayable) BOOL unplayable;
-
-- (int)match:(NSArray *)otherCards;
-
 - (NSString *)description;
 
 @end
