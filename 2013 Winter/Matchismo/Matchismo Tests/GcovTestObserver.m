@@ -17,7 +17,8 @@ extern void __gcov_flush(void);
 - (void) stopObserving
 {
     [super stopObserving];
-    __gcov_flush();
+    UIApplication* application = [UIApplication sharedApplication];
+    [application.delegate applicationWillTerminate:application];
 }
 
 @end
