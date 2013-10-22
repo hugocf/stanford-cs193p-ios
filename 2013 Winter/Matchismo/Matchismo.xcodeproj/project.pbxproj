@@ -33,7 +33,6 @@
 		9A69FC44180FF125000707E7 /* SetCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC43180FF125000707E7 /* SetCardTests.m */; };
 		9A69FC4718102AE6000707E7 /* BaseCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC4618102AE6000707E7 /* BaseCardTests.m */; };
 		9A69FC4A18103A0D000707E7 /* BaseDeckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC4918103A0C000707E7 /* BaseDeckTests.m */; };
-		9A69FC4C181043BD000707E7 /* TestHelpers.h in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC4B181043BD000707E7 /* TestHelpers.h */; };
 		9A69FC4E1810449B000707E7 /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC4D1810449B000707E7 /* TestHelpers.m */; };
 		9A69FC50181050AE000707E7 /* PlayingDeckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC4F181050AE000707E7 /* PlayingDeckTests.m */; };
 		9A69FC52181050B9000707E7 /* SetDeckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69FC51181050B9000707E7 /* SetDeckTests.m */; };
@@ -423,7 +422,6 @@
 				9A69FC52181050B9000707E7 /* SetDeckTests.m in Sources */,
 				9A69FC4E1810449B000707E7 /* TestHelpers.m in Sources */,
 				9A69FC4718102AE6000707E7 /* BaseCardTests.m in Sources */,
-				9A69FC4C181043BD000707E7 /* TestHelpers.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
