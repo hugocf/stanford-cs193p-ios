@@ -7,7 +7,18 @@
 //
 
 #import <XCTest/XCTest.h>
-#include "TestHelpers.h"
+#import "Card.h"
+
+#pragma mark - Test Support
+
+@interface BaseCardTests_CardSubclass : Card
+@end
+
+@implementation BaseCardTests_CardSubclass
+@end
+
+#pragma mark - Test Suite
+
 
 @interface BaseCardTests : XCTestCase
 
@@ -22,7 +33,7 @@
 
 - (void)testCannotInvokeAbstractMethods
 {
-    CardSubclass *card = [[CardSubclass alloc] init];
+    BaseCardTests_CardSubclass *card = [[BaseCardTests_CardSubclass alloc] init];
     XCTAssertThrows([card match:@[]]);
 }
 

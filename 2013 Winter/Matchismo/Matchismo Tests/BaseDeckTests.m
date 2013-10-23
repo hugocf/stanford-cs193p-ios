@@ -7,9 +7,18 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "TestHelpers.h"
+#import "Deck.h"
+#import "Card.h"
 
 #pragma mark - Test Support
+
+@interface BaseDeckTests_CardSubclass : Card
+@end
+
+@implementation BaseDeckTests_CardSubclass
+@end
+
+#pragma mark -
 
 @interface Deck (Test)
 - (NSMutableArray *)cards;
@@ -28,7 +37,7 @@
 - (void)createCards:(NSUInteger)howMany inDeck:(Deck *)deck
 {
     for (NSUInteger i = 0; i < howMany; i++) {
-        Card *card = [[CardSubclass alloc] init];
+        Card *card = [[BaseDeckTests_CardSubclass alloc] init];
         [deck addCard:card atTop:NO];
     }
 }
@@ -45,8 +54,8 @@
 
 - (void)testCardsCanBeAdddedAtBothEnds
 {
-    Card *cardBottom = [[CardSubclass alloc] init];
-    Card *cardTop = [[CardSubclass alloc] init];
+    Card *cardBottom = [[BaseDeckTests_CardSubclass alloc] init];
+    Card *cardTop = [[BaseDeckTests_CardSubclass alloc] init];
     Deck *deck = [[Deck alloc] init];
     [self createCards:10 inDeck:deck];
     
