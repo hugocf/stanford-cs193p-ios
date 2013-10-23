@@ -9,12 +9,12 @@
 #import <XCTest/XCTest.h>
 #import "PlayingCard.h"
 
-@interface PayingCardTests : XCTestCase
+@interface PlayingCardTests : XCTestCase
 @property (readonly, nonatomic) PlayingCard *defaultCard;
 @property (readonly, nonatomic) PlayingCard *aceDiamonds;
 @end
 
-@implementation PayingCardTests
+@implementation PlayingCardTests
 
 #pragma mark - Each Method
 
@@ -27,12 +27,13 @@
 
 #pragma mark - Helpers
 
-- (PlayingCard *)createCardRank:(NSUInteger)rank withSuit:(NSString *)suit
+- (NSArray *)createAllCards
 {
-    PlayingCard *card = [[PlayingCard alloc] init];
-    card.suit = suit;
-    card.rank = rank;
-    return card;
+    NSMutableArray *allCards = [[NSMutableArray alloc] init];
+    for (NSString *suit in [PlayingCard validSuits]) {
+        [allCards addObjectsFromArray:[self createAllCardsOfSuit:suit]];
+    }
+    return [allCards copy];
 }
 
 - (NSArray *)createAllCardsOfSuit:(NSString *)suit
@@ -53,13 +54,12 @@
     return [allCards copy];
 }
 
-- (NSArray *)createAllCards
+- (PlayingCard *)createCardRank:(NSUInteger)rank withSuit:(NSString *)suit
 {
-    NSMutableArray *allCards = [[NSMutableArray alloc] init];
-    for (NSString *suit in [PlayingCard validSuits]) {
-        [allCards addObjectsFromArray:[self createAllCardsOfSuit:suit]];
-    }
-    return [allCards copy];
+    PlayingCard *card = [[PlayingCard alloc] init];
+    card.suit = suit;
+    card.rank = rank;
+    return card;
 }
 
 - (void)assertEachCardIn:(NSArray *)matchCards matches:(NSArray *)againstCards
@@ -71,7 +71,7 @@
     }
 }
 
-#pragma mark - Standard Operations
+#pragma mark - Standard Card Operations
 
 - (void)testCardsCanBeTurnedAround
 {
@@ -87,7 +87,7 @@
     XCTAssertTrue(self.aceDiamonds.isUnplayable, @"Cards must be able to be disabled for the game");
 }
 
-#pragma mark - Cards Creation
+#pragma mark - Creating Cards
 
 - (void)testCannotCreateCardsWithInvalidRank
 {
@@ -115,7 +115,7 @@
 
 #pragma mark - Matching Cards
 
-- (void)testCardsMatchThemselves
+- (void)testEachCardMatchesItself
 {
     NSArray *matchCards = [self createAllCards];
     NSArray *againstCards = [self createAllCards];
@@ -127,7 +127,7 @@
     }
 }
 
-- (void)testCardsOfTheSameSuitMatch
+- (void)testSeveralCardsOfTheSameSuitAllMatch
 {
     for (NSString *suit in [PlayingCard validSuits]) {
         NSArray *suitCards = [self createAllCardsOfSuit:suit];
@@ -135,7 +135,7 @@
     }
 }
 
-- (void)testCardsOfTheSameRankMatch
+- (void)testSeveralCardsOfTheSameRankAllMatch
 {
     for (NSUInteger rank = 1; rank < [PlayingCard maxRank]; rank++) {
         NSArray *rankCards = [self createAllCardsOfRank:rank];
