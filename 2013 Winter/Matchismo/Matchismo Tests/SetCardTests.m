@@ -11,7 +11,7 @@
 
 @interface SetCardTests : XCTestCase
 @property (readonly, nonatomic) SetCard *defaultCard;
-@property (readonly, nonatomic) SetCard *oneSolidRedTriangle;
+@property (readonly, nonatomic) SetCard *oneSolidRedDiamond;
 @end
 
 @implementation SetCardTests
@@ -22,9 +22,9 @@
 {
     [super setUp];
     _defaultCard = [[SetCard alloc] init];
-    _oneSolidRedTriangle = [[SetCard alloc] initWithNumber:1
-                                                    symbol:@"▲"
-                                                   shading:CardShadingSolid
+    _oneSolidRedDiamond = [[SetCard alloc] initWithNumber:1
+                                                   symbol:CardSymbolDiamond
+                                                  shading:CardShadingSolid
                                                     color:CardColorRed];
 }
 
@@ -32,16 +32,16 @@
 
 - (void)/*TODO:*/OFF_testCardsAreAlwaysFacingUp
 {
-    XCTAssertTrue(self.oneSolidRedTriangle.isFaceUp, @"Cards should start face up");
-    self.oneSolidRedTriangle.faceup = NO;
-    XCTAssertTrue(self.oneSolidRedTriangle.isFaceUp, @"Cards should always remain face up");
+    XCTAssertTrue(self.oneSolidRedDiamond.isFaceUp, @"Cards should start face up");
+    self.oneSolidRedDiamond.faceup = NO;
+    XCTAssertTrue(self.oneSolidRedDiamond.isFaceUp, @"Cards should always remain face up");
 }
 
 - (void)testCardsCanBeDisabled
 {
-    XCTAssertFalse(self.oneSolidRedTriangle.isUnplayable, @"Cards should start being playable");
-    self.oneSolidRedTriangle.unplayable = YES;
-    XCTAssertTrue(self.oneSolidRedTriangle.isUnplayable, @"Cards must be able to be disabled for the game");
+    XCTAssertFalse(self.oneSolidRedDiamond.isUnplayable, @"Cards should start being playable");
+    self.oneSolidRedDiamond.unplayable = YES;
+    XCTAssertTrue(self.oneSolidRedDiamond.isUnplayable, @"Cards must be able to be disabled for the game");
 }
 
 #pragma mark - ...

@@ -8,6 +8,10 @@
 
 #import "SetCard.h"
 
+NSString * const CardSymbolDiamond = @"▲";
+NSString * const CardSymbolSquiggle = @"■";
+NSString * const CardSymbolOval = @"●";
+
 @implementation SetCard
 
 #pragma mark - Class
@@ -41,7 +45,7 @@
 + (NSArray *)validSymbols
 {
     static NSArray *symbols = nil;
-    if (!symbols) symbols = @[@"▲", @"●", @"■"];
+    if (!symbols) symbols = @[CardSymbolDiamond, CardSymbolOval, CardSymbolSquiggle];
     return symbols;
 }
 

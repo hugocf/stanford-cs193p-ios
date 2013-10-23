@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 
+extern NSString * const CardSymbolDiamond;
+extern NSString * const CardSymbolSquiggle;
+extern NSString * const CardSymbolOval;
+
 typedef enum {
     CardShadingSolid,
     CardShadingStriped,
