@@ -51,6 +51,7 @@ NSString * const CardSymbolOval = @"●";
 
 #pragma mark - Initialization
 
+/* TODO: Refactor into a more natural reading order = oneSolidRedTriangle */
 - (id)initWithNumber:(int)number
               symbol:(NSString *)symbol
              shading:(CardShadingType)shading
