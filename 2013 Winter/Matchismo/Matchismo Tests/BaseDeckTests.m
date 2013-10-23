@@ -20,7 +20,7 @@
 
 #pragma mark -
 
-@interface Deck (Test)
+@interface Deck (Tests)
 - (NSMutableArray *)cards;
 @end
 

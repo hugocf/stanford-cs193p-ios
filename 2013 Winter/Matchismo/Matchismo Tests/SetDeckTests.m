@@ -12,7 +12,7 @@
 
 #pragma mark - Test Support
 
-@interface SetDeck (Test)
+@interface SetDeck (Tests)
 - (NSMutableArray *)cards;
 @end
 
