@@ -8,3 +8,10 @@
 
 /* TODO: Refactor ScoreDefinitions => ScoringDefinitions */
 
+/* TODO: Refactor playing card suits from magic strings => constants */
+
+/* TODO: Rename "Each Method" => "Each Test" */
+
+/* FIXME: Rename all test terminology according to ObjectiveCTests.m
+ http://ruby.about.com/od/testdrivendevelopment/qt/tddterms.htm */
+
