@@ -30,9 +30,6 @@
 
 #pragma mark - Methods
 
-
-#pragma mark - NSObject
-
 - (NSString *)outcomeString
 {
     NSString *translation = @"";
@@ -43,6 +40,8 @@
     }
     return translation;
 }
+
+#pragma mark - NSObject
 
 - (NSString *)description
 {
