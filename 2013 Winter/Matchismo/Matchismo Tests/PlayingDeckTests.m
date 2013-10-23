@@ -33,4 +33,12 @@
     XCTAssertEqual(cardsInDeck, totalSuits * totalRanks);
 }
 
+- (void) testDeckDoesNotContainDuplicateCards
+{
+    PlayingDeck *fullDeck = [[PlayingDeck alloc] init];
+    NSUInteger cardsInDeck = [fullDeck.cards count];
+    NSUInteger uniqueCards = [[NSSet setWithArray:fullDeck.cards] count];
+    XCTAssertEqual(cardsInDeck, uniqueCards);
+}
+
 @end
