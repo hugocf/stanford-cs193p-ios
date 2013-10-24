@@ -48,7 +48,7 @@
     return [self initWithCardCount:count
                           fromDeck:deck
                         matchCount:2
-                    bonusPenalties:(ScoreDefinitions){-1, -1, 1}];
+                    bonusPenalties:(ScoreDefinitions){-1, -1, 2}];
 }
 
 #pragma mark - Properties
