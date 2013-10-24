@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A1CDE911818376A00443010 /* PlayingGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CDE901818376A00443010 /* PlayingGameTests.m */; };
 		9A2673D317E22E5100E2C708 /* SetGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2673D217E22E5100E2C708 /* SetGameViewController.m */; };
 		9A2673D617E2338A00E2C708 /* SetMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2673D517E2338A00E2C708 /* SetMatchingGame.m */; };
 		9A2673D917E237B200E2C708 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2673D817E237B200E2C708 /* SetCard.m */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A1CDE901818376A00443010 /* PlayingGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingGameTests.m; sourceTree = "<group>"; };
 		9A2673D117E22E5100E2C708 /* SetGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetGameViewController.h; path = Controllers/SetGameViewController.h; sourceTree = "<group>"; };
 		9A2673D217E22E5100E2C708 /* SetGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetGameViewController.m; path = Controllers/SetGameViewController.m; sourceTree = "<group>"; };
 		9A2673D417E2338A00E2C708 /* SetMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMatchingGame.h; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				9A69FC4918103A0C000707E7 /* BaseDeckTests.m */,
 				9A49FAF6180E96C400A9602A /* PlayingCardTests.m */,
 				9A69FC4F181050AE000707E7 /* PlayingDeckTests.m */,
+				9A1CDE901818376A00443010 /* PlayingGameTests.m */,
 				9A69FC43180FF125000707E7 /* SetCardTests.m */,
 				9A69FC51181050B9000707E7 /* SetDeckTests.m */,
 				9A52917118057DCC005F0DD8 /* Supporting Files */,
@@ -417,6 +420,7 @@
 				9A69FC50181050AE000707E7 /* PlayingDeckTests.m in Sources */,
 				9A69FC44180FF125000707E7 /* SetCardTests.m in Sources */,
 				9A69FC52181050B9000707E7 /* SetDeckTests.m in Sources */,
+				9A1CDE911818376A00443010 /* PlayingGameTests.m in Sources */,
 				9A69FC4718102AE6000707E7 /* BaseCardTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
