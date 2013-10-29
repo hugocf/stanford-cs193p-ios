@@ -13,6 +13,16 @@
 
 #pragma mark - Test Support
 
+typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
+    PlayingGameFixtureCardIndexAceHearts,
+    PlayingGameFixtureCardIndexAceDiamonds,
+    PlayingGameFixtureCardIndexAceSpades,
+    PlayingGameFixtureCardIndexThreeSpades,
+    PlayingGameFixtureCardIndexFourSpades,
+    PlayingGameFixtureCardIndexFiveClubs,
+    PLAYING_GAME_FIXTURE_CARDS_INDEX_COUNT
+};
+
 @interface CardMatchingGame (Tests)
 @property (nonatomic) NSMutableArray *cards;
 @end
@@ -56,14 +66,14 @@
 
 - (NSArray *)createFixtureCards
 {
-    return @[
-             [self createCardRank:1 withSuit:@"♥"],
-             [self createCardRank:1 withSuit:@"♦"],
-             [self createCardRank:1 withSuit:@"♠"],
-             [self createCardRank:3 withSuit:@"♠"],
-             [self createCardRank:4 withSuit:@"♠"],
-             [self createCardRank:5 withSuit:@"♣"],
-             ];
+    NSMutableArray *cards = [NSMutableArray arrayWithCapacity:PLAYING_GAME_FIXTURE_CARDS_INDEX_COUNT];
+    cards[PlayingGameFixtureCardIndexAceHearts] = [self createCardRank:1 withSuit:@"♥"];
+    cards[PlayingGameFixtureCardIndexAceDiamonds] = [self createCardRank:1 withSuit:@"♦"];
+    cards[PlayingGameFixtureCardIndexAceSpades] = [self createCardRank:1 withSuit:@"♠"];
+    cards[PlayingGameFixtureCardIndexThreeSpades] = [self createCardRank:3 withSuit:@"♠"];
+    cards[PlayingGameFixtureCardIndexFourSpades] = [self createCardRank:4 withSuit:@"♠"];
+    cards[PlayingGameFixtureCardIndexFiveClubs] = [self createCardRank:5 withSuit:@"♣"];
+    return cards;
 }
 
 - (PlayingCard *)createCardRank:(NSUInteger)rank withSuit:(NSString *)suit
@@ -131,20 +141,38 @@
 
 - (void)testFlippingMatchingRanksIncreasesTheScore
 {
-    [self assertIncreasedScoreOfGame:self.game2 afterMatchingCardsAt:@[ @0, @1 ]];
-    [self assertIncreasedScoreOfGame:self.game3 afterMatchingCardsAt:@[ @0, @1, @2 ]];
+    [self assertIncreasedScoreOfGame:self.game2
+                afterMatchingCardsAt:@[ @(PlayingGameFixtureCardIndexAceHearts),
+                                        @(PlayingGameFixtureCardIndexAceDiamonds) ]];
+    
+    [self assertIncreasedScoreOfGame:self.game3
+                afterMatchingCardsAt:@[ @(PlayingGameFixtureCardIndexAceHearts),
+                                        @(PlayingGameFixtureCardIndexAceDiamonds),
+                                        @(PlayingGameFixtureCardIndexAceSpades) ]];
 }
 
 - (void)testFlippingMatchingSuitsIncreasesTheScore
 {
-    [self assertIncreasedScoreOfGame:self.game2 afterMatchingCardsAt:@[ @3, @4 ]];
-    [self assertIncreasedScoreOfGame:self.game3 afterMatchingCardsAt:@[ @2, @3, @4 ]];
+    [self assertIncreasedScoreOfGame:self.game2
+                afterMatchingCardsAt:@[ @(PlayingGameFixtureCardIndexThreeSpades),
+                                        @(PlayingGameFixtureCardIndexFourSpades) ]];
+    
+    [self assertIncreasedScoreOfGame:self.game3
+                afterMatchingCardsAt:@[ @(PlayingGameFixtureCardIndexAceSpades),
+                                        @(PlayingGameFixtureCardIndexThreeSpades),
+                                        @(PlayingGameFixtureCardIndexFourSpades) ]];
 }
 
 - (void)testFlippingMismatchingCardsGivesPenalties
 {
-    [self assertDecreasedScoreOfGame:self.game2 afterMismatchingCardsAt:@[ @0, @4 ]];
-    [self assertDecreasedScoreOfGame:self.game3 afterMismatchingCardsAt:@[ @0, @4, @5 ]];
+    [self assertDecreasedScoreOfGame:self.game2
+             afterMismatchingCardsAt:@[ @(PlayingGameFixtureCardIndexAceHearts),
+                                        @(PlayingGameFixtureCardIndexFourSpades) ]];
+    
+    [self assertDecreasedScoreOfGame:self.game3
+             afterMismatchingCardsAt:@[ @(PlayingGameFixtureCardIndexAceHearts),
+                                        @(PlayingGameFixtureCardIndexFourSpades),
+                                        @(PlayingGameFixtureCardIndexFiveClubs) ]];
 }
 
 @end
