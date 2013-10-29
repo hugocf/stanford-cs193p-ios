@@ -15,3 +15,7 @@
 /* FIXME: Rename all test terminology according to ObjectiveCTests.m
  http://ruby.about.com/od/testdrivendevelopment/qt/tddterms.htm */
 
+/* FIXME: Bad UI elements alignment in iOS 7 look & feel */
+
+/* TODO: Maybe test fixture should be is a separate classs? 
+ (so test code is for sure uncapable to change the ivar) */
