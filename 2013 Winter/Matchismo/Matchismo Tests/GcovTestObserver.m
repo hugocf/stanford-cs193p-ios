@@ -7,8 +7,6 @@
 
 #import <XCTest/XCTestObserver.h>
 
-extern void __gcov_flush(void);
-
 @interface GcovTestObserver : XCTestObserver
 @end
 
