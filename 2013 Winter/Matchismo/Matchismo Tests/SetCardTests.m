@@ -23,9 +23,9 @@
     [super setUp];
     _defaultCard = [[SetCard alloc] init];
     _oneSolidRedDiamond = [[SetCard alloc] initWithNumber:1
-                                                   symbol:CardSymbolDiamond
                                                   shading:CardShadingSolid
-                                                    color:CardColorRed];
+                                                    color:CardColorRed
+                                                   symbol:CardSymbolDiamond];
 }
 
 #pragma mark - Helpers
@@ -35,7 +35,7 @@
                             color:(CardColorType)color
                            symbol:(NSString *)symbol
 {
-    return [[SetCard alloc] initWithNumber:number symbol:symbol shading:shading color:color];
+    return [[SetCard alloc] initWithNumber:number shading:shading color:color symbol:symbol];
 }
 
 #pragma mark - Standard Card Operations
@@ -59,31 +59,31 @@
 - (void)testCannotCreateCardsWithInvalidNumber
 {
     SetCard *card = [[SetCard alloc] initWithNumber:0
-                                             symbol:CardSymbolDiamond
                                             shading:CardShadingSolid
-                                              color:CardColorRed];
+                                              color:CardColorRed
+                                             symbol:CardSymbolDiamond];
     XCTAssertNil(card, @"Must not be able to create an invalid card");
 }
 
 - (void)testCannotCreateCardsWithInvalidSymbol
 {
     SetCard *card = [[SetCard alloc] initWithNumber:1
-                                             symbol:@"FooBar"
                                             shading:CardShadingSolid
-                                              color:CardColorRed];
+                                              color:CardColorRed
+                                             symbol:@"FooBar"];
     XCTAssertNil(card, @"Must not be able to create an invalid card");
 }
 
 - (void)testCannotCreateCardsWithInvalidShading
 {
     SetCard *card1 = [[SetCard alloc] initWithNumber:1
-                                              symbol:CardSymbolDiamond
                                              shading:CARD_SHADING_TYPE_COUNT
-                                               color:CardColorRed];
+                                               color:CardColorRed
+                                              symbol:CardSymbolDiamond];
     SetCard *card2 = [[SetCard alloc] initWithNumber:1
-                                              symbol:CardSymbolDiamond
                                              shading:1000
-                                               color:CardColorRed];
+                                               color:CardColorRed
+                                              symbol:CardSymbolDiamond];
     XCTAssertNil(card1, @"Must not be able to create an invalid card");
     XCTAssertNil(card2, @"Must not be able to create an invalid card");
 }
@@ -91,13 +91,13 @@
 - (void)testCannotCreateCardsWithInvalidColor
 {
     SetCard *card1 = [[SetCard alloc] initWithNumber:1
-                                              symbol:CardSymbolDiamond
                                              shading:CardShadingSolid
-                                               color:CARD_COLOR_TYPE_COUNT];
+                                               color:CARD_COLOR_TYPE_COUNT
+                                              symbol:CardSymbolDiamond];
     SetCard *card2 = [[SetCard alloc] initWithNumber:1
-                                              symbol:CardSymbolDiamond
                                              shading:CardShadingSolid
-                                               color:1000];
+                                               color:1000
+                                              symbol:CardSymbolDiamond];
     XCTAssertNil(card1, @"Must not be able to create an invalid card");
     XCTAssertNil(card2, @"Must not be able to create an invalid card");
 }

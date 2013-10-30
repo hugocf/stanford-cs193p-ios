@@ -51,11 +51,10 @@ NSString * const CardSymbolOval = @"●";
 
 #pragma mark - Initialization
 
-/* TODO: Refactor into a more natural reading order = oneSolidRedTriangle */
 - (id)initWithNumber:(int)number
-              symbol:(NSString *)symbol
              shading:(CardShadingType)shading
                color:(CardColorType)color
+              symbol:(NSString *)symbol
 {
     self = [super init];
     if (self) {
@@ -76,9 +75,9 @@ NSString * const CardSymbolOval = @"●";
 {
     // "resonable" settings for a default card
     return [self initWithNumber:1
-                         symbol:[SetCard validSymbols][0]
                         shading:CardShadingSolid
-                          color:CardColorRed];
+                          color:CardColorRed
+                         symbol:[SetCard validSymbols][0]];
 }
 
 #pragma mark - Properties

@@ -20,9 +20,9 @@
                 for (CardShadingType shade = 0; shade < CARD_SHADING_TYPE_COUNT; shade++) {
                     for (CardColorType color = 0; color < CARD_COLOR_TYPE_COUNT; color++) {
                         SetCard *card = [[SetCard alloc] initWithNumber:number
-                                                                 symbol:symbol
                                                                 shading:shade
-                                                                  color:color];
+                                                                  color:color
+                                                                 symbol:symbol];
                         if (card) [self addCard:card atTop:YES];
                     }
                 }

@@ -55,9 +55,9 @@ typedef enum {
 
 /** Designated initializer. */
 - (id)initWithNumber:(int)number
-              symbol:(NSString *)symbol
              shading:(CardShadingType)shading
-               color:(CardColorType)color;
+               color:(CardColorType)color
+              symbol:(NSString *)symbol;
 
 /** number = one, two, or three. */
 @property (readonly, nonatomic) int number;
