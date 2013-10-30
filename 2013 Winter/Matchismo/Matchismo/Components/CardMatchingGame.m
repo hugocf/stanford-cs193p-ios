@@ -33,9 +33,9 @@
             Card *card = [deck drawRandomCard];
             if (!card) {
                 self = nil;
-            } else {
-                self.cards[i] = card;
+                return self;
             }
+            self.cards[i] = card;
         }
         self.numCardsToMatch = numCards;
         _weights = scoreSettings;
