@@ -29,7 +29,7 @@
 {
     self = [super init];
     if (self) {
-        for (int i = 0; i < count; i++) {
+        for (NSUInteger i = 0; i < count; i++) {
             Card *card = [deck drawRandomCard];
             if (!card) {
                 self = nil;
@@ -97,7 +97,7 @@
                     [cardsInPlay enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                         [obj setUnplayable:YES];
                     }];
-                    playScore += cardScore * self.weights.matchBonus * (self.numCardsToMatch - 1);
+                    playScore += cardScore * self.weights.matchBonus * ((int)self.numCardsToMatch - 1);
                     playResult = [[PlayResult alloc] initWithCards:[@[card] arrayByAddingObjectsFromArray:cardsInPlay]
                                                      outcome:PlayStatusCardsMatch
                                                        score:playScore];
@@ -109,7 +109,7 @@
                     if (cardScore < 0) {
                         playScore += self.weights.mismatchPenalty * -cardScore;
                     } else {
-                        playScore += self.weights.mismatchPenalty * (self.numCardsToMatch - 1);
+                        playScore += self.weights.mismatchPenalty * ((int)self.numCardsToMatch - 1);
                     }
                     playResult = [[PlayResult alloc] initWithCards:[@[card] arrayByAddingObjectsFromArray:cardsInPlay]
                                                            outcome:PlayStatusCardsMismatch

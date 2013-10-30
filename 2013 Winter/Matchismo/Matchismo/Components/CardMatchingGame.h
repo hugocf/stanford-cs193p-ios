@@ -29,7 +29,7 @@ typedef struct {
                fromDeck:(Deck *)deck;
 
 @property (readonly, nonatomic) int score;
-@property (nonatomic) int numCardsToMatch;
+@property (nonatomic) NSUInteger numCardsToMatch;
 
 - (PlayResult *)lastPlay;
 

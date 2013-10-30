@@ -108,7 +108,7 @@
 
 - (IBAction)timeTravel:(UISlider *)sender {
     if (sender.maximumValue > 0) {
-        int index = round([sender value]);
+        int index = (int)[sender value];
         self.messageDisplay.text = (!index)? @"" : [[self.game lastPlays][index - 1] description];
         self.messageDisplay.alpha = (index == sender.maximumValue)? 1.0 : 0.3;
     }

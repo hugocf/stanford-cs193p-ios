@@ -57,7 +57,7 @@
             strokeWidth = @5;
             break;
         case CardShadingStriped:
-            fillColor = [cardColor colorWithAlphaComponent:0.10];
+            fillColor = [cardColor colorWithAlphaComponent:0.10f];
             strokeColor = cardColor;
             strokeWidth = @-5;
             break;
@@ -108,7 +108,7 @@
 
 - (IBAction)timeTravel:(UISlider *)sender {
     if (sender.maximumValue > 0) {
-        int index = round([sender value]);
+        int index = (int)[sender value];
         if (index) {
             self.messageDisplay.attributedText = [self attributedStringForResult:[self.game lastPlays][index - 1]];
             self.messageDisplay.alpha = (index == sender.maximumValue)? 1.0 : 0.3;

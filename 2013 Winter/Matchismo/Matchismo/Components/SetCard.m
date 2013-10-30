@@ -51,7 +51,7 @@ NSString * const CardSymbolOval = @"●";
 
 #pragma mark - Initialization
 
-- (id)initWithNumber:(int)number
+- (id)initWithNumber:(NSUInteger)number
              shading:(CardShadingType)shading
                color:(CardColorType)color
               symbol:(NSString *)symbol

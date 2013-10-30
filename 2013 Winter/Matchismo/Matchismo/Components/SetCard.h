@@ -54,13 +54,13 @@ typedef NS_ENUM(NSInteger, CardColorType) {
 @interface SetCard : Card
 
 /** Designated initializer. */
-- (id)initWithNumber:(int)number
+- (id)initWithNumber:(NSUInteger)number
              shading:(CardShadingType)shading
                color:(CardColorType)color
               symbol:(NSString *)symbol;
 
 /** number = one, two, or three. */
-@property (readonly, nonatomic) int number;
+@property (readonly, nonatomic) NSUInteger number;
 
 /** symbol = diamond, squiggle, oval. */
 @property (readonly, strong, nonatomic) NSString *symbol;

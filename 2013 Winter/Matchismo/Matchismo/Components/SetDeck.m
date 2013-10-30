@@ -15,7 +15,7 @@
 {
     self = [super init];
     if (self) {
-        for (int number = 1; number <= 3; number++) {
+        for (NSUInteger number = 1; number <= 3; number++) {
             for (NSString *symbol in [SetCard validSymbols]) {
                 for (CardShadingType shade = 0; shade < CARD_SHADING_TYPE_COUNT; shade++) {
                     for (CardColorType color = 0; color < CARD_COLOR_TYPE_COUNT; color++) {

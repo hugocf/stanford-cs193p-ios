@@ -30,7 +30,7 @@
 
 #pragma mark - Helpers
 
-- (SetCard *)createCardWithNumber:(int)number
+- (SetCard *)createCardWithNumber:(NSUInteger)number
                           shading:(CardShadingType)shading
                             color:(CardColorType)color
                            symbol:(NSString *)symbol
