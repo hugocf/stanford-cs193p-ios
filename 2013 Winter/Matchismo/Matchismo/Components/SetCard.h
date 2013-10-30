@@ -13,19 +13,19 @@ extern NSString * const CardSymbolDiamond;
 extern NSString * const CardSymbolSquiggle;
 extern NSString * const CardSymbolOval;
 
-typedef enum {
+typedef NS_ENUM(NSInteger, CardShadingType) {
     CardShadingSolid,
     CardShadingStriped,
     CardShadingOpen,
     CARD_SHADING_TYPE_COUNT
-} CardShadingType;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, CardColorType) {
     CardColorRed,
     CardColorGreen,
     CardColorPurple,
     CARD_COLOR_TYPE_COUNT
-} CardColorType;
+};
 
 /**
  The Set cards vary in four features: number, symbol, shading, and color.

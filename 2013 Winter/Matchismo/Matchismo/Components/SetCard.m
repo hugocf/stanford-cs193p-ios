@@ -59,8 +59,13 @@ NSString * const CardSymbolOval = @"●";
     self = [super init];
     if (self) {
         // validate params
-        if (!(number >= 1 && number <= 3)) return nil;
-        if (![[SetCard validSymbols] containsObject:symbol]) return nil;
+        if (!(number >= 1 && number <= 3)
+            || !(shading >= 0 && shading < CARD_SHADING_TYPE_COUNT)
+            || !(color >= 0 && color < CARD_COLOR_TYPE_COUNT)
+            || ![[SetCard validSymbols] containsObject:symbol])
+        {
+            return nil;
+        }
         
         // define the card
         _number = number;
