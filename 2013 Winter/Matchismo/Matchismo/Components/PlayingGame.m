@@ -14,7 +14,7 @@
 @property (readwrite, nonatomic) int score;
 @property (nonatomic) NSMutableArray *plays;
 @property (nonatomic) NSMutableArray *cards;
-@property (nonatomic, readonly) ScoreDefinitions weights;
+@property (nonatomic, readonly) ScoringDefinitions weights;
 
 @end
 
@@ -25,7 +25,7 @@
 - (id)initWithCardCount:(NSUInteger)count
                fromDeck:(Deck *)deck
              matchCount:(NSUInteger)numCards
-         bonusPenalties:(ScoreDefinitions)scoreSettings
+         bonusPenalties:(ScoringDefinitions)weights
 {
     self = [super init];
     if (self) {
@@ -38,7 +38,7 @@
             self.cards[i] = card;
         }
         self.numCardsToMatch = numCards;
-        _weights = scoreSettings;
+        _weights = weights;
     }
     return self;
 }
@@ -48,7 +48,7 @@
     return [self initWithCardCount:count
                           fromDeck:deck
                         matchCount:2
-                    bonusPenalties:(ScoreDefinitions){-1, -1, 2}];
+                    bonusPenalties:(ScoringDefinitions){-1, -1, 2}];
 }
 
 #pragma mark - Properties

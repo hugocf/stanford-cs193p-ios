@@ -15,7 +15,7 @@ typedef struct {
     NSInteger flipCost;
     NSInteger mismatchPenalty;
     NSInteger matchBonus;
-} ScoreDefinitions;
+} ScoringDefinitions;
 
 @interface PlayingGame : NSObject
 
@@ -23,7 +23,7 @@ typedef struct {
 - (id)initWithCardCount:(NSUInteger)count
                fromDeck:(Deck *)deck
              matchCount:(NSUInteger)numCards
-         bonusPenalties:(ScoreDefinitions)scoreSettings;
+         bonusPenalties:(ScoringDefinitions)weights;
 
 - (id)initWithCardCount:(NSUInteger)count
                fromDeck:(Deck *)deck;

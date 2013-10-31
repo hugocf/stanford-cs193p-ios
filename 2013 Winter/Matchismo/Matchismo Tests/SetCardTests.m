@@ -16,7 +16,7 @@
 
 @implementation SetCardTests
 
-#pragma mark - Each Method
+#pragma mark - Each Test
 
 - (void)setUp
 {

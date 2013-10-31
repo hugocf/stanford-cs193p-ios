@@ -54,7 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9A1CDE901818376A00443010 /* PlayingGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingGameTests.m; sourceTree = "<group>"; };
+		9A1CDE901818376A00443010 /* PlayingGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PlayingGameTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9A1CDE921818377500443010 /* SetGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetGameTests.m; sourceTree = "<group>"; };
 		9A2673D117E22E5100E2C708 /* SetGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetGameViewController.h; path = Controllers/SetGameViewController.h; sourceTree = "<group>"; };
 		9A2673D217E22E5100E2C708 /* SetGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SetGameViewController.m; path = Controllers/SetGameViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -70,7 +70,7 @@
 		9A29D2BE179FFBBB00163DCC /* PlayingDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingDeck.m; sourceTree = "<group>"; };
 		9A3565B117F2451300DD2625 /* PlayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayResult.h; sourceTree = "<group>"; };
 		9A3565B217F2451300DD2625 /* PlayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayResult.m; sourceTree = "<group>"; };
-		9A49FAF6180E96C400A9602A /* PlayingCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardTests.m; sourceTree = "<group>"; };
+		9A49FAF6180E96C400A9602A /* PlayingCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PlayingCardTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9A52916418057A80005F0DD8 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		9A52916B18057DCC005F0DD8 /* Matchismo Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Matchismo Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A52916C18057DCC005F0DD8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -95,7 +95,7 @@
 		9A6202AE179FEC41000329A2 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		9A6202B1179FEC9B000329A2 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
 		9A6202B2179FEC9B000329A2 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Deck.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		9A69FC43180FF125000707E7 /* SetCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardTests.m; sourceTree = "<group>"; };
+		9A69FC43180FF125000707E7 /* SetCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SetCardTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9A69FC4618102AE6000707E7 /* BaseCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCardTests.m; sourceTree = "<group>"; };
 		9A69FC4818102C6C000707E7 /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
 		9A69FC4918103A0C000707E7 /* BaseDeckTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDeckTests.m; sourceTree = "<group>"; };

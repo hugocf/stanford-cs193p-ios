@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
 
 @implementation PlayingGameTests
 
-#pragma mark - Each Method
+#pragma mark - Each Test
 
 - (void)setUp
 {
@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
     NSArray *game2Cards = [self createFixtureCards];
     NSArray *game3Cards = [self createFixtureCards];
     PlayingDeck *discardableDeck = [[PlayingDeck alloc] init];
-    ScoreDefinitions scoresDefinitions = (ScoreDefinitions){-1, -2, 4};
+    ScoringDefinitions scoresDefinitions = (ScoringDefinitions){-1, -2, 4};
     
     // Instancitate the game fixtures
     _game2 = [[PlayingGame alloc] initWithCardCount:[game2Cards count]
