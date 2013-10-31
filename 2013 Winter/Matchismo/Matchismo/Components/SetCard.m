@@ -88,19 +88,6 @@ NSString * const SetCardSymbolOval = @"●";
                          symbol:[SetCard validSymbols][0]];
 }
 
-#pragma mark - Properties
-
-- (BOOL)isFaceUp
-{
-    if (!super.isFaceUp) super.faceup = YES;
-    return super.isFaceUp;
-}
-
-- (void)setFaceup:(BOOL)faceup
-{
-    if (faceup) super.faceup = faceup;
-}
-
 #pragma mark - Methods
 
 - (NSString *)contents

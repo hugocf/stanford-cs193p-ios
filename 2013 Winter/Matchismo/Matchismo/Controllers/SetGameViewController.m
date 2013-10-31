@@ -45,7 +45,7 @@
         case SetCardColorGreen:
             cardColor = [UIColor greenColor];
             break;
-        case SetCardColorRed:   // follow-through
+        case SetCardColorRed:   // fall through
         default:
             cardColor = [UIColor redColor];
             break;
@@ -61,7 +61,7 @@
             strokeColor = cardColor;
             strokeWidth = @-5;
             break;
-        case SetCardShadingSolid:  // follow-through
+        case SetCardShadingSolid:  // fall through
         default:
             fillColor = strokeColor = cardColor;
             strokeWidth = @0;

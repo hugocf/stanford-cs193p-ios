@@ -61,7 +61,7 @@
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
         // Card back
         cardButton.imageEdgeInsets = UIEdgeInsetsMake(4.0, 4.0, 4.0, 4.0);
-        UIImage *cardBackImage = [UIImage imageNamed:@"cardback.png"];
+        UIImage *cardBackImage = [UIImage imageNamed:@"cardback"];
         [cardButton setImage:(card.isFaceUp)? nil : cardBackImage forState:UIControlStateNormal];
         // Card state
         cardButton.selected = card.isFaceUp;

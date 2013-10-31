@@ -40,13 +40,6 @@
 
 #pragma mark - Standard Card Operations
 
--(void)testCardsAreAlwaysFacingUp
-{
-    XCTAssertTrue(self.oneSolidRedDiamond.isFaceUp, @"Cards should start face up");
-    self.oneSolidRedDiamond.faceup = NO;
-    XCTAssertTrue(self.oneSolidRedDiamond.isFaceUp, @"Cards should always remain face up");
-}
-
 - (void)testCardsCanBeDisabled
 {
     XCTAssertFalse(self.oneSolidRedDiamond.isUnplayable, @"Cards should start being playable");
