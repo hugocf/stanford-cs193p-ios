@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "SetMatchingGame.h"
+#import "SetGame.h"
 
 @interface SetGameTests : XCTestCase
 

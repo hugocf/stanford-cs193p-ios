@@ -1,5 +1,5 @@
 //
-//  CardMatchingGame.h
+//  PlayingGame.h
 //  Matchismo
 //
 //  Created by Hugo Ferreira on 2013/08/02.
@@ -17,7 +17,7 @@ typedef struct {
     NSInteger matchBonus;
 } ScoreDefinitions;
 
-@interface CardMatchingGame : NSObject
+@interface PlayingGame : NSObject
 
 /** Designated Initializer */
 - (id)initWithCardCount:(NSUInteger)count

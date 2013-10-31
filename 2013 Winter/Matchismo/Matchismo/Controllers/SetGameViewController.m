@@ -7,7 +7,7 @@
 //
 
 #import "SetGameViewController.h"
-#import "SetMatchingGame.h"
+#import "SetGame.h"
 #import "SetDeck.h"
 #import "PlayResult.h"
 
@@ -22,9 +22,9 @@
 
 #pragma mark - Properties
 
-- (CardMatchingGame *)game
+- (PlayingGame *)game
 {
-    if (!_game) _game = [[SetMatchingGame alloc] initWithCardCount:[super.cardButtons count]
+    if (!_game) _game = [[SetGame alloc] initWithCardCount:[super.cardButtons count]
                                                            fromDeck:[[SetDeck alloc] init]
                                                          matchCount:3
                                                     bonusPenalties:(ScoreDefinitions){-3, -3, 4}];

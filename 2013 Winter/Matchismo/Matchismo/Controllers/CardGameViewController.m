@@ -7,7 +7,7 @@
 //
 
 #import "CardGameViewController.h"
-#import "CardMatchingGame.h"
+#import "PlayingGame.h"
 #import "PlayingDeck.h"
 #import "GameResult.h"
 #import "PlayResult.h"
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeSelector;
 @property (weak, nonatomic) IBOutlet UISlider *messageHistory;
 @property (nonatomic) int flipsCount;
-@property (strong, nonatomic) CardMatchingGame *game;
+@property (strong, nonatomic) PlayingGame *game;
 @property (strong, nonatomic) GameResult *gameResult;
 
 @end
@@ -37,9 +37,9 @@
     return _gameResult;
 }
 
-- (CardMatchingGame *)game
+- (PlayingGame *)game
 {
-    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+    if (!_game) _game = [[PlayingGame alloc] initWithCardCount:[self.cardButtons count]
                                                            fromDeck:[[PlayingDeck alloc] init]
                                                          matchCount:(self.gameModeSelector.selectedSegmentIndex)? 3 : 2
                                                      bonusPenalties:(ScoreDefinitions){-1, -2, 4}];

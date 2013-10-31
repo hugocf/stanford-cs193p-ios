@@ -1,5 +1,4 @@
 
-/* TODO: Refactor FooMatchingGame => FooGame */
 
 /* TODO: Refactor all enums => typedef NS_ENUM(NSInteger, ...) */
 

@@ -1,15 +1,15 @@
 //
-//  CardMatchingGame.m
+//  PlayingGame.m
 //  Matchismo
 //
 //  Created by Hugo Ferreira on 2013/08/02.
 //  Copyright (c) 2013 Mindclick. All rights reserved.
 //
 
-#import "CardMatchingGame.h"
+#import "PlayingGame.h"
 #import "PlayResult.h"
 
-@interface CardMatchingGame()
+@interface PlayingGame()
 
 @property (readwrite, nonatomic) int score;
 @property (nonatomic) NSMutableArray *plays;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation CardMatchingGame
+@implementation PlayingGame
 
 #pragma mark - Initializers
 

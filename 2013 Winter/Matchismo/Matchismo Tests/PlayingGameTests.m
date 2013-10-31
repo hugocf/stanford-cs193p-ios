@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "CardMatchingGame.h"
+#import "PlayingGame.h"
 #import "PlayingDeck.h"
 #import "PlayingCard.h"
 
@@ -23,15 +23,15 @@ typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
     PLAYING_GAME_FIXTURE_CARDS_INDEX_COUNT
 };
 
-@interface CardMatchingGame (Tests)
+@interface PlayingGame (Tests)
 @property (nonatomic) NSMutableArray *cards;
 @end
 
 #pragma mark - Test Suite
 
 @interface PlayingGameTests : XCTestCase
-@property (readonly, nonatomic) CardMatchingGame *game2;
-@property (readonly, nonatomic) CardMatchingGame *game3;
+@property (readonly, nonatomic) PlayingGame *game2;
+@property (readonly, nonatomic) PlayingGame *game3;
 @end
 
 @implementation PlayingGameTests
@@ -49,11 +49,11 @@ typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
     ScoreDefinitions scoresDefinitions = (ScoreDefinitions){-1, -2, 4};
     
     // Instancitate the game fixtures
-    _game2 = [[CardMatchingGame alloc] initWithCardCount:[game2Cards count]
+    _game2 = [[PlayingGame alloc] initWithCardCount:[game2Cards count]
                                                 fromDeck:discardableDeck
                                               matchCount:2
                                           bonusPenalties:scoresDefinitions];
-    _game3 = [[CardMatchingGame alloc] initWithCardCount:[game3Cards count]
+    _game3 = [[PlayingGame alloc] initWithCardCount:[game3Cards count]
                                                 fromDeck:discardableDeck
                                               matchCount:3
                                           bonusPenalties:scoresDefinitions];
@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
     return card;
 }
 
-- (void)assertIncreasedScoreOfGame:(CardMatchingGame *)game
+- (void)assertIncreasedScoreOfGame:(PlayingGame *)game
               afterMatchingCardsAt:(NSArray *)cardIndexes
 {
     XCTAssertNotNil(game, @"Cannot test if there is no game");
@@ -93,7 +93,7 @@ typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
     XCTAssert(game.score > initialScore, @"Matching cards should increase the score");
 }
 
-- (void)assertCardStateOfGame:(CardMatchingGame *)game
+- (void)assertCardStateOfGame:(PlayingGame *)game
          afterMatchingCardsAt:(NSArray *)cardIndexes
 {
     // Flip the cards
@@ -108,7 +108,7 @@ typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
     }
 }
 
-- (void)assertDecreasedScoreOfGame:(CardMatchingGame *)game
+- (void)assertDecreasedScoreOfGame:(PlayingGame *)game
            afterMismatchingCardsAt:(NSArray *)cardIndexes
 {
     XCTAssertNotNil(game, @"Cannot test if there is no game");
@@ -117,7 +117,7 @@ typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
     XCTAssert(game.score < initialScore, @"Mismatching cards should decrease the score");
 }
 
-- (void)assertCardStateOfGame:(CardMatchingGame *)game
+- (void)assertCardStateOfGame:(PlayingGame *)game
       afterMismatchingCardsAt:(NSArray *)cardIndexes
 {
     // Flip the cards

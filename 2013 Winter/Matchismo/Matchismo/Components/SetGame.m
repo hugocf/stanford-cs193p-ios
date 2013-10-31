@@ -1,14 +1,14 @@
 //
-//  SetMatchingGame.m
+//  SetGame.m
 //  Matchismo
 //
 //  Created by Hugo Ferreira on 2013/09/12.
 //  Copyright (c) 2013 Mindclick. All rights reserved.
 //
 
-#import "SetMatchingGame.h"
+#import "SetGame.h"
 
-@implementation SetMatchingGame
+@implementation SetGame
 
 #pragma mark - NSObject
 
