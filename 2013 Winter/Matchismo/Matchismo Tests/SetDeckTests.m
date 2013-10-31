@@ -30,8 +30,8 @@
     NSUInteger cardsInDeck = [fullDeck.cards count];
     NSUInteger totalNumbers = 3;
     NSUInteger totalSymbols = [[SetCard validSymbols] count];
-    NSUInteger totalShadings = CARD_SHADING_TYPE_COUNT;
-    NSUInteger totalColors = CARD_COLOR_TYPE_COUNT;
+    NSUInteger totalShadings = SET_CARD_SHADING_TYPE_COUNT;
+    NSUInteger totalColors = SET_CARD_COLOR_TYPE_COUNT;
     XCTAssertEqual(cardsInDeck, totalNumbers * totalSymbols * totalShadings * totalColors);
 }
 

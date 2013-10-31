@@ -23,16 +23,16 @@
     [super setUp];
     _defaultCard = [[SetCard alloc] init];
     _oneSolidRedDiamond = [[SetCard alloc] initWithNumber:1
-                                                  shading:CardShadingSolid
-                                                    color:CardColorRed
-                                                   symbol:CardSymbolDiamond];
+                                                  shading:SetCardShadingSolid
+                                                    color:SetCardColorRed
+                                                   symbol:SetCardSymbolDiamond];
 }
 
 #pragma mark - Helpers
 
 - (SetCard *)createCardWithNumber:(NSUInteger)number
-                          shading:(CardShadingType)shading
-                            color:(CardColorType)color
+                          shading:(SetCardShadingType)shading
+                            color:(SetCardColorType)color
                            symbol:(NSString *)symbol
 {
     return [[SetCard alloc] initWithNumber:number shading:shading color:color symbol:symbol];
@@ -59,17 +59,17 @@
 - (void)testCannotCreateCardsWithInvalidNumber
 {
     SetCard *card = [[SetCard alloc] initWithNumber:0
-                                            shading:CardShadingSolid
-                                              color:CardColorRed
-                                             symbol:CardSymbolDiamond];
+                                            shading:SetCardShadingSolid
+                                              color:SetCardColorRed
+                                             symbol:SetCardSymbolDiamond];
     XCTAssertNil(card, @"Must not be able to create an invalid card");
 }
 
 - (void)testCannotCreateCardsWithInvalidSymbol
 {
     SetCard *card = [[SetCard alloc] initWithNumber:1
-                                            shading:CardShadingSolid
-                                              color:CardColorRed
+                                            shading:SetCardShadingSolid
+                                              color:SetCardColorRed
                                              symbol:@"FooBar"];
     XCTAssertNil(card, @"Must not be able to create an invalid card");
 }
@@ -77,13 +77,13 @@
 - (void)testCannotCreateCardsWithInvalidShading
 {
     SetCard *card1 = [[SetCard alloc] initWithNumber:1
-                                             shading:CARD_SHADING_TYPE_COUNT
-                                               color:CardColorRed
-                                              symbol:CardSymbolDiamond];
+                                             shading:SET_CARD_SHADING_TYPE_COUNT
+                                               color:SetCardColorRed
+                                              symbol:SetCardSymbolDiamond];
     SetCard *card2 = [[SetCard alloc] initWithNumber:1
                                              shading:1000
-                                               color:CardColorRed
-                                              symbol:CardSymbolDiamond];
+                                               color:SetCardColorRed
+                                              symbol:SetCardSymbolDiamond];
     XCTAssertNil(card1, @"Must not be able to create an invalid card");
     XCTAssertNil(card2, @"Must not be able to create an invalid card");
 }
@@ -91,13 +91,13 @@
 - (void)testCannotCreateCardsWithInvalidColor
 {
     SetCard *card1 = [[SetCard alloc] initWithNumber:1
-                                             shading:CardShadingSolid
-                                               color:CARD_COLOR_TYPE_COUNT
-                                              symbol:CardSymbolDiamond];
+                                             shading:SetCardShadingSolid
+                                               color:SET_CARD_COLOR_TYPE_COUNT
+                                              symbol:SetCardSymbolDiamond];
     SetCard *card2 = [[SetCard alloc] initWithNumber:1
-                                             shading:CardShadingSolid
+                                             shading:SetCardShadingSolid
                                                color:1000
-                                              symbol:CardSymbolDiamond];
+                                              symbol:SetCardSymbolDiamond];
     XCTAssertNil(card1, @"Must not be able to create an invalid card");
     XCTAssertNil(card2, @"Must not be able to create an invalid card");
 }
@@ -109,8 +109,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:1 shading:CardShadingOpen    color:CardColorGreen  symbol:CardSymbolOval],
-      [self createCardWithNumber:1 shading:CardShadingStriped color:CardColorPurple symbol:CardSymbolSquiggle],
+      [self createCardWithNumber:1 shading:SetCardShadingOpen    color:SetCardColorGreen  symbol:SetCardSymbolOval],
+      [self createCardWithNumber:1 shading:SetCardShadingStriped color:SetCardColorPurple symbol:SetCardSymbolSquiggle],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score > 0, @"Matching card sets must return a positive score");
@@ -120,8 +120,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:2 shading:CardShadingSolid color:CardColorGreen  symbol:CardSymbolOval],
-      [self createCardWithNumber:3 shading:CardShadingSolid color:CardColorPurple symbol:CardSymbolSquiggle],
+      [self createCardWithNumber:2 shading:SetCardShadingSolid color:SetCardColorGreen  symbol:SetCardSymbolOval],
+      [self createCardWithNumber:3 shading:SetCardShadingSolid color:SetCardColorPurple symbol:SetCardSymbolSquiggle],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score > 0, @"Matching card sets must return a positive score");
@@ -131,8 +131,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:2 shading:CardShadingOpen    color:CardColorRed symbol:CardSymbolOval],
-      [self createCardWithNumber:3 shading:CardShadingStriped color:CardColorRed symbol:CardSymbolSquiggle],
+      [self createCardWithNumber:2 shading:SetCardShadingOpen    color:SetCardColorRed symbol:SetCardSymbolOval],
+      [self createCardWithNumber:3 shading:SetCardShadingStriped color:SetCardColorRed symbol:SetCardSymbolSquiggle],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score > 0, @"Matching card sets must return a positive score");
@@ -142,8 +142,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:2 shading:CardShadingOpen    color:CardColorGreen  symbol:CardSymbolDiamond],
-      [self createCardWithNumber:3 shading:CardShadingStriped color:CardColorPurple symbol:CardSymbolDiamond],
+      [self createCardWithNumber:2 shading:SetCardShadingOpen    color:SetCardColorGreen  symbol:SetCardSymbolDiamond],
+      [self createCardWithNumber:3 shading:SetCardShadingStriped color:SetCardColorPurple symbol:SetCardSymbolDiamond],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score > 0, @"Matching card sets must return a positive score");
@@ -153,8 +153,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:2 shading:CardShadingSolid color:CardColorRed symbol:CardSymbolDiamond],
-      [self createCardWithNumber:3 shading:CardShadingSolid color:CardColorRed symbol:CardSymbolDiamond],
+      [self createCardWithNumber:2 shading:SetCardShadingSolid color:SetCardColorRed symbol:SetCardSymbolDiamond],
+      [self createCardWithNumber:3 shading:SetCardShadingSolid color:SetCardColorRed symbol:SetCardSymbolDiamond],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score > 0, @"Matching card sets must return a positive score");
@@ -164,8 +164,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:1 shading:CardShadingOpen    color:CardColorRed symbol:CardSymbolDiamond],
-      [self createCardWithNumber:1 shading:CardShadingStriped color:CardColorRed symbol:CardSymbolDiamond],
+      [self createCardWithNumber:1 shading:SetCardShadingOpen    color:SetCardColorRed symbol:SetCardSymbolDiamond],
+      [self createCardWithNumber:1 shading:SetCardShadingStriped color:SetCardColorRed symbol:SetCardSymbolDiamond],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score > 0, @"Matching card sets must return a positive score");
@@ -175,8 +175,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:1 shading:CardShadingSolid color:CardColorGreen  symbol:CardSymbolDiamond],
-      [self createCardWithNumber:1 shading:CardShadingSolid color:CardColorPurple symbol:CardSymbolDiamond],
+      [self createCardWithNumber:1 shading:SetCardShadingSolid color:SetCardColorGreen  symbol:SetCardSymbolDiamond],
+      [self createCardWithNumber:1 shading:SetCardShadingSolid color:SetCardColorPurple symbol:SetCardSymbolDiamond],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score > 0, @"Matching card sets must return a positive score");
@@ -186,8 +186,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:1 shading:CardShadingSolid color:CardColorRed symbol:CardSymbolOval],
-      [self createCardWithNumber:1 shading:CardShadingSolid color:CardColorRed symbol:CardSymbolSquiggle],
+      [self createCardWithNumber:1 shading:SetCardShadingSolid color:SetCardColorRed symbol:SetCardSymbolOval],
+      [self createCardWithNumber:1 shading:SetCardShadingSolid color:SetCardColorRed symbol:SetCardSymbolSquiggle],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score > 0, @"Matching card sets must return a positive score");
@@ -197,8 +197,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:2 shading:CardShadingOpen    color:CardColorGreen  symbol:CardSymbolOval],
-      [self createCardWithNumber:2 shading:CardShadingStriped color:CardColorPurple symbol:CardSymbolSquiggle],
+      [self createCardWithNumber:2 shading:SetCardShadingOpen    color:SetCardColorGreen  symbol:SetCardSymbolOval],
+      [self createCardWithNumber:2 shading:SetCardShadingStriped color:SetCardColorPurple symbol:SetCardSymbolSquiggle],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score < 0, @"Mismatching card sets must return a negative score");
@@ -208,8 +208,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:2 shading:CardShadingOpen color:CardColorGreen  symbol:CardSymbolOval],
-      [self createCardWithNumber:3 shading:CardShadingOpen color:CardColorPurple symbol:CardSymbolSquiggle],
+      [self createCardWithNumber:2 shading:SetCardShadingOpen color:SetCardColorGreen  symbol:SetCardSymbolOval],
+      [self createCardWithNumber:3 shading:SetCardShadingOpen color:SetCardColorPurple symbol:SetCardSymbolSquiggle],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score < 0, @"Mismatching card sets must return a negative score");
@@ -219,8 +219,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:2 shading:CardShadingOpen    color:CardColorGreen  symbol:CardSymbolOval],
-      [self createCardWithNumber:3 shading:CardShadingStriped color:CardColorGreen symbol:CardSymbolSquiggle],
+      [self createCardWithNumber:2 shading:SetCardShadingOpen    color:SetCardColorGreen  symbol:SetCardSymbolOval],
+      [self createCardWithNumber:3 shading:SetCardShadingStriped color:SetCardColorGreen symbol:SetCardSymbolSquiggle],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score < 0, @"Mismatching card sets must return a negative score");
@@ -230,8 +230,8 @@
 {
     NSArray *otherCards =
     @[
-      [self createCardWithNumber:2 shading:CardShadingOpen    color:CardColorGreen  symbol:CardSymbolOval],
-      [self createCardWithNumber:3 shading:CardShadingStriped color:CardColorPurple symbol:CardSymbolOval],
+      [self createCardWithNumber:2 shading:SetCardShadingOpen    color:SetCardColorGreen  symbol:SetCardSymbolOval],
+      [self createCardWithNumber:3 shading:SetCardShadingStriped color:SetCardColorPurple symbol:SetCardSymbolOval],
       ];
     int score = [self.oneSolidRedDiamond match:otherCards];
     XCTAssert(score < 0, @"Mismatching card sets must return a negative score");

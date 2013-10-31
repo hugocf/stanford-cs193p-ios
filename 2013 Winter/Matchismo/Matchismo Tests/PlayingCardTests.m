@@ -22,7 +22,7 @@
 {
     [super setUp];
     _defaultCard = [[PlayingCard alloc] init];
-    _aceDiamonds = [self createCardRank:1 withSuit:@"♦"];
+    _aceDiamonds = [self createCardRank:1 withSuit:PlayingCardSymbolDiamonds];
 }
 
 #pragma mark - Helpers

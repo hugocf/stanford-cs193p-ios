@@ -8,9 +8,9 @@
 
 #import "SetCard.h"
 
-NSString * const CardSymbolDiamond = @"▲";
-NSString * const CardSymbolSquiggle = @"■";
-NSString * const CardSymbolOval = @"●";
+NSString * const SetCardSymbolDiamond = @"▲";
+NSString * const SetCardSymbolSquiggle = @"■";
+NSString * const SetCardSymbolOval = @"●";
 
 @implementation SetCard
 
@@ -48,23 +48,23 @@ NSString * const CardSymbolOval = @"●";
 + (NSArray *)validSymbols
 {
     static NSArray *symbols = nil;
-    if (!symbols) symbols = @[CardSymbolDiamond, CardSymbolOval, CardSymbolSquiggle];
+    if (!symbols) symbols = @[SetCardSymbolDiamond, SetCardSymbolOval, SetCardSymbolSquiggle];
     return symbols;
 }
 
 #pragma mark - Initialization
 
 - (id)initWithNumber:(NSUInteger)number
-             shading:(CardShadingType)shading
-               color:(CardColorType)color
+             shading:(SetCardShadingType)shading
+               color:(SetCardColorType)color
               symbol:(NSString *)symbol
 {
     self = [super init];
     if (self) {
         // validate params
         if (!(number >= 1 && number <= 3)
-            || !(shading >= 0 && shading < CARD_SHADING_TYPE_COUNT)
-            || !(color >= 0 && color < CARD_COLOR_TYPE_COUNT)
+            || !(shading >= 0 && shading < SET_CARD_SHADING_TYPE_COUNT)
+            || !(color >= 0 && color < SET_CARD_COLOR_TYPE_COUNT)
             || ![[SetCard validSymbols] containsObject:symbol])
         {
             return nil;
@@ -83,8 +83,8 @@ NSString * const CardSymbolOval = @"●";
 {
     // "reasonable" settings for a default card
     return [self initWithNumber:1
-                        shading:CardShadingSolid
-                          color:CardColorRed
+                        shading:SetCardShadingSolid
+                          color:SetCardColorRed
                          symbol:[SetCard validSymbols][0]];
 }
 

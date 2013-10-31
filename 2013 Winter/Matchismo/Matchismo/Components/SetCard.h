@@ -9,22 +9,22 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 
-extern NSString * const CardSymbolDiamond;
-extern NSString * const CardSymbolSquiggle;
-extern NSString * const CardSymbolOval;
+extern NSString * const SetCardSymbolDiamond;
+extern NSString * const SetCardSymbolSquiggle;
+extern NSString * const SetCardSymbolOval;
 
-typedef NS_ENUM(NSInteger, CardShadingType) {
-    CardShadingSolid,
-    CardShadingStriped,
-    CardShadingOpen,
-    CARD_SHADING_TYPE_COUNT
+typedef NS_ENUM(NSInteger, SetCardShadingType) {
+    SetCardShadingSolid,
+    SetCardShadingStriped,
+    SetCardShadingOpen,
+    SET_CARD_SHADING_TYPE_COUNT
 };
 
-typedef NS_ENUM(NSInteger, CardColorType) {
-    CardColorRed,
-    CardColorGreen,
-    CardColorPurple,
-    CARD_COLOR_TYPE_COUNT
+typedef NS_ENUM(NSInteger, SetCardColorType) {
+    SetCardColorRed,
+    SetCardColorGreen,
+    SetCardColorPurple,
+    SET_CARD_COLOR_TYPE_COUNT
 };
 
 /**
@@ -53,8 +53,8 @@ typedef NS_ENUM(NSInteger, CardColorType) {
 
 /** Designated initializer. */
 - (id)initWithNumber:(NSUInteger)number
-             shading:(CardShadingType)shading
-               color:(CardColorType)color
+             shading:(SetCardShadingType)shading
+               color:(SetCardColorType)color
               symbol:(NSString *)symbol;
 
 /** number = one, two, or three. */
@@ -64,10 +64,10 @@ typedef NS_ENUM(NSInteger, CardColorType) {
 @property (readonly, strong, nonatomic) NSString *symbol;
 
 /** shading = solid, striped, or open. */
-@property (readonly, nonatomic) CardShadingType shading;
+@property (readonly, nonatomic) SetCardShadingType shading;
 
 /** color = red, green, or purple. */
-@property (readonly, nonatomic) CardColorType color;
+@property (readonly, nonatomic) SetCardColorType color;
 
 /** List of NSString symbols allowed for the Set cards. */
 + (NSArray *)validSymbols;

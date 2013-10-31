@@ -39,29 +39,29 @@
     NSNumber *strokeWidth;
     // color
     switch (card.color) {
-        case CardColorPurple:
+        case SetCardColorPurple:
             cardColor = [UIColor purpleColor];
             break;
-        case CardColorGreen:
+        case SetCardColorGreen:
             cardColor = [UIColor greenColor];
             break;
-        case CardColorRed:   // follow-through
+        case SetCardColorRed:   // follow-through
         default:
             cardColor = [UIColor redColor];
             break;
     }
     // shading
     switch (card.shading) {
-        case CardShadingOpen:
+        case SetCardShadingOpen:
             fillColor = strokeColor = cardColor;
             strokeWidth = @5;
             break;
-        case CardShadingStriped:
+        case SetCardShadingStriped:
             fillColor = [cardColor colorWithAlphaComponent:0.10f];
             strokeColor = cardColor;
             strokeWidth = @-5;
             break;
-        case CardShadingSolid:  // follow-through
+        case SetCardShadingSolid:  // follow-through
         default:
             fillColor = strokeColor = cardColor;
             strokeWidth = @0;

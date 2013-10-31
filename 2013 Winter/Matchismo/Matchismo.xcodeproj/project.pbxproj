@@ -98,7 +98,7 @@
 		9A69FC43180FF125000707E7 /* SetCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SetCardTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9A69FC4618102AE6000707E7 /* BaseCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCardTests.m; sourceTree = "<group>"; };
 		9A69FC4818102C6C000707E7 /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
-		9A69FC4918103A0C000707E7 /* BaseDeckTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDeckTests.m; sourceTree = "<group>"; };
+		9A69FC4918103A0C000707E7 /* BaseDeckTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BaseDeckTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9A69FC4F181050AE000707E7 /* PlayingDeckTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingDeckTests.m; sourceTree = "<group>"; };
 		9A69FC51181050B9000707E7 /* SetDeckTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetDeckTests.m; sourceTree = "<group>"; };
 		9A8D55FC17DF7AF800550917 /* GameResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameResultViewController.h; path = Controllers/GameResultViewController.h; sourceTree = "<group>"; };

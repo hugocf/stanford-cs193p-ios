@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 
+extern NSString * const PlayingCardSymbolHearts;
+extern NSString * const PlayingCardSymbolDiamonds;
+extern NSString * const PlayingCardSymbolSpades;
+extern NSString * const PlayingCardSymbolClubs;
+
 @interface PlayingCard : Card
 
 @property (strong, nonatomic) NSString *suit;

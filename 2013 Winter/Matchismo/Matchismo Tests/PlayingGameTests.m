@@ -67,12 +67,12 @@ typedef NS_ENUM(NSInteger, PlayingGameFixtureCardIndex) {
 - (NSArray *)createFixtureCards
 {
     NSMutableArray *cards = [NSMutableArray arrayWithCapacity:PLAYING_GAME_FIXTURE_CARDS_INDEX_COUNT];
-    cards[PlayingGameFixtureCardIndexAceHearts] = [self createCardRank:1 withSuit:@"♥"];
-    cards[PlayingGameFixtureCardIndexAceDiamonds] = [self createCardRank:1 withSuit:@"♦"];
-    cards[PlayingGameFixtureCardIndexAceSpades] = [self createCardRank:1 withSuit:@"♠"];
-    cards[PlayingGameFixtureCardIndexThreeSpades] = [self createCardRank:3 withSuit:@"♠"];
-    cards[PlayingGameFixtureCardIndexFourSpades] = [self createCardRank:4 withSuit:@"♠"];
-    cards[PlayingGameFixtureCardIndexFiveClubs] = [self createCardRank:5 withSuit:@"♣"];
+    cards[PlayingGameFixtureCardIndexAceHearts] = [self createCardRank:1 withSuit:PlayingCardSymbolHearts];
+    cards[PlayingGameFixtureCardIndexAceDiamonds] = [self createCardRank:1 withSuit:PlayingCardSymbolDiamonds];
+    cards[PlayingGameFixtureCardIndexAceSpades] = [self createCardRank:1 withSuit:PlayingCardSymbolSpades];
+    cards[PlayingGameFixtureCardIndexThreeSpades] = [self createCardRank:3 withSuit:PlayingCardSymbolSpades];
+    cards[PlayingGameFixtureCardIndexFourSpades] = [self createCardRank:4 withSuit:PlayingCardSymbolSpades];
+    cards[PlayingGameFixtureCardIndexFiveClubs] = [self createCardRank:5 withSuit:PlayingCardSymbolClubs];
     return cards;
 }
 

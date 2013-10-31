@@ -1,6 +1,4 @@
 
-/* TODO: Refactor playing card suits from magic strings => constants */
-
 /* FIXME: Bad UI elements alignment in iOS 7 look & feel */
 
 /* TODO: Maybe test fixture should be is a separate classs? 

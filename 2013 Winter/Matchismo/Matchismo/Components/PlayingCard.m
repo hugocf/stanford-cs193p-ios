@@ -8,6 +8,11 @@
 
 #import "PlayingCard.h"
 
+NSString * const PlayingCardSymbolHearts = @"♥";
+NSString * const PlayingCardSymbolDiamonds = @"♦";
+NSString * const PlayingCardSymbolSpades = @"♠";
+NSString * const PlayingCardSymbolClubs = @"♣";
+
 @implementation PlayingCard
 
 #pragma mark - Class
@@ -15,7 +20,10 @@
 + (NSArray *)validSuits
 {
     static NSArray *suits = nil;
-    if (!suits) suits = @[@"♥", @"♦", @"♠", @"♣"];
+    if (!suits) suits = @[PlayingCardSymbolHearts,
+                          PlayingCardSymbolDiamonds,
+                          PlayingCardSymbolSpades,
+                          PlayingCardSymbolClubs];
     return suits;
 }
 
