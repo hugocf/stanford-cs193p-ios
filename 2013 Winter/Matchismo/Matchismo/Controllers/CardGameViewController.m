@@ -39,7 +39,7 @@
 
 - (CardMatchingGame *)game
 {
-    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
+    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
                                                            fromDeck:[[PlayingDeck alloc] init]
                                                          matchCount:(self.gameModeSelector.selectedSegmentIndex)? 3 : 2
                                                      bonusPenalties:(ScoreDefinitions){-1, -2, 4}];
@@ -85,8 +85,8 @@
     if (sender.isEnabled && !sender.isSelected) {
         self.flipsCount++; // Card flipped up
     }
-    self.messageHistory.maximumValue = [self.game lastPlays].count;
-    self.messageHistory.value = [self.game lastPlays].count;
+    self.messageHistory.maximumValue = [[self.game lastPlays] count];
+    self.messageHistory.value = [[self.game lastPlays] count];
     self.messageDisplay.alpha = 1.0;
     [self updateUI];
     self.gameResult.score = self.game.score; 

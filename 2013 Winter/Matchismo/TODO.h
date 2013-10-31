@@ -1,4 +1,3 @@
-/* TODO: Replace all .count => [ count] */
 
 /* TODO: Refactor FooMatchingGame => FooGame */
 

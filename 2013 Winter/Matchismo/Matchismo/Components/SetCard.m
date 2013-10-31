@@ -30,7 +30,7 @@ NSString * const CardSymbolOval = @"●";
 
 + (BOOL)allElementsInArray:(NSArray *)cards haveDistinct:(SEL)property
 {
-    return (cards.count == [self countUniquePropertyValuesFor:property inCards:cards]);
+    return ([cards count] == [self countUniquePropertyValuesFor:property inCards:cards]);
 }
 
 /**
@@ -116,10 +116,10 @@ NSString * const CardSymbolOval = @"●";
     BOOL(^isSameClass)(id, NSUInteger, BOOL*) = ^(id obj, NSUInteger idx, BOOL *stop) {
         return [obj isKindOfClass:[SetCard class]];
     };
-    BOOL isOnlySetCards = (otherCards.count == [otherCards indexesOfObjectsPassingTest:isSameClass].count);
+    BOOL isOnlySetCards = ([otherCards count] == [[otherCards indexesOfObjectsPassingTest:isSameClass] count]);
     
     // Compare with several SetCards...
-    if (otherCards.count > 0 && isOnlySetCards) {
+    if ([otherCards count] > 0 && isOnlySetCards) {
         NSArray *allCards = [otherCards arrayByAddingObject:self];
         
         // Penalise if some characteristic didn't match

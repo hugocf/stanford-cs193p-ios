@@ -89,7 +89,7 @@
             NSArray *cardsInPlay = [self.cards objectsAtIndexes:[self.cards indexesOfObjectsPassingTest:isCardInPlay]];
             
             // Check for a match if enough cards are flipped
-            if (cardsInPlay.count == self.numCardsToMatch - 1) {
+            if ([cardsInPlay count] == self.numCardsToMatch - 1) {
                 int cardScore = [card match:cardsInPlay];
                 if (cardScore > 0) {
                     // Cards match
@@ -135,7 +135,7 @@
 
 - (Card *)cardAtIndex:(NSUInteger)index
 {
-    return (index < self.cards.count)? self.cards[index] : nil;
+    return (index < [self.cards count])? self.cards[index] : nil;
 }
 
 - (NSString *)lastPlay

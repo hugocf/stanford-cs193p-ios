@@ -28,7 +28,7 @@
 
 + (NSUInteger)maxRank
 {
-    return [self validRanks].count - 1;
+    return [[self validRanks] count] - 1;
 }
 
 #pragma mark - Properties
@@ -67,7 +67,7 @@
     BOOL(^isSameSuit)(id, NSUInteger, BOOL*);
     BOOL(^isSameRank)(id, NSUInteger, BOOL*);
     
-    if (otherCards.count > 0) {
+    if ([otherCards count] > 0) {
         // Define the matching block conditions
         isSameSuit = ^(id obj, NSUInteger idx, BOOL *stop) {
             return (BOOL)([obj isKindOfClass:[PlayingCard class]]? [self.suit isEqualToString:[obj suit]] : NO);
@@ -77,8 +77,8 @@
         };
         
         // Does suit or rank match in all cards?
-        BOOL suitsMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:isSameSuit].count);
-        BOOL ranksMatch = (otherCards.count == [otherCards indexesOfObjectsPassingTest:isSameRank].count);
+        BOOL suitsMatch = ([otherCards count] == [[otherCards indexesOfObjectsPassingTest:isSameSuit] count]);
+        BOOL ranksMatch = ([otherCards count] == [[otherCards indexesOfObjectsPassingTest:isSameRank] count]);
         
         // Give out points
         if (suitsMatch) {
