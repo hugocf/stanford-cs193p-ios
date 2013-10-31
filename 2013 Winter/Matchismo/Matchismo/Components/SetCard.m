@@ -17,7 +17,7 @@ NSString * const CardSymbolOval = @"●";
 #pragma mark - Class
 
 /** Validates if a property of the cards is all the same or all distinct. */
-+ (BOOL)allSameOrDifferent:(NSString *)property forArray:(NSArray *)cards
++ (BOOL)allSameOrDifferent:(SEL)property forArray:(NSArray *)cards
 {
     return ([self allElementsInArray:cards haveTheSame:property])
         || ([self allElementsInArray:cards haveDistinct:property]);
@@ -27,9 +27,9 @@ NSString * const CardSymbolOval = @"●";
  If after transforming the array into a Set made out of values from the property
  there is only 1 element in the Set, then they were all the same value.
  */
-+ (BOOL)allElementsInArray:(NSArray *)cards haveTheSame:(NSString *)property
++ (BOOL)allElementsInArray:(NSArray *)cards haveTheSame:(SEL)property
 {
-    return (1 == [[NSSet setWithArray:[cards valueForKey:property]] count]);
+    return (1 == [[NSSet setWithArray:[cards valueForKey:NSStringFromSelector(property)]] count]);
 }
 
 /**
@@ -37,9 +37,9 @@ NSString * const CardSymbolOval = @"●";
  then, since sets only contain unique values, all the cards are different and distinct
  for that porperty.
  */
-+ (BOOL)allElementsInArray:(NSArray *)cards haveDistinct:(NSString *)property
++ (BOOL)allElementsInArray:(NSArray *)cards haveDistinct:(SEL)property
 {
-    return (cards.count == [[NSSet setWithArray:[cards valueForKey:property]] count]);
+    return (cards.count == [[NSSet setWithArray:[cards valueForKey:NSStringFromSelector(property)]] count]);
 }
 
 + (NSArray *)validSymbols
@@ -119,12 +119,12 @@ NSString * const CardSymbolOval = @"●";
     if (otherCards.count > 0 && isOnlySetCards) {
         NSArray *allCards = [otherCards arrayByAddingObject:self];
         
-        // Penalise if some feature didn't match
-        for (NSString *property in @[@"number", @"symbol", @"shading", @"color"]) {
-            if (![SetCard allSameOrDifferent:property forArray:allCards]) {
-                score--;
-            }
-        }
+        // Penalise if some characteristic didn't match
+        if (![SetCard allSameOrDifferent:@selector(number) forArray:allCards]) score--;
+        if (![SetCard allSameOrDifferent:@selector(shading) forArray:allCards]) score--;
+        if (![SetCard allSameOrDifferent:@selector(color) forArray:allCards]) score--;
+        if (![SetCard allSameOrDifferent:@selector(symbol) forArray:allCards]) score--;
+        
         // Give points for matching a set
         if (!(score < 0)) score = 3;
     }
