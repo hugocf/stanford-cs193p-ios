@@ -23,23 +23,26 @@ NSString * const CardSymbolOval = @"●";
         || ([self allElementsInArray:cards haveDistinct:property]);
 }
 
-/**
- If after transforming the array into a Set made out of values from the property
- there is only 1 element in the Set, then they were all the same value.
- */
 + (BOOL)allElementsInArray:(NSArray *)cards haveTheSame:(SEL)property
 {
-    return (1 == [[NSSet setWithArray:[cards valueForKey:NSStringFromSelector(property)]] count]);
+    return (1 == [self countUniquePropertyValuesFor:property inCards:cards]);
+}
+
++ (BOOL)allElementsInArray:(NSArray *)cards haveDistinct:(SEL)property
+{
+    return (cards.count == [self countUniquePropertyValuesFor:property inCards:cards]);
 }
 
 /**
- If the cards list is the same length as the Set made out of values from the property,
- then, since sets only contain unique values, all the cards are different and distinct
- for that porperty.
+ Since sets only contain unique values, making a set out of the values of the property
+ is an easy way to count the number of unique values for that property.
  */
-+ (BOOL)allElementsInArray:(NSArray *)cards haveDistinct:(SEL)property
++ (NSUInteger)countUniquePropertyValuesFor:(SEL)property inCards:(NSArray *)cards
 {
-    return (cards.count == [[NSSet setWithArray:[cards valueForKey:NSStringFromSelector(property)]] count]);
+    NSString *propertyName = NSStringFromSelector(property);
+    NSArray *propertyValues = [cards valueForKey:propertyName];
+    NSSet *uniquePropertyValues = [NSSet setWithArray:propertyValues];
+    return [uniquePropertyValues count];
 }
 
 + (NSArray *)validSymbols
@@ -78,7 +81,7 @@ NSString * const CardSymbolOval = @"●";
 
 - (id)init
 {
-    // "resonable" settings for a default card
+    // "reasonable" settings for a default card
     return [self initWithNumber:1
                         shading:CardShadingSolid
                           color:CardColorRed
