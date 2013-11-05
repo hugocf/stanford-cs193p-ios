@@ -1,0 +1,435 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DAE9F13716BD806A00B56095 /* J♠.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F11C16BD806A00B56095 /* J♠.jpg */; };
+		DAE9F13816BD806A00B56095 /* J♠@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F11D16BD806A00B56095 /* J♠@2x.jpg */; };
+		DAE9F13916BD806A00B56095 /* J♣.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F11E16BD806A00B56095 /* J♣.jpg */; };
+		DAE9F13A16BD806A00B56095 /* J♣@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F11F16BD806A00B56095 /* J♣@2x.jpg */; };
+		DAE9F13B16BD806A00B56095 /* J♥.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12016BD806A00B56095 /* J♥.jpg */; };
+		DAE9F13C16BD806A00B56095 /* J♥@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12116BD806A00B56095 /* J♥@2x.jpg */; };
+		DAE9F13D16BD806A00B56095 /* J♦.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12216BD806A00B56095 /* J♦.jpg */; };
+		DAE9F13E16BD806A00B56095 /* J♦@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12316BD806A00B56095 /* J♦@2x.jpg */; };
+		DAE9F13F16BD806A00B56095 /* K♠.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12416BD806A00B56095 /* K♠.jpg */; };
+		DAE9F14016BD806A00B56095 /* K♠@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12516BD806A00B56095 /* K♠@2x.jpg */; };
+		DAE9F14116BD806A00B56095 /* K♣.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12616BD806A00B56095 /* K♣.jpg */; };
+		DAE9F14216BD806A00B56095 /* K♣@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12716BD806A00B56095 /* K♣@2x.jpg */; };
+		DAE9F14316BD806A00B56095 /* K♥.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12816BD806A00B56095 /* K♥.jpg */; };
+		DAE9F14416BD806A00B56095 /* K♥@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12916BD806A00B56095 /* K♥@2x.jpg */; };
+		DAE9F14516BD806A00B56095 /* K♦.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12A16BD806A00B56095 /* K♦.jpg */; };
+		DAE9F14616BD806A00B56095 /* K♦@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12B16BD806A00B56095 /* K♦@2x.jpg */; };
+		DAE9F14716BD806A00B56095 /* Q♠.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12C16BD806A00B56095 /* Q♠.jpg */; };
+		DAE9F14816BD806A00B56095 /* Q♠@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12D16BD806A00B56095 /* Q♠@2x.jpg */; };
+		DAE9F14916BD806A00B56095 /* Q♣.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12E16BD806A00B56095 /* Q♣.jpg */; };
+		DAE9F14A16BD806A00B56095 /* Q♣@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F12F16BD806A00B56095 /* Q♣@2x.jpg */; };
+		DAE9F14B16BD806A00B56095 /* Q♥.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F13016BD806A00B56095 /* Q♥.jpg */; };
+		DAE9F14C16BD806A00B56095 /* Q♥@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F13116BD806A00B56095 /* Q♥@2x.jpg */; };
+		DAE9F14D16BD806A00B56095 /* Q♦.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F13216BD806A00B56095 /* Q♦.jpg */; };
+		DAE9F14E16BD806A00B56095 /* Q♦@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F13316BD806A00B56095 /* Q♦@2x.jpg */; };
+		DAE9F14F16BD806A00B56095 /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE9F13516BD806A00B56095 /* PlayingCardView.m */; };
+		DAE9F15116BD808400B56095 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = DAE9F15016BD808400B56095 /* cardback.png */; };
+		ECF58B1816BB4EB900F05EA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF58B1716BB4EB900F05EA1 /* UIKit.framework */; };
+		ECF58B1A16BB4EB900F05EA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF58B1916BB4EB900F05EA1 /* Foundation.framework */; };
+		ECF58B1C16BB4EB900F05EA1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF58B1B16BB4EB900F05EA1 /* CoreGraphics.framework */; };
+		ECF58B2216BB4EB900F05EA1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ECF58B2016BB4EB900F05EA1 /* InfoPlist.strings */; };
+		ECF58B2416BB4EB900F05EA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF58B2316BB4EB900F05EA1 /* main.m */; };
+		ECF58B2816BB4EB900F05EA1 /* CardChooserAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF58B2716BB4EB900F05EA1 /* CardChooserAppDelegate.m */; };
+		ECF58B2A16BB4EB900F05EA1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF58B2916BB4EB900F05EA1 /* Default.png */; };
+		ECF58B2C16BB4EB900F05EA1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF58B2B16BB4EB900F05EA1 /* Default@2x.png */; };
+		ECF58B2E16BB4EB900F05EA1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF58B2D16BB4EB900F05EA1 /* Default-568h@2x.png */; };
+		ECF58B3116BB4EB900F05EA1 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECF58B2F16BB4EB900F05EA1 /* MainStoryboard.storyboard */; };
+		ECF58B3416BB4EB900F05EA1 /* CardChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF58B3316BB4EB900F05EA1 /* CardChooserViewController.m */; };
+		ECF58B3C16BB4F5600F05EA1 /* CardDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF58B3B16BB4F5600F05EA1 /* CardDisplayViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DAE9F11C16BD806A00B56095 /* J♠.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "J♠.jpg"; sourceTree = "<group>"; };
+		DAE9F11D16BD806A00B56095 /* J♠@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "J♠@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F11E16BD806A00B56095 /* J♣.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "J♣.jpg"; sourceTree = "<group>"; };
+		DAE9F11F16BD806A00B56095 /* J♣@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "J♣@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F12016BD806A00B56095 /* J♥.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "J♥.jpg"; sourceTree = "<group>"; };
+		DAE9F12116BD806A00B56095 /* J♥@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "J♥@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F12216BD806A00B56095 /* J♦.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "J♦.jpg"; sourceTree = "<group>"; };
+		DAE9F12316BD806A00B56095 /* J♦@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "J♦@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F12416BD806A00B56095 /* K♠.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "K♠.jpg"; sourceTree = "<group>"; };
+		DAE9F12516BD806A00B56095 /* K♠@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "K♠@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F12616BD806A00B56095 /* K♣.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "K♣.jpg"; sourceTree = "<group>"; };
+		DAE9F12716BD806A00B56095 /* K♣@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "K♣@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F12816BD806A00B56095 /* K♥.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "K♥.jpg"; sourceTree = "<group>"; };
+		DAE9F12916BD806A00B56095 /* K♥@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "K♥@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F12A16BD806A00B56095 /* K♦.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "K♦.jpg"; sourceTree = "<group>"; };
+		DAE9F12B16BD806A00B56095 /* K♦@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "K♦@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F12C16BD806A00B56095 /* Q♠.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Q♠.jpg"; sourceTree = "<group>"; };
+		DAE9F12D16BD806A00B56095 /* Q♠@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Q♠@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F12E16BD806A00B56095 /* Q♣.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Q♣.jpg"; sourceTree = "<group>"; };
+		DAE9F12F16BD806A00B56095 /* Q♣@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Q♣@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F13016BD806A00B56095 /* Q♥.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Q♥.jpg"; sourceTree = "<group>"; };
+		DAE9F13116BD806A00B56095 /* Q♥@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Q♥@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F13216BD806A00B56095 /* Q♦.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Q♦.jpg"; sourceTree = "<group>"; };
+		DAE9F13316BD806A00B56095 /* Q♦@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Q♦@2x.jpg"; sourceTree = "<group>"; };
+		DAE9F13416BD806A00B56095 /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		DAE9F13516BD806A00B56095 /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
+		DAE9F15016BD808400B56095 /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardback.png; sourceTree = "<group>"; };
+		ECF58B1416BB4EB900F05EA1 /* CardViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF58B1716BB4EB900F05EA1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		ECF58B1916BB4EB900F05EA1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ECF58B1B16BB4EB900F05EA1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ECF58B1F16BB4EB900F05EA1 /* CardViewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CardViewer-Info.plist"; sourceTree = "<group>"; };
+		ECF58B2116BB4EB900F05EA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ECF58B2316BB4EB900F05EA1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ECF58B2516BB4EB900F05EA1 /* CardViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CardViewer-Prefix.pch"; sourceTree = "<group>"; };
+		ECF58B2616BB4EB900F05EA1 /* CardChooserAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardChooserAppDelegate.h; sourceTree = "<group>"; };
+		ECF58B2716BB4EB900F05EA1 /* CardChooserAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardChooserAppDelegate.m; sourceTree = "<group>"; };
+		ECF58B2916BB4EB900F05EA1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		ECF58B2B16BB4EB900F05EA1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		ECF58B2D16BB4EB900F05EA1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		ECF58B3016BB4EB900F05EA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		ECF58B3216BB4EB900F05EA1 /* CardChooserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardChooserViewController.h; sourceTree = "<group>"; };
+		ECF58B3316BB4EB900F05EA1 /* CardChooserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardChooserViewController.m; sourceTree = "<group>"; };
+		ECF58B3A16BB4F5600F05EA1 /* CardDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDisplayViewController.h; sourceTree = "<group>"; };
+		ECF58B3B16BB4F5600F05EA1 /* CardDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDisplayViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ECF58B1116BB4EB900F05EA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF58B1816BB4EB900F05EA1 /* UIKit.framework in Frameworks */,
+				ECF58B1A16BB4EB900F05EA1 /* Foundation.framework in Frameworks */,
+				ECF58B1C16BB4EB900F05EA1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DAE9F11B16BD806A00B56095 /* Face Card Images */ = {
+			isa = PBXGroup;
+			children = (
+				DAE9F11C16BD806A00B56095 /* J♠.jpg */,
+				DAE9F11D16BD806A00B56095 /* J♠@2x.jpg */,
+				DAE9F11E16BD806A00B56095 /* J♣.jpg */,
+				DAE9F11F16BD806A00B56095 /* J♣@2x.jpg */,
+				DAE9F12016BD806A00B56095 /* J♥.jpg */,
+				DAE9F12116BD806A00B56095 /* J♥@2x.jpg */,
+				DAE9F12216BD806A00B56095 /* J♦.jpg */,
+				DAE9F12316BD806A00B56095 /* J♦@2x.jpg */,
+				DAE9F12416BD806A00B56095 /* K♠.jpg */,
+				DAE9F12516BD806A00B56095 /* K♠@2x.jpg */,
+				DAE9F12616BD806A00B56095 /* K♣.jpg */,
+				DAE9F12716BD806A00B56095 /* K♣@2x.jpg */,
+				DAE9F12816BD806A00B56095 /* K♥.jpg */,
+				DAE9F12916BD806A00B56095 /* K♥@2x.jpg */,
+				DAE9F12A16BD806A00B56095 /* K♦.jpg */,
+				DAE9F12B16BD806A00B56095 /* K♦@2x.jpg */,
+				DAE9F12C16BD806A00B56095 /* Q♠.jpg */,
+				DAE9F12D16BD806A00B56095 /* Q♠@2x.jpg */,
+				DAE9F12E16BD806A00B56095 /* Q♣.jpg */,
+				DAE9F12F16BD806A00B56095 /* Q♣@2x.jpg */,
+				DAE9F13016BD806A00B56095 /* Q♥.jpg */,
+				DAE9F13116BD806A00B56095 /* Q♥@2x.jpg */,
+				DAE9F13216BD806A00B56095 /* Q♦.jpg */,
+				DAE9F13316BD806A00B56095 /* Q♦@2x.jpg */,
+			);
+			path = "Face Card Images";
+			sourceTree = "<group>";
+		};
+		DAE9F15216BD809600B56095 /* PlayingCardView */ = {
+			isa = PBXGroup;
+			children = (
+				DAE9F13416BD806A00B56095 /* PlayingCardView.h */,
+				DAE9F13516BD806A00B56095 /* PlayingCardView.m */,
+				DAE9F11B16BD806A00B56095 /* Face Card Images */,
+				DAE9F15016BD808400B56095 /* cardback.png */,
+			);
+			name = PlayingCardView;
+			sourceTree = "<group>";
+		};
+		ECF58B0B16BB4EB900F05EA1 = {
+			isa = PBXGroup;
+			children = (
+				ECF58B1D16BB4EB900F05EA1 /* CardViewer */,
+				ECF58B1616BB4EB900F05EA1 /* Frameworks */,
+				ECF58B1516BB4EB900F05EA1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ECF58B1516BB4EB900F05EA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECF58B1416BB4EB900F05EA1 /* CardViewer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ECF58B1616BB4EB900F05EA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECF58B1716BB4EB900F05EA1 /* UIKit.framework */,
+				ECF58B1916BB4EB900F05EA1 /* Foundation.framework */,
+				ECF58B1B16BB4EB900F05EA1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECF58B1D16BB4EB900F05EA1 /* CardViewer */ = {
+			isa = PBXGroup;
+			children = (
+				ECF58B2F16BB4EB900F05EA1 /* MainStoryboard.storyboard */,
+				ECF58B3A16BB4F5600F05EA1 /* CardDisplayViewController.h */,
+				ECF58B3B16BB4F5600F05EA1 /* CardDisplayViewController.m */,
+				ECF58B3216BB4EB900F05EA1 /* CardChooserViewController.h */,
+				ECF58B3316BB4EB900F05EA1 /* CardChooserViewController.m */,
+				DAE9F15216BD809600B56095 /* PlayingCardView */,
+				ECF58B1E16BB4EB900F05EA1 /* Supporting Files */,
+			);
+			path = CardViewer;
+			sourceTree = "<group>";
+		};
+		ECF58B1E16BB4EB900F05EA1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ECF58B2616BB4EB900F05EA1 /* CardChooserAppDelegate.h */,
+				ECF58B2716BB4EB900F05EA1 /* CardChooserAppDelegate.m */,
+				ECF58B1F16BB4EB900F05EA1 /* CardViewer-Info.plist */,
+				ECF58B2016BB4EB900F05EA1 /* InfoPlist.strings */,
+				ECF58B2316BB4EB900F05EA1 /* main.m */,
+				ECF58B2516BB4EB900F05EA1 /* CardViewer-Prefix.pch */,
+				ECF58B2916BB4EB900F05EA1 /* Default.png */,
+				ECF58B2B16BB4EB900F05EA1 /* Default@2x.png */,
+				ECF58B2D16BB4EB900F05EA1 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ECF58B1316BB4EB900F05EA1 /* CardViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECF58B3716BB4EB900F05EA1 /* Build configuration list for PBXNativeTarget "CardViewer" */;
+			buildPhases = (
+				ECF58B1016BB4EB900F05EA1 /* Sources */,
+				ECF58B1116BB4EB900F05EA1 /* Frameworks */,
+				ECF58B1216BB4EB900F05EA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CardViewer;
+			productName = CardViewer;
+			productReference = ECF58B1416BB4EB900F05EA1 /* CardViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ECF58B0C16BB4EB900F05EA1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CardChooser;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Stanford University";
+			};
+			buildConfigurationList = ECF58B0F16BB4EB900F05EA1 /* Build configuration list for PBXProject "CardViewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = ECF58B0B16BB4EB900F05EA1;
+			productRefGroup = ECF58B1516BB4EB900F05EA1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ECF58B1316BB4EB900F05EA1 /* CardViewer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ECF58B1216BB4EB900F05EA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF58B2216BB4EB900F05EA1 /* InfoPlist.strings in Resources */,
+				ECF58B2A16BB4EB900F05EA1 /* Default.png in Resources */,
+				ECF58B2C16BB4EB900F05EA1 /* Default@2x.png in Resources */,
+				ECF58B2E16BB4EB900F05EA1 /* Default-568h@2x.png in Resources */,
+				ECF58B3116BB4EB900F05EA1 /* MainStoryboard.storyboard in Resources */,
+				DAE9F13716BD806A00B56095 /* J♠.jpg in Resources */,
+				DAE9F13816BD806A00B56095 /* J♠@2x.jpg in Resources */,
+				DAE9F13916BD806A00B56095 /* J♣.jpg in Resources */,
+				DAE9F13A16BD806A00B56095 /* J♣@2x.jpg in Resources */,
+				DAE9F13B16BD806A00B56095 /* J♥.jpg in Resources */,
+				DAE9F13C16BD806A00B56095 /* J♥@2x.jpg in Resources */,
+				DAE9F13D16BD806A00B56095 /* J♦.jpg in Resources */,
+				DAE9F13E16BD806A00B56095 /* J♦@2x.jpg in Resources */,
+				DAE9F13F16BD806A00B56095 /* K♠.jpg in Resources */,
+				DAE9F14016BD806A00B56095 /* K♠@2x.jpg in Resources */,
+				DAE9F14116BD806A00B56095 /* K♣.jpg in Resources */,
+				DAE9F14216BD806A00B56095 /* K♣@2x.jpg in Resources */,
+				DAE9F14316BD806A00B56095 /* K♥.jpg in Resources */,
+				DAE9F14416BD806A00B56095 /* K♥@2x.jpg in Resources */,
+				DAE9F14516BD806A00B56095 /* K♦.jpg in Resources */,
+				DAE9F14616BD806A00B56095 /* K♦@2x.jpg in Resources */,
+				DAE9F14716BD806A00B56095 /* Q♠.jpg in Resources */,
+				DAE9F14816BD806A00B56095 /* Q♠@2x.jpg in Resources */,
+				DAE9F14916BD806A00B56095 /* Q♣.jpg in Resources */,
+				DAE9F14A16BD806A00B56095 /* Q♣@2x.jpg in Resources */,
+				DAE9F14B16BD806A00B56095 /* Q♥.jpg in Resources */,
+				DAE9F14C16BD806A00B56095 /* Q♥@2x.jpg in Resources */,
+				DAE9F14D16BD806A00B56095 /* Q♦.jpg in Resources */,
+				DAE9F14E16BD806A00B56095 /* Q♦@2x.jpg in Resources */,
+				DAE9F15116BD808400B56095 /* cardback.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ECF58B1016BB4EB900F05EA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF58B2416BB4EB900F05EA1 /* main.m in Sources */,
+				ECF58B2816BB4EB900F05EA1 /* CardChooserAppDelegate.m in Sources */,
+				ECF58B3416BB4EB900F05EA1 /* CardChooserViewController.m in Sources */,
+				ECF58B3C16BB4F5600F05EA1 /* CardDisplayViewController.m in Sources */,
+				DAE9F14F16BD806A00B56095 /* PlayingCardView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ECF58B2016BB4EB900F05EA1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ECF58B2116BB4EB900F05EA1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ECF58B2F16BB4EB900F05EA1 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ECF58B3016BB4EB900F05EA1 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ECF58B3516BB4EB900F05EA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		ECF58B3616BB4EB900F05EA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ECF58B3816BB4EB900F05EA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CardViewer/CardViewer-Prefix.pch";
+				INFOPLIST_FILE = "CardViewer/CardViewer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		ECF58B3916BB4EB900F05EA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CardViewer/CardViewer-Prefix.pch";
+				INFOPLIST_FILE = "CardViewer/CardViewer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ECF58B0F16BB4EB900F05EA1 /* Build configuration list for PBXProject "CardViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECF58B3516BB4EB900F05EA1 /* Debug */,
+				ECF58B3616BB4EB900F05EA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECF58B3716BB4EB900F05EA1 /* Build configuration list for PBXNativeTarget "CardViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECF58B3816BB4EB900F05EA1 /* Debug */,
+				ECF58B3916BB4EB900F05EA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ECF58B0C16BB4EB900F05EA1 /* Project object */;
+}
