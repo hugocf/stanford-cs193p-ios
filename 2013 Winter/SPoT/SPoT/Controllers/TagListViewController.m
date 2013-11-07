@@ -8,6 +8,9 @@
 
 #import "TagListViewController.h"
 
+static NSString * const TagListCellReuseIdentifier = @"TagName";
+static NSString * const TagListCellSegueIdentifier = @"ShowImagesForTag";
+
 @interface TagListViewController ()
 
 @end

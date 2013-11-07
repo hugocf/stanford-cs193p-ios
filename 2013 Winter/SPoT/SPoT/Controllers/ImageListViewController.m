@@ -8,6 +8,8 @@
 
 #import "ImageListViewController.h"
 
+static NSString * const ImageListCellReuseIdentifier = @"ImageName";
+
 @interface ImageListViewController ()
 
 @end
