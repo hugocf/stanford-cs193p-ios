@@ -109,7 +109,10 @@
 			children = (
 				9AF62832182BDFD200B127CE /* AppDelegate.h */,
 				9AF62833182BDFD200B127CE /* AppDelegate.m */,
-				9AF62835182BDFD200B127CE /* Images.xcassets */,
+				9AF6285A182BE05500B127CE /* Components */,
+				9AF6285B182BE05500B127CE /* Controllers */,
+				9AF6285E182BE05500B127CE /* Interfaces */,
+				9AF6285C182BE05500B127CE /* Resources */,
 				9AF6282A182BDFD200B127CE /* Supporting Files */,
 			);
 			path = SPoT;
@@ -142,6 +145,35 @@
 				9AF62845182BDFD200B127CE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9AF6285A182BE05500B127CE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		9AF6285B182BE05500B127CE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9AF6285C182BE05500B127CE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9AF62835182BDFD200B127CE /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9AF6285E182BE05500B127CE /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interfaces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
