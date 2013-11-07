@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9ACA7B86182BF1FD004410BB /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7B85182BF1FD004410BB /* FlickrFetcher.m */; };
 		9AF62824182BDFD200B127CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF62823182BDFD200B127CE /* Foundation.framework */; };
 		9AF62826182BDFD200B127CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF62825182BDFD200B127CE /* CoreGraphics.framework */; };
 		9AF62828182BDFD200B127CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF62827182BDFD200B127CE /* UIKit.framework */; };
@@ -33,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9ACA7B83182BF1FD004410BB /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
+		9ACA7B84182BF1FD004410BB /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		9ACA7B85182BF1FD004410BB /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		9AF62820182BDFD200B127CE /* SPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPoT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF62823182BDFD200B127CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9AF62825182BDFD200B127CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,8 +83,19 @@
 		9ACA7B7C182BEFE4004410BB /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9ACA7B82182BF1FD004410BB /* FlickrFetcher */,
 			);
 			path = Libraries;
+			sourceTree = "<group>";
+		};
+		9ACA7B82182BF1FD004410BB /* FlickrFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				9ACA7B83182BF1FD004410BB /* FlickrAPIKey.h */,
+				9ACA7B84182BF1FD004410BB /* FlickrFetcher.h */,
+				9ACA7B85182BF1FD004410BB /* FlickrFetcher.m */,
+			);
+			path = FlickrFetcher;
 			sourceTree = "<group>";
 		};
 		9AF62817182BDFD200B127CE = {
@@ -284,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AF62834182BDFD200B127CE /* AppDelegate.m in Sources */,
+				9ACA7B86182BF1FD004410BB /* FlickrFetcher.m in Sources */,
 				9AF62830182BDFD200B127CE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +501,7 @@
 				9AF6284E182BDFD200B127CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9AF6284F182BDFD200B127CE /* Build configuration list for PBXNativeTarget "SPoTTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +510,7 @@
 				9AF62851182BDFD200B127CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
