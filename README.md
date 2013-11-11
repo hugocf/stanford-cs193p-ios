@@ -5,14 +5,14 @@
 
 * [CS 193P iPhone Application Development](http://www.stanford.edu/class/cs193p/cgi-bin/drupal/)
 
-## 2013 Winter
+## 2013 Winter (2012/13)
 
     Updated for iOS 6.
 
 * Stanford's [Downloads (2012-13 Winter)](http://www.stanford.edu/class/cs193p/cgi-bin/drupal/downloads-2013-winter)
 * [Coding Together: Developing Apps for iPhone and iPad (Winter 2013)](https://itunes.apple.com/pt/course/coding-together-developing/id593208016?l=en)
 
-## 2011 Fall
+## 2011 Fall (2011/12)
 
     Learn how to create iOS 5 apps.
 
