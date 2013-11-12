@@ -105,12 +105,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9ACA7B7C182BEFE4004410BB /* Libraries */ = {
+		9AB0436F1832A2AC008AC104 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				9ACA7B82182BF1FD004410BB /* FlickrFetcher */,
+				9AF62864182BEB3E00B127CE /* PhotoBrowsing.storyboard */,
 			);
-			path = Libraries;
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		9AB043701832A33A008AC104 /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				9AF6285B182BE05500B127CE /* Controllers */,
+				9ACA7BAB182C12D3004410BB /* Gateways */,
+			);
+			path = Adapters;
 			sourceTree = "<group>";
 		};
 		9ACA7B82182BF1FD004410BB /* FlickrFetcher */ = {
@@ -150,7 +159,6 @@
 				9AF62829182BDFD200B127CE /* SPoT */,
 				9AF62842182BDFD200B127CE /* SPoTTests */,
 				9AF62822182BDFD200B127CE /* Frameworks */,
-				9ACA7B7C182BEFE4004410BB /* Libraries */,
 				9AF62821182BDFD200B127CE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -180,10 +188,10 @@
 			children = (
 				9AF62832182BDFD200B127CE /* AppDelegate.h */,
 				9AF62833182BDFD200B127CE /* AppDelegate.m */,
-				9AF6285A182BE05500B127CE /* Components */,
-				9AF6285B182BE05500B127CE /* Controllers */,
+				9ACA7BA6182C12D3004410BB /* Entities */,
+				9AF6285A182BE05500B127CE /* Use Cases */,
+				9AB043701832A33A008AC104 /* Adapters */,
 				9AF6285E182BE05500B127CE /* Interfaces */,
-				9AF6285C182BE05500B127CE /* Resources */,
 				9AF6282A182BDFD200B127CE /* Supporting Files */,
 			);
 			path = SPoT;
@@ -218,17 +226,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9AF6285A182BE05500B127CE /* Components */ = {
+		9AF6285A182BE05500B127CE /* Use Cases */ = {
 			isa = PBXGroup;
 			children = (
 				9ACA7BB5182C1565004410BB /* PhotoViewing.h */,
 				9ACA7BB6182C1565004410BB /* PhotoViewing.m */,
 				9ACA7BA3182C1282004410BB /* TagListing.h */,
 				9ACA7BA4182C1282004410BB /* TagListing.m */,
-				9ACA7BA6182C12D3004410BB /* Entities */,
-				9ACA7BAB182C12D3004410BB /* Gateways */,
 			);
-			path = Components;
+			path = "Use Cases";
 			sourceTree = "<group>";
 		};
 		9AF6285B182BE05500B127CE /* Controllers */ = {
@@ -255,7 +261,9 @@
 		9AF6285E182BE05500B127CE /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				9AF62864182BEB3E00B127CE /* PhotoBrowsing.storyboard */,
+				9ACA7B82182BF1FD004410BB /* FlickrFetcher */,
+				9AF6285C182BE05500B127CE /* Resources */,
+				9AB0436F1832A2AC008AC104 /* Screens */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
