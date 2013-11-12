@@ -1,13 +1,15 @@
 //
-//  TagListing.m
+//  TagListing.h
 //  SPoT
 //
 //  Created by Hugo Ferreira on 2013/11/07.
 //  Copyright (c) 2013 Mindclick. All rights reserved.
 //
 
-#import "TagListing.h"
+#import <Foundation/Foundation.h>
 
-@implementation TagListing
+@interface TagListing : NSObject
+
+- (NSArray *)listAllTags;
 
 @end

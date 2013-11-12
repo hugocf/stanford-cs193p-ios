@@ -29,7 +29,7 @@ static NSString * const FlickrTagSeparator = @" ";
 
 #pragma mark - ImageSupplierDataSource
 
-- (NSArray *)listAllTags
+- (NSArray *)listTagsAvailable
 {
     NSArray *tagsPerPhoto = [self.cachedPhotos valueForKey:FLICKR_TAGS];
     NSArray *allTagsUsed = [[tagsPerPhoto componentsJoinedByString:FlickrTagSeparator]
@@ -43,7 +43,7 @@ static NSString * const FlickrTagSeparator = @" ";
     return nil;
 }
 
-- (NSArray *)fetchMax:(NSUInteger)number imagesWithTag:(Tag *)tag;
+- (NSArray *)fetchMax:(NSUInteger)number imagesWithTag:(NSString *)tag;
 {
     return nil;
 }

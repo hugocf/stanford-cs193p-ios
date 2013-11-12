@@ -11,7 +11,6 @@
 
 static NSString * const TagListCellReuseIdentifier = @"TagName";
 static NSString * const TagListCellSegueIdentifier = @"ShowImagesForTag";
-static NSString * const TagListExclusions[] = { @"cs193pspot", @"portrait", @"landscape" };
 
 @interface TagListViewController ()
 
@@ -36,7 +35,8 @@ static NSString * const TagListExclusions[] = { @"cs193pspot", @"portrait", @"la
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TagListCellReuseIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TagListCellReuseIdentifier
+                                                            forIndexPath:indexPath];
 //    cell.textLabel.text = ((__TBD__ *)self.tags[indexPath.row]).title;
 //    cell.detailTextLabel.text = ((__TBD__ *)self.tags[indexPath.row]).subtitle;
     cell.textLabel.text = self.tagEntries[indexPath.row];
@@ -56,6 +56,7 @@ static NSString * const TagListExclusions[] = { @"cs193pspot", @"portrait", @"la
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tagEntries = [[TagListing new] listAllTags];
 }
 
 @end

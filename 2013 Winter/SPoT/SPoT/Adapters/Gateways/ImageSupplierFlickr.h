@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ImageSupplierDataSource.h"
+#import "ImageSupplierGateway.h"
 
 @interface ImageSupplierFlickr : NSObject <ImageSupplierDataSource>
 

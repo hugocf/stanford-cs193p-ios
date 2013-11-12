@@ -9,7 +9,9 @@
 #import "ImageDetailViewController.h"
 
 @interface ImageDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UIScrollView *imageviewer;
+
 @end
 
 @implementation ImageDetailViewController
