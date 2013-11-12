@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9AA1C23B1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1C23A1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m */; };
 		9ACA7B86182BF1FD004410BB /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7B85182BF1FD004410BB /* FlickrFetcher.m */; };
 		9ACA7B90182C0DE9004410BB /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7B8F182C0DE9004410BB /* TagListViewController.m */; };
 		9ACA7B93182C0E09004410BB /* ImageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7B92182C0E09004410BB /* ImageListViewController.m */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9AA1C23A1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcherLearningTests.m; sourceTree = "<group>"; };
 		9ACA7B83182BF1FD004410BB /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		9ACA7B84182BF1FD004410BB /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		9ACA7B85182BF1FD004410BB /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		9AF62842182BDFD200B127CE /* SPoTTests */ = {
 			isa = PBXGroup;
 			children = (
+				9AA1C23A1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m */,
 				9AF62848182BDFD200B127CE /* SPoTTests.m */,
 				9AF62843182BDFD200B127CE /* Supporting Files */,
 			);
@@ -382,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA1C23B1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m in Sources */,
 				9AF62849182BDFD200B127CE /* SPoTTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
