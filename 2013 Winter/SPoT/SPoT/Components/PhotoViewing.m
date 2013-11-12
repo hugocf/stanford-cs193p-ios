@@ -1,13 +1,13 @@
 //
-//  ShowImagesForTags.h
+//  PhotoViewing.m
 //  SPoT
 //
 //  Created by Hugo Ferreira on 2013/11/07.
 //  Copyright (c) 2013 Mindclick. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "PhotoViewing.h"
 
-@interface ShowImagesForTags : NSObject
+@implementation PhotoViewing
 
 @end

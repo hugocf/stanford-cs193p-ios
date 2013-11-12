@@ -1,13 +1,15 @@
 //
-//  ShowImagesByDate.m
+//  TagListing.h
 //  SPoT
 //
 //  Created by Hugo Ferreira on 2013/11/07.
 //  Copyright (c) 2013 Mindclick. All rights reserved.
 //
 
-#import "ShowImagesByDate.h"
+#import <Foundation/Foundation.h>
 
-@implementation ShowImagesByDate
+@interface TagListing : NSObject
+
+// … listAllTags;
 
 @end

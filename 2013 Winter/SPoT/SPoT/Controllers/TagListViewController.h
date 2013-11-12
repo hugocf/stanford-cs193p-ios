@@ -10,4 +10,6 @@
 
 @interface TagListViewController : UITableViewController
 
+@property (strong, nonatomic) NSArray *tagEntries;
+
 @end
