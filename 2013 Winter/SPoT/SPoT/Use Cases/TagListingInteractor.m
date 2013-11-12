@@ -1,23 +1,23 @@
 //
-//  TagListing.m
+//  TagListingInteractor.m
 //  SPoT
 //
 //  Created by Hugo Ferreira on 2013/11/07.
 //  Copyright (c) 2013 Mindclick. All rights reserved.
 //
 
-#import "TagListing.h"
+#import "TagListingInteractor.h"
 #import "ImageSupplierGateway.h"
 
 static NSString * const TagListExclusions[] = { @"cs193pspot", @"portrait", @"landscape" };
 
-@interface TagListing ()
+@interface TagListingInteractor ()
 
 @property (strong, nonatomic) id <ImageSupplierDataSource> photoSupplier;
 
 @end
 
-@implementation TagListing
+@implementation TagListingInteractor
 
 #pragma mark - Properties
 

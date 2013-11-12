@@ -7,7 +7,7 @@
 //
 
 #import "TagListViewController.h"
-#import "TagListing.h"
+#import "TagListingInteractor.h"
 
 static NSString * const TagListCellReuseIdentifier = @"TagName";
 static NSString * const TagListCellSegueIdentifier = @"ShowImagesForTag";
@@ -56,7 +56,7 @@ static NSString * const TagListCellSegueIdentifier = @"ShowImagesForTag";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tagEntries = [[TagListing new] listAllTags];
+    self.tagEntries = [[TagListingInteractor new] listAllTags];
 }
 
 @end

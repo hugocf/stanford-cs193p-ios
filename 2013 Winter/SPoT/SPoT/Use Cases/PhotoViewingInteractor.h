@@ -1,5 +1,5 @@
 //
-//  PhotoViewing.h
+//  PhotoViewingInteractor.h
 //  SPoT
 //
 //  Created by Hugo Ferreira on 2013/11/07.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PhotoViewing : NSObject
+@interface PhotoViewingInteractor : NSObject
 
 //  … listByTag
 //  … listByDate

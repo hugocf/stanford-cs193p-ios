@@ -1,5 +1,5 @@
 //
-//  TagListing.h
+//  TagListingInteractor.h
 //  SPoT
 //
 //  Created by Hugo Ferreira on 2013/11/07.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TagListing : NSObject
+@interface TagListingInteractor : NSObject
 
 - (NSArray *)listAllTags;
 
