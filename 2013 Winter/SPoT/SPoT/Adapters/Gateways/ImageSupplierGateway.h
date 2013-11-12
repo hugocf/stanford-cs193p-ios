@@ -7,22 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TagEntity.h"
 
 @protocol ImageSupplierDataSource <NSObject>
 
-/** @return List of `NSString` objects. */
+/** @return List of `TagEntity` objects. */
 - (NSArray *)listTagsAvailable;
 
 /**
- @param tagsToExclude List of string-evaluated objects defining the ignored tags.
- @return List of `NSString` objects.
+ @param tagsToExclude List of objects defining the ignored tags, evaluated as strings.
+ @return List of `TagEntity` objects.
  */
 - (NSArray *)listTagsExcluding:(NSArray *)tagsToExclude;
 
-/** @return List of `Image`[FIXME: wrong!] objects. */
-- (NSArray *)fetchMax:(NSUInteger)number imagesWithTag:(NSString *)tag;
+/** @return List of `ImageEntity` objects. */
+- (NSArray *)fetchMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag;
 
-/** @return List of `Image`[FIXME: wrong!] objects. */
+/** @return List of `ImageEntity` objects. */
 - (NSArray *)fetchMax:(NSUInteger)number imagesBeforeDate:(NSDate *)date;
 
 @end

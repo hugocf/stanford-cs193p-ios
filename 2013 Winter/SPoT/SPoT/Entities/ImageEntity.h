@@ -1,5 +1,5 @@
 //
-//  Tag.h
+//  ImageEntity.h
 //  SPoT
 //
 //  Created by Hugo Ferreira on 2013/11/07.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Tag : NSObject
+@interface ImageEntity : NSObject
 
 @end

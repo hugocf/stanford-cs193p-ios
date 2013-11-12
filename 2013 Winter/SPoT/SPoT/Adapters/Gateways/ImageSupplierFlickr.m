@@ -43,7 +43,7 @@ static NSString * const FlickrTagSeparator = @" ";
     return nil;
 }
 
-- (NSArray *)fetchMax:(NSUInteger)number imagesWithTag:(NSString *)tag;
+- (NSArray *)fetchMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag;
 {
     return nil;
 }
