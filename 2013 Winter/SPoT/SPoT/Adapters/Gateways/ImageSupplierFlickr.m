@@ -11,14 +11,27 @@
 
 static NSString * const FlickrTagSeparator = @" ";
 
+@interface ImageSupplierFlickr ()
+
+@property (strong, nonatomic) NSArray *cachedPhotos;
+
+@end
+
 @implementation ImageSupplierFlickr
+
+#pragma mark - Properties
+
+- (NSArray *)cachedPhotos
+{
+    if (!_cachedPhotos) _cachedPhotos = [FlickrFetcher stanfordPhotos];
+    return _cachedPhotos;
+}
 
 #pragma mark - ImageSupplierDataSource
 
 - (NSArray *)listAllTags
 {
-    NSArray *photos = [FlickrFetcher stanfordPhotos];
-    NSArray *tagsPerPhoto = [photos valueForKey:FLICKR_TAGS];
+    NSArray *tagsPerPhoto = [self.cachedPhotos valueForKey:FLICKR_TAGS];
     NSArray *allTagsUsed = [[tagsPerPhoto componentsJoinedByString:FlickrTagSeparator]
                             componentsSeparatedByString:FlickrTagSeparator];
     NSSet *uniqueTagList = [NSSet setWithArray:allTagsUsed];
