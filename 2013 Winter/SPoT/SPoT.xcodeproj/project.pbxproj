@@ -47,6 +47,8 @@
 		9AA1C23A1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcherLearningTests.m; sourceTree = "<group>"; };
 		9AA1C23E1832BC9200B75AD5 /* ImageSupplierGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageSupplierGateway.h; sourceTree = "<group>"; };
 		9AA1C23F1832BC9200B75AD5 /* ImageSupplierGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSupplierGateway.m; sourceTree = "<group>"; };
+		9AA1C241183397D700B75AD5 /* Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		9AA1C2431833990E00B75AD5 /* ArrayCount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayCount.h; sourceTree = "<group>"; };
 		9ACA7B83182BF1FD004410BB /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		9ACA7B84182BF1FD004410BB /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		9ACA7B85182BF1FD004410BB /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
@@ -109,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9AA1C2421833985D00B75AD5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9AA1C241183397D700B75AD5 /* Helpers.h */,
+				9AA1C2431833990E00B75AD5 /* ArrayCount.h */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9AB0436F1832A2AC008AC104 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +216,7 @@
 		9AF6282A182BDFD200B127CE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9AA1C2421833985D00B75AD5 /* Helpers */,
 				9AF6282B182BDFD200B127CE /* SPoT-Info.plist */,
 				9AF6282C182BDFD200B127CE /* InfoPlist.strings */,
 				9AF6282F182BDFD200B127CE /* main.m */,
