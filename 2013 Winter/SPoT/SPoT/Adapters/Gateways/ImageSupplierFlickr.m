@@ -27,15 +27,31 @@ static NSString * const FlickrTagSeparator = @" ";
     return _cachedPhotos;
 }
 
+#pragma mark - Methods
+
+- (NSUInteger)countImagesWithTag:(NSString *)tagText
+{
+    return 1;   /* TODO: count from the self.cachedPhotos */
+}
+
 #pragma mark - ImageSupplierDataSource
 
 - (NSArray *)listTagsAvailable
 {
+    // Flickr tag strings
     NSArray *tagsPerPhoto = [self.cachedPhotos valueForKey:FLICKR_TAGS];
     NSArray *allTagsUsed = [[tagsPerPhoto componentsJoinedByString:FlickrTagSeparator]
                             componentsSeparatedByString:FlickrTagSeparator];
     NSSet *uniqueTagList = [NSSet setWithArray:allTagsUsed];
-    return [uniqueTagList allObjects];
+    
+    // Wrap in tag entities
+    NSMutableArray *tags = [NSMutableArray arrayWithCapacity:[uniqueTagList count]];
+    for (NSString *tagText in uniqueTagList) {
+        NSUInteger numberOfImages = [self countImagesWithTag:tagText];
+        [tags addObject:[[TagEntity alloc] initWithName:tagText imageCount:numberOfImages]];
+    }
+    
+    return [tags copy];
 }
 
 - (NSArray *)listTagsExcluding:(NSArray *)tagsToExclude;

@@ -10,4 +10,29 @@
 
 @implementation TagEntity
 
+#pragma mark - Initialization
+
+- (id)initWithName:(NSString *)name imageCount:(NSUInteger)count
+{
+    self = [super init];
+    if (self) {
+        _name = name;
+        _numberOfImages = count;
+    }
+    return self;
+}
+
+- (id)init
+{
+    self = [self init];
+    return self;
+}
+
+#pragma mark - NSObject
+
+- (NSString *)description
+{
+    return [self.name capitalizedString];
+}
+
 @end

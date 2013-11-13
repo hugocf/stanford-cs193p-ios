@@ -8,9 +8,11 @@
 
 #import "TagListViewController.h"
 #import "TagListingInteractor.h"
+#import "TagEntity.h"
 
 static NSString * const TagListCellReuseIdentifier = @"TagName";
 static NSString * const TagListCellSegueIdentifier = @"ShowImagesForTag";
+static NSString * const TagListSubtitleText = @"%d photo%@";
 
 @interface TagListViewController ()
 
@@ -37,10 +39,10 @@ static NSString * const TagListCellSegueIdentifier = @"ShowImagesForTag";
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TagListCellReuseIdentifier
                                                             forIndexPath:indexPath];
-//    cell.textLabel.text = ((__TBD__ *)self.tags[indexPath.row]).title;
-//    cell.detailTextLabel.text = ((__TBD__ *)self.tags[indexPath.row]).subtitle;
-    cell.textLabel.text = self.tagEntries[indexPath.row];
-    cell.detailTextLabel.text = self.tagEntries[indexPath.row];
+    TagEntity *tag = (TagEntity *)self.tagEntries[indexPath.row];
+    BOOL isPlural = tag.numberOfImages > 1;
+    cell.textLabel.text = tag.description;
+    cell.detailTextLabel.text = [NSString stringWithFormat:TagListSubtitleText, tag.numberOfImages, (isPlural)? @"s" : @""];
     return cell;
 }
 

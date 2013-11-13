@@ -10,4 +10,14 @@
 
 @interface TagEntity : NSObject
 
+@property (readonly, strong, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSUInteger numberOfImages;
+
+///--------------------------------------------------------------------------------
+/// @name Initializing a Tag
+///--------------------------------------------------------------------------------
+
+/** Designated initializer. */
+- (id)initWithName:(NSString *)name imageCount:(NSUInteger)count;
+
 @end
