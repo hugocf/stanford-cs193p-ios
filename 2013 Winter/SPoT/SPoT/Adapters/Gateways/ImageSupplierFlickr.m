@@ -31,7 +31,12 @@ static NSString * const FlickrTagSeparator = @" ";
 
 - (NSUInteger)countImagesWithTag:(NSString *)tagText
 {
-    return 1;   /* TODO: count from the self.cachedPhotos */
+    BOOL(^imageContainsTag)(id, NSUInteger, BOOL*) = ^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        NSRange search = [obj[FLICKR_TAGS] rangeOfString:tagText];
+        return search.location != NSNotFound;
+    };
+    NSIndexSet *matchingImageIndexes = [self.cachedPhotos indexesOfObjectsPassingTest:imageContainsTag];
+    return [matchingImageIndexes count];
 }
 
 #pragma mark - ImageSupplierDataSource
