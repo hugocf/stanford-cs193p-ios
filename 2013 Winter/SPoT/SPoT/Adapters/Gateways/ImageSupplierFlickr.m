@@ -29,29 +29,28 @@ static NSString * const FlickrTagSeparator = @" ";
 
 #pragma mark - Methods
 
-- (NSSet *)uniqueTagStrings
+- (NSSet *)uniqueFlickrTags
 {
-    NSArray *tagsPerPhoto = [self.cachedPhotos valueForKey:FLICKR_TAGS];
-    NSArray *allTagsUsed = [[tagsPerPhoto componentsJoinedByString:FlickrTagSeparator]
-                            componentsSeparatedByString:FlickrTagSeparator];
-    NSSet *uniqueTagList = [NSSet setWithArray:allTagsUsed];
-    return uniqueTagList;
+    NSArray *flickrTagsPerPhoto = [self.cachedPhotos valueForKey:FLICKR_TAGS];
+    NSArray *allFlickrTagsUsed = [[flickrTagsPerPhoto componentsJoinedByString:FlickrTagSeparator]
+                                  componentsSeparatedByString:FlickrTagSeparator];
+    return [NSSet setWithArray:allFlickrTagsUsed];
 }
 
-- (NSArray *)wrapInTagEntries:(NSSet *)tagList
+- (NSArray *)wrapInTagEntities:(NSSet *)flickrTags
 {
-    NSMutableArray *tags = [NSMutableArray arrayWithCapacity:[tagList count]];
-    for (NSString *tagText in tagList) {
-        NSUInteger numberOfImages = [self countImagesWithTag:tagText];
-        [tags addObject:[[TagEntity alloc] initWithName:tagText imageCount:numberOfImages]];
+    NSMutableArray *tags = [NSMutableArray arrayWithCapacity:[flickrTags count]];
+    for (NSString *tagName in flickrTags) {
+        NSUInteger numberOfImages = [self countFlickrImagesWithTag:tagName];
+        [tags addObject:[[TagEntity alloc] initWithName:tagName imageCount:numberOfImages]];
     }
     return [tags copy];
 }
 
-- (NSUInteger)countImagesWithTag:(NSString *)tagText
+- (NSUInteger)countFlickrImagesWithTag:(NSString *)tagName
 {
     BOOL(^imageContainsTag)(id, NSUInteger, BOOL*) = ^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        NSRange search = [obj[FLICKR_TAGS] rangeOfString:tagText];
+        NSRange search = [obj[FLICKR_TAGS] rangeOfString:tagName];
         return search.location != NSNotFound;
     };
     NSIndexSet *matchingImageIndexes = [self.cachedPhotos indexesOfObjectsPassingTest:imageContainsTag];
@@ -62,18 +61,17 @@ static NSString * const FlickrTagSeparator = @" ";
 
 - (NSArray *)listTagsAvailable
 {
-    NSSet *uniqueTagList = [self uniqueTagStrings];
-    return [self wrapInTagEntries:uniqueTagList];
+    return [self wrapInTagEntities:[self uniqueFlickrTags]];
 }
 
 - (NSArray *)listTagsExcluding:(NSArray *)tagsToExclude;
 {
-    NSMutableSet *uniqueTagList = [[self uniqueTagStrings] mutableCopy];
-    for (NSString *excludeTag in tagsToExclude) {
-        [uniqueTagList removeObject:excludeTag];
+    NSMutableSet *uniqueFlickrTagList = [[self uniqueFlickrTags] mutableCopy];
+    for (NSString *excludedTag in tagsToExclude) {
+        [uniqueFlickrTagList removeObject:excludedTag];
     }
-    return [self wrapInTagEntries:uniqueTagList];
-}
+    return [self wrapInTagEntities:uniqueFlickrTagList];
+}	
 
 - (NSArray *)fetchMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag;
 {
