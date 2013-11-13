@@ -31,7 +31,8 @@ static NSString * const TagListExclusions[] = { @"cs193pspot", @"portrait", @"la
 
 - (NSArray *)listAllTags
 {
-    return [self.photoSupplier listTagsAvailable];
+    NSArray *tagsToIgnore = [NSArray arrayWithObjects:TagListExclusions count:C_ARRAY_COUNT(TagListExclusions)];
+    return [self.photoSupplier listTagsExcluding:tagsToIgnore];
 }
 
 @end

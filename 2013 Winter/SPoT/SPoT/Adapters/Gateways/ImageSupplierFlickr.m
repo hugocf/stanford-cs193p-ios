@@ -29,6 +29,25 @@ static NSString * const FlickrTagSeparator = @" ";
 
 #pragma mark - Methods
 
+- (NSSet *)uniqueTagStrings
+{
+    NSArray *tagsPerPhoto = [self.cachedPhotos valueForKey:FLICKR_TAGS];
+    NSArray *allTagsUsed = [[tagsPerPhoto componentsJoinedByString:FlickrTagSeparator]
+                            componentsSeparatedByString:FlickrTagSeparator];
+    NSSet *uniqueTagList = [NSSet setWithArray:allTagsUsed];
+    return uniqueTagList;
+}
+
+- (NSArray *)wrapInTagEntries:(NSSet *)tagList
+{
+    NSMutableArray *tags = [NSMutableArray arrayWithCapacity:[tagList count]];
+    for (NSString *tagText in tagList) {
+        NSUInteger numberOfImages = [self countImagesWithTag:tagText];
+        [tags addObject:[[TagEntity alloc] initWithName:tagText imageCount:numberOfImages]];
+    }
+    return [tags copy];
+}
+
 - (NSUInteger)countImagesWithTag:(NSString *)tagText
 {
     BOOL(^imageContainsTag)(id, NSUInteger, BOOL*) = ^BOOL(id obj, NSUInteger idx, BOOL *stop) {
@@ -43,25 +62,17 @@ static NSString * const FlickrTagSeparator = @" ";
 
 - (NSArray *)listTagsAvailable
 {
-    // Flickr tag strings
-    NSArray *tagsPerPhoto = [self.cachedPhotos valueForKey:FLICKR_TAGS];
-    NSArray *allTagsUsed = [[tagsPerPhoto componentsJoinedByString:FlickrTagSeparator]
-                            componentsSeparatedByString:FlickrTagSeparator];
-    NSSet *uniqueTagList = [NSSet setWithArray:allTagsUsed];
-    
-    // Wrap in tag entities
-    NSMutableArray *tags = [NSMutableArray arrayWithCapacity:[uniqueTagList count]];
-    for (NSString *tagText in uniqueTagList) {
-        NSUInteger numberOfImages = [self countImagesWithTag:tagText];
-        [tags addObject:[[TagEntity alloc] initWithName:tagText imageCount:numberOfImages]];
-    }
-    
-    return [tags copy];
+    NSSet *uniqueTagList = [self uniqueTagStrings];
+    return [self wrapInTagEntries:uniqueTagList];
 }
 
 - (NSArray *)listTagsExcluding:(NSArray *)tagsToExclude;
 {
-    return nil;
+    NSMutableSet *uniqueTagList = [[self uniqueTagStrings] mutableCopy];
+    for (NSString *excludeTag in tagsToExclude) {
+        [uniqueTagList removeObject:excludeTag];
+    }
+    return [self wrapInTagEntries:uniqueTagList];
 }
 
 - (NSArray *)fetchMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag;
