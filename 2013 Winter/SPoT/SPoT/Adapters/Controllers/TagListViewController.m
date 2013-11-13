@@ -58,7 +58,10 @@ static NSString * const TagListSubtitleText = @"%d photo%@";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tagEntries = [[TagListingInteractor new] listAllTags];
+    NSArray *tagList = [[TagListingInteractor new] listAllTags];
+    NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
+                                                                   ascending:YES];
+    self.tagEntries = [tagList sortedArrayUsingDescriptors:@[nameDescriptor]];
 }
 
 @end
