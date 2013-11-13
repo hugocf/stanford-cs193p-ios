@@ -18,7 +18,7 @@
 		9ACA7BAF182C12D3004410BB /* ImageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7BA8182C12D3004410BB /* ImageEntity.m */; };
 		9ACA7BB0182C12D3004410BB /* TagEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7BAA182C12D3004410BB /* TagEntity.m */; };
 		9ACA7BB1182C12D3004410BB /* ImageSupplierFlickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7BAE182C12D3004410BB /* ImageSupplierFlickr.m */; };
-		9ACA7BB7182C1565004410BB /* PhotoViewingInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7BB6182C1565004410BB /* PhotoViewingInteractor.m */; };
+		9ACA7BB7182C1565004410BB /* ImageViewingInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7BB6182C1565004410BB /* ImageViewingInteractor.m */; };
 		9AF62824182BDFD200B127CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF62823182BDFD200B127CE /* Foundation.framework */; };
 		9AF62826182BDFD200B127CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF62825182BDFD200B127CE /* CoreGraphics.framework */; };
 		9AF62828182BDFD200B127CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF62827182BDFD200B127CE /* UIKit.framework */; };
@@ -69,8 +69,8 @@
 		9ACA7BAA182C12D3004410BB /* TagEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagEntity.m; sourceTree = "<group>"; };
 		9ACA7BAD182C12D3004410BB /* ImageSupplierFlickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageSupplierFlickr.h; sourceTree = "<group>"; };
 		9ACA7BAE182C12D3004410BB /* ImageSupplierFlickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSupplierFlickr.m; sourceTree = "<group>"; };
-		9ACA7BB5182C1565004410BB /* PhotoViewingInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewingInteractor.h; sourceTree = "<group>"; };
-		9ACA7BB6182C1565004410BB /* PhotoViewingInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewingInteractor.m; sourceTree = "<group>"; };
+		9ACA7BB5182C1565004410BB /* ImageViewingInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewingInteractor.h; sourceTree = "<group>"; };
+		9ACA7BB6182C1565004410BB /* ImageViewingInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewingInteractor.m; sourceTree = "<group>"; };
 		9AF62820182BDFD200B127CE /* SPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPoT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF62823182BDFD200B127CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9AF62825182BDFD200B127CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -252,8 +252,8 @@
 		9AF6285A182BE05500B127CE /* Use Cases */ = {
 			isa = PBXGroup;
 			children = (
-				9ACA7BB5182C1565004410BB /* PhotoViewingInteractor.h */,
-				9ACA7BB6182C1565004410BB /* PhotoViewingInteractor.m */,
+				9ACA7BB5182C1565004410BB /* ImageViewingInteractor.h */,
+				9ACA7BB6182C1565004410BB /* ImageViewingInteractor.m */,
 				9ACA7BA3182C1282004410BB /* TagListingInteractor.h */,
 				9ACA7BA4182C1282004410BB /* TagListingInteractor.m */,
 			);
@@ -388,7 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ACA7BB0182C12D3004410BB /* TagEntity.m in Sources */,
-				9ACA7BB7182C1565004410BB /* PhotoViewingInteractor.m in Sources */,
+				9ACA7BB7182C1565004410BB /* ImageViewingInteractor.m in Sources */,
 				9AF62834182BDFD200B127CE /* AppDelegate.m in Sources */,
 				9ACA7BB1182C12D3004410BB /* ImageSupplierFlickr.m in Sources */,
 				9ACA7BA5182C1282004410BB /* TagListingInteractor.m in Sources */,

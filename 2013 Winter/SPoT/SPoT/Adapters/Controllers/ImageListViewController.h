@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TagEntity.h"
 
 @interface ImageListViewController : UITableViewController
+
+@property (strong, nonatomic) NSArray *imageEntries;
+@property (strong, nonatomic) TagEntity *tagForImages;
 
 @end

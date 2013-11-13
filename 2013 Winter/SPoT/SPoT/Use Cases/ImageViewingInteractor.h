@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "TagEntity.h"
 
-@interface PhotoViewingInteractor : NSObject
+@interface ImageViewingInteractor : NSObject
 
-- (NSArray *)listByTag:(TagEntity *)tag;
+- (NSArray *)listImagesByTag:(TagEntity *)tag;
 //  … listByDate
 //  … showImage
 

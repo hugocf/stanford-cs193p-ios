@@ -12,6 +12,7 @@
 
 static NSString * const TagListCellReuseIdentifier = @"TagName";
 static NSString * const TagListCellSegueIdentifier = @"ShowImagesForTag";
+static NSString * const TagListCellSegueSelector = @"setTagForImages:";
 static NSString * const TagListSubtitleText = @"%d photo%@";
 
 @interface TagListViewController ()
@@ -48,20 +49,27 @@ static NSString * const TagListSubtitleText = @"%d photo%@";
 
 #pragma mark - UIViewController
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:TagListCellSegueIdentifier]) {
+        if ([sender isKindOfClass:[UITableViewCell class]]) {
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            if (indexPath) {
+                if ([segue.destinationViewController respondsToSelector:@selector(setTagForImages:)]) {
+                    TagEntity *tag = self.tagEntries[indexPath.row];
+                    [segue.destinationViewController performSelector:@selector(setTagForImages:) withObject:tag];
+                }
+            }
+        }
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     NSArray *tagList = [[TagListingInteractor new] listAllTags];
-    NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
-                                                                   ascending:YES];
-    self.tagEntries = [tagList sortedArrayUsingDescriptors:@[nameDescriptor]];
+    NSSortDescriptor *byAscendingName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    self.tagEntries = [tagList sortedArrayUsingDescriptors:@[byAscendingName]];
 }
 
 @end

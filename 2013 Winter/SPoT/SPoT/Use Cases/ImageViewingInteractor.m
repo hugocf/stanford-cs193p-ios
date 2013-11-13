@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Mindclick. All rights reserved.
 //
 
-#import "PhotoViewingInteractor.h"
+#import "ImageViewingInteractor.h"
 #import "ImageSupplierGateway.h"
 
-@interface PhotoViewingInteractor ()
+@interface ImageViewingInteractor ()
 
 @property (strong, nonatomic) id <ImageSupplierDataSource> photoSupplier;
 
 @end
 
-@implementation PhotoViewingInteractor
+@implementation ImageViewingInteractor
 
 #pragma mark - Properties
 
@@ -27,7 +27,7 @@
 
 #pragma mark - Methods
 
-- (NSArray *)listByTag:(TagEntity *)tag
+- (NSArray *)listImagesByTag:(TagEntity *)tag
 {
     return [self.photoSupplier listImagesWithTag:tag];
 }
