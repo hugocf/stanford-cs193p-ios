@@ -10,4 +10,19 @@
 
 @implementation ImageEntity
 
+- (id)initWithTitle:(NSString *)titleText
+        description:(NSString *)descriptionText
+             author:(NSString *)authorName
+            formats:(ImageFormatURLs *)formatURLs
+{
+    self = [super init];
+    if (self) {
+        _title = titleText;
+        _description = descriptionText;
+        _author = authorName;
+        _formats = formatURLs;
+    }
+    return self;
+}
+
 @end

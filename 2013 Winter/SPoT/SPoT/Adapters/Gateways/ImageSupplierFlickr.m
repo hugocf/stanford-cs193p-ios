@@ -49,12 +49,37 @@ static NSString * const FlickrTagSeparator = @" ";
 
 - (NSUInteger)countFlickrImagesWithTag:(NSString *)tagName
 {
+    return [[self flickrImagesWithTag:tagName] count];
+}
+
+- (NSArray *)flickrImagesWithTag:(NSString *)tagName
+{
     BOOL(^imageContainsTag)(id, NSUInteger, BOOL*) = ^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         NSRange search = [obj[FLICKR_TAGS] rangeOfString:tagName];
         return search.location != NSNotFound;
     };
     NSIndexSet *matchingImageIndexes = [self.cachedPhotos indexesOfObjectsPassingTest:imageContainsTag];
-    return [matchingImageIndexes count];
+    return [self.cachedPhotos objectsAtIndexes:matchingImageIndexes];
+}
+
+- (NSArray *)wrapInImageEntities:(NSArray *)flickrImages
+{
+    NSMutableArray *images = [NSMutableArray arrayWithCapacity:[flickrImages count]];
+    for (NSDictionary *flickrImage in flickrImages) {
+        [images addObject:[[ImageEntity alloc] initWithTitle:flickrImage[FLICKR_PHOTO_TITLE]
+                                                 description:[flickrImage valueForKeyPath:FLICKR_PHOTO_DESCRIPTION]
+                                                      author:flickrImage[FLICKR_PHOTO_OWNER]
+                                                     formats:[self urlsForImage:flickrImage]]];
+    }
+    return [images copy];
+}
+
+- (ImageFormatURLs *)urlsForImage:(NSDictionary *)flickrImage
+{
+    NSURL *urlNormal = [FlickrFetcher urlForPhoto:flickrImage format:FlickrPhotoFormatLarge];
+    NSURL *urlThumb = [FlickrFetcher urlForPhoto:flickrImage format:FlickrPhotoFormatSquare];
+    NSURL *urlHires = [FlickrFetcher urlForPhoto:flickrImage format:FlickrPhotoFormatOriginal];
+    return [[ImageFormatURLs alloc] initWithURL:urlNormal thumbnail:urlThumb hires:urlHires];
 }
 
 #pragma mark - ImageSupplierDataSource
@@ -73,12 +98,17 @@ static NSString * const FlickrTagSeparator = @" ";
     return [self wrapInTagEntities:uniqueFlickrTagList];
 }	
 
-- (NSArray *)fetchMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag;
+- (NSArray *)listImagesWithTag:(TagEntity *)tag;
+{
+    return [self wrapInImageEntities:[self flickrImagesWithTag:tag.name]];
+}
+
+- (NSArray *)listMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag;
 {
     return nil;
 }
 
-- (NSArray *)fetchMax:(NSUInteger)number imagesBeforeDate:(NSDate *)date;
+- (NSArray *)listMax:(NSUInteger)number imagesBeforeDate:(NSDate *)date;
 {
     return nil;
 }

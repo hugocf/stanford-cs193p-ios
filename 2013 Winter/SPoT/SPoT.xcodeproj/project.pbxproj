@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9AA1C23B1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1C23A1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m */; };
 		9AA1C2401832BC9200B75AD5 /* ImageSupplierGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1C23F1832BC9200B75AD5 /* ImageSupplierGateway.m */; };
+		9AA1C2461833D30400B75AD5 /* ImageFormatURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1C2451833D30400B75AD5 /* ImageFormatURLs.m */; };
 		9ACA7B86182BF1FD004410BB /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7B85182BF1FD004410BB /* FlickrFetcher.m */; };
 		9ACA7B90182C0DE9004410BB /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7B8F182C0DE9004410BB /* TagListViewController.m */; };
 		9ACA7B93182C0E09004410BB /* ImageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA7B92182C0E09004410BB /* ImageListViewController.m */; };
@@ -49,6 +50,8 @@
 		9AA1C23F1832BC9200B75AD5 /* ImageSupplierGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSupplierGateway.m; sourceTree = "<group>"; };
 		9AA1C241183397D700B75AD5 /* Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		9AA1C2431833990E00B75AD5 /* ArrayCount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayCount.h; sourceTree = "<group>"; };
+		9AA1C2441833D30400B75AD5 /* ImageFormatURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFormatURLs.h; sourceTree = "<group>"; };
+		9AA1C2451833D30400B75AD5 /* ImageFormatURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFormatURLs.m; sourceTree = "<group>"; };
 		9ACA7B83182BF1FD004410BB /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		9ACA7B84182BF1FD004410BB /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		9ACA7B85182BF1FD004410BB /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 			children = (
 				9ACA7BA7182C12D3004410BB /* ImageEntity.h */,
 				9ACA7BA8182C12D3004410BB /* ImageEntity.m */,
+				9AA1C2441833D30400B75AD5 /* ImageFormatURLs.h */,
+				9AA1C2451833D30400B75AD5 /* ImageFormatURLs.m */,
 				9ACA7BA9182C12D3004410BB /* TagEntity.h */,
 				9ACA7BAA182C12D3004410BB /* TagEntity.m */,
 			);
@@ -390,6 +395,7 @@
 				9ACA7B90182C0DE9004410BB /* TagListViewController.m in Sources */,
 				9AA1C2401832BC9200B75AD5 /* ImageSupplierGateway.m in Sources */,
 				9ACA7B86182BF1FD004410BB /* FlickrFetcher.m in Sources */,
+				9AA1C2461833D30400B75AD5 /* ImageFormatURLs.m in Sources */,
 				9AF62830182BDFD200B127CE /* main.m in Sources */,
 				9ACA7BAF182C12D3004410BB /* ImageEntity.m in Sources */,
 				9ACA7B93182C0E09004410BB /* ImageListViewController.m in Sources */,
