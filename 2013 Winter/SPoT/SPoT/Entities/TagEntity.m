@@ -22,12 +22,6 @@
     return self;
 }
 
-- (id)init
-{
-    self = [self init];
-    return self;
-}
-
 #pragma mark - NSObject
 
 - (NSString *)description

@@ -20,4 +20,7 @@
 /** Designated initializer. */
 - (id)initWithName:(NSString *)name imageCount:(NSUInteger)count;
 
++ (id)new  __attribute__((unavailable("use the designated initializer instead")));
+- (id)init __attribute__((unavailable("use the designated initializer instead")));
+
 @end
