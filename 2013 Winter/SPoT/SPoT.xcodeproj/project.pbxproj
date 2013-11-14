@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A09566418342E6200388B45 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 9A09566218342E6200388B45 /* Debug.xcconfig */; };
+		9A09566518342E6200388B45 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 9A09566318342E6200388B45 /* Warnings.xcconfig */; };
 		9AA1C23B1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1C23A1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m */; };
 		9AA1C2401832BC9200B75AD5 /* ImageSupplierGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1C23F1832BC9200B75AD5 /* ImageSupplierGateway.m */; };
 		9AA1C2461833D30400B75AD5 /* ImageFormatURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1C2451833D30400B75AD5 /* ImageFormatURLs.m */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A09566218342E6200388B45 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		9A09566318342E6200388B45 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		9AA1C23A1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcherLearningTests.m; sourceTree = "<group>"; };
 		9AA1C23E1832BC9200B75AD5 /* ImageSupplierGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageSupplierGateway.h; sourceTree = "<group>"; };
 		9AA1C23F1832BC9200B75AD5 /* ImageSupplierGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSupplierGateway.m; sourceTree = "<group>"; };
@@ -114,13 +118,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A09566118342E6200388B45 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				9A09566218342E6200388B45 /* Debug.xcconfig */,
+				9A09566318342E6200388B45 /* Warnings.xcconfig */,
+			);
+			name = Config;
+			path = Support/Config;
+			sourceTree = "<group>";
+		};
 		9AA1C2421833985D00B75AD5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				9AA1C241183397D700B75AD5 /* Helpers.h */,
 				9AA1C2431833990E00B75AD5 /* ArrayCount.h */,
 			);
-			path = Helpers;
+			name = Helpers;
+			path = Support/Helpers;
 			sourceTree = "<group>";
 		};
 		9AB0436F1832A2AC008AC104 /* Screens */ = {
@@ -221,6 +236,7 @@
 		9AF6282A182BDFD200B127CE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A09566118342E6200388B45 /* Config */,
 				9AA1C2421833985D00B75AD5 /* Helpers */,
 				9AF6282B182BDFD200B127CE /* SPoT-Info.plist */,
 				9AF6282C182BDFD200B127CE /* InfoPlist.strings */,
@@ -366,8 +382,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A09566418342E6200388B45 /* Debug.xcconfig in Resources */,
 				9AF6282E182BDFD200B127CE /* InfoPlist.strings in Resources */,
 				9AF62865182BEB3E00B127CE /* PhotoBrowsing.storyboard in Resources */,
+				9A09566518342E6200388B45 /* Warnings.xcconfig in Resources */,
 				9AF62836182BDFD200B127CE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +462,7 @@
 /* Begin XCBuildConfiguration section */
 		9AF6284A182BDFD200B127CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A09566218342E6200388B45 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -483,6 +502,7 @@
 		};
 		9AF6284B182BDFD200B127CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A09566318342E6200388B45 /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
