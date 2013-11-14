@@ -30,6 +30,14 @@ static NSString * const TagListSubtitleText = @"%d photo%@";
     [self.tableView reloadData];
 }
 
+#pragma mark - Methods
+
+- (NSArray *)sortAlphabetically:(NSArray *)tagList
+{
+    NSSortDescriptor *byAscendingName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    return [tagList sortedArrayUsingDescriptors:@[byAscendingName]];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -72,9 +80,10 @@ static NSString * const TagListSubtitleText = @"%d photo%@";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSArray *tagList = [[TagListingInteractor new] listAllTags];
-    NSSortDescriptor *byAscendingName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    self.tagEntries = [tagList sortedArrayUsingDescriptors:@[byAscendingName]];
+    if (!self.tagEntries) {
+        NSArray *tagList = [[TagListingInteractor new] listAllTags];
+        self.tagEntries = [self sortAlphabetically:tagList];
+    }
 }
 
 @end
