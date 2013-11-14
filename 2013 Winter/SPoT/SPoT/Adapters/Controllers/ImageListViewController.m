@@ -59,4 +59,11 @@ static NSString * const ImageListCellReuseIdentifier = @"ImageName";
     }
 }
 
+- (void)viewDidLoad
+{
+    if (!self.imageEntries) {
+        self.imageEntries = [[ImageViewingInteractor new] listRecentImages];
+    }
+}
+
 @end
