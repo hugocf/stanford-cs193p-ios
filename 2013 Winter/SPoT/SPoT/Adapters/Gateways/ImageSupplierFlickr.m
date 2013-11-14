@@ -111,14 +111,19 @@ static NSString * const FlickrTagSeparator = @" ";
     return [self wrapInTagEntities:uniqueFlickrTagList];
 }	
 
+- (NSArray *)listMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag
+{
+    NSArray *photos = [self listImagesWithTag:tag];
+    NSUInteger photoCount = [photos count];
+    if (number < photoCount) {
+        photos = [photos subarrayWithRange:(NSRange){0, number}];
+    }
+    return photos;
+}
+
 - (NSArray *)listImagesWithTag:(TagEntity *)tag
 {
     return [self wrapInImageEntities:[self flickrImagesWithTag:tag.name]];
-}
-
-- (NSArray *)listMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag
-{
-    return nil;
 }
 
 - (NSArray *)listMax:(NSUInteger)number imagesBeforeDate:(NSDate *)date
