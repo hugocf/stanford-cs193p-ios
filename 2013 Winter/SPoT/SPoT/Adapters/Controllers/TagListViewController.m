@@ -33,14 +33,14 @@ static NSString * const TagListSubtitleText = @"%d photo%@";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.tagEntries count];
+    return (NSInteger)[self.tagEntries count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TagListCellReuseIdentifier
                                                             forIndexPath:indexPath];
-    TagEntity *tag = (TagEntity *)self.tagEntries[indexPath.row];
+    TagEntity *tag = (TagEntity *)self.tagEntries[(NSUInteger)indexPath.row];
     BOOL isPlural = tag.numberOfImages > 1;
     cell.textLabel.text = tag.description;
     cell.detailTextLabel.text = [NSString stringWithFormat:TagListSubtitleText, tag.numberOfImages, (isPlural)? @"s" : @""];
@@ -55,10 +55,13 @@ static NSString * const TagListSubtitleText = @"%d photo%@";
         if ([sender isKindOfClass:[UITableViewCell class]]) {
             NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
             if (indexPath) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
                 if ([segue.destinationViewController respondsToSelector:@selector(setTagForImages:)]) {
-                    TagEntity *tag = self.tagEntries[indexPath.row];
+                    TagEntity *tag = self.tagEntries[(NSUInteger)indexPath.row];
                     [segue.destinationViewController performSelector:@selector(setTagForImages:) withObject:tag];
                 }
+#pragma clang diagnostic pop
             }
         }
     }

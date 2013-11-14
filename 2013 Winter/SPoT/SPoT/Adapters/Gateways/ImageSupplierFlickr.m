@@ -102,7 +102,7 @@ static NSString * const FlickrTagSeparator = @" ";
     return [self wrapInTagEntities:[self uniqueFlickrTags]];
 }
 
-- (NSArray *)listTagsExcluding:(NSArray *)tagsToExclude;
+- (NSArray *)listTagsExcluding:(NSArray *)tagsToExclude
 {
     NSMutableSet *uniqueFlickrTagList = [[self uniqueFlickrTags] mutableCopy];
     for (NSString *excludedTag in tagsToExclude) {
@@ -111,17 +111,17 @@ static NSString * const FlickrTagSeparator = @" ";
     return [self wrapInTagEntities:uniqueFlickrTagList];
 }	
 
-- (NSArray *)listImagesWithTag:(TagEntity *)tag;
+- (NSArray *)listImagesWithTag:(TagEntity *)tag
 {
     return [self wrapInImageEntities:[self flickrImagesWithTag:tag.name]];
 }
 
-- (NSArray *)listMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag;
+- (NSArray *)listMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag
 {
     return nil;
 }
 
-- (NSArray *)listMax:(NSUInteger)number imagesBeforeDate:(NSDate *)date;
+- (NSArray *)listMax:(NSUInteger)number imagesBeforeDate:(NSDate *)date
 {
     return nil;
 }

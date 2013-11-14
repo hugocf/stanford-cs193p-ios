@@ -36,14 +36,14 @@ static NSString * const ImageListCellReuseIdentifier = @"ImageName";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.imageEntries count];
+    return (NSInteger)[self.imageEntries count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ImageListCellReuseIdentifier
                                                             forIndexPath:indexPath];
-    ImageEntity *image = (ImageEntity *)self.imageEntries[indexPath.row];
+    ImageEntity *image = (ImageEntity *)self.imageEntries[(NSUInteger)indexPath.row];
     cell.textLabel.text = image.title;
     cell.detailTextLabel.text = image.description;
     return cell;
