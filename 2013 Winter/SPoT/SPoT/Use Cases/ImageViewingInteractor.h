@@ -12,7 +12,6 @@
 @interface ImageViewingInteractor : NSObject
 
 - (NSArray *)listImagesByTag:(TagEntity *)tag;
-//  … listByDate
-//  … showImage
+- (NSArray *)listRecentImages;
 
 @end

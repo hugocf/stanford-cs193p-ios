@@ -14,6 +14,7 @@ static NSString * const FlickrTagSeparator = @" ";
 @interface ImageSupplierFlickr ()
 
 @property (readonly, nonatomic) NSArray *cachedStanfordPhotos;
+@property (readonly, nonatomic) NSArray *cachedRecentPhotos;
 
 @end
 
@@ -33,11 +34,17 @@ static NSString * const FlickrTagSeparator = @" ";
 #pragma mark - Properties
 
 @synthesize cachedStanfordPhotos = _cachedStanfordPhotos;
-
 - (NSArray *)cachedStanfordPhotos
 {
     if (!_cachedStanfordPhotos) _cachedStanfordPhotos = [FlickrFetcher stanfordPhotos];
     return _cachedStanfordPhotos;
+}
+
+@synthesize cachedRecentPhotos = _cachedRecentPhotos;
+- (NSArray *)cachedRecentPhotos
+{
+    if (!_cachedRecentPhotos) _cachedRecentPhotos = [FlickrFetcher latestGeoreferencedPhotos];
+    return _cachedRecentPhotos;
 }
 
 #pragma mark - Methods
@@ -126,9 +133,9 @@ static NSString * const FlickrTagSeparator = @" ";
     return [self wrapInImageEntities:[self flickrImagesWithTag:tag.name]];
 }
 
-- (NSArray *)listMax:(NSUInteger)number imagesBeforeDate:(NSDate *)date
+- (NSArray *)listImagesRecentlyUploaded
 {
-    return nil;
+    return [self wrapInImageEntities:[FlickrFetcher latestGeoreferencedPhotos]];
 }
 
 @end

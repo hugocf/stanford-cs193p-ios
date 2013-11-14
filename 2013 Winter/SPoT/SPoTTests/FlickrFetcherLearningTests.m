@@ -24,4 +24,10 @@
     XCTAssert([uniqueTagList count] < [allTagsUsed count], @"Duplicate tags should have disappeared");
 }
 
+- (void)testRecentPhotosReturnsLimitedSize
+{
+    NSArray *photos = [FlickrFetcher latestGeoreferencedPhotos];
+    XCTAssertEqual([photos count] <= 250, @"Too many photos received");
+}
+
 @end

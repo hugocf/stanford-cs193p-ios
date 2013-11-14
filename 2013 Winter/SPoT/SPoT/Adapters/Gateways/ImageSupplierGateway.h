@@ -22,13 +22,13 @@
 - (NSArray *)listTagsExcluding:(NSArray *)tagsToExclude;
 
 /** @return List of `ImageEntity` objects. */
+- (NSArray *)listImagesRecentlyUploaded;
+
+/** @return List of `ImageEntity` objects. */
 - (NSArray *)listImagesWithTag:(TagEntity *)tag;
 
 /** @return List of `ImageEntity` objects. */
 - (NSArray *)listMax:(NSUInteger)number imagesWithTag:(TagEntity *)tag;
-
-/** @return List of `ImageEntity` objects. */
-- (NSArray *)listMax:(NSUInteger)number imagesBeforeDate:(NSDate *)date;
 
 @end
 

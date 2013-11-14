@@ -32,4 +32,9 @@
     return [self.photoSupplier listImagesWithTag:tag];
 }
 
+-(NSArray *)listRecentImages
+{
+    return [self.photoSupplier listImagesRecentlyUploaded];
+}
+
 @end
