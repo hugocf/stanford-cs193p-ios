@@ -32,9 +32,25 @@
     return [self.photoSupplier listImagesWithTag:tag];
 }
 
--(NSArray *)listRecentImages
+- (NSArray *)listRecentImages
 {
-    return [self.photoSupplier listImagesRecentlyUploaded];
+    /* TODO: Load from [NSUserDefaults standardUserDefaults] if exists, fetch online otherwise */
+    NSArray *photos = [self.photoSupplier listImagesRecentlyUploaded];
+    photos = [self removeDuplicates:photos];
+    photos = [self sortByMostRecent:photos];
+    return photos;
+}
+
+- (NSArray *)removeDuplicates:(NSArray *)photos
+{
+    /* TODO: implement this someday (based on FLICKR_PHOTO_ID) */
+    return photos;
+}
+
+- (NSArray *)sortByMostRecent:(NSArray *)photos
+{
+    /* TODO: implement this someday */
+    return photos;
 }
 
 @end
