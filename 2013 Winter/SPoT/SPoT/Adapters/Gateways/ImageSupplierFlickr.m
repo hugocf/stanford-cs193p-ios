@@ -13,7 +13,7 @@ static NSString * const FlickrTagSeparator = @" ";
 
 @interface ImageSupplierFlickr ()
 
-@property (readonly, nonatomic) NSArray *cachedPhotos;
+@property (readonly, nonatomic) NSArray *cachedStanfordPhotos;
 
 @end
 
@@ -32,19 +32,19 @@ static NSString * const FlickrTagSeparator = @" ";
 
 #pragma mark - Properties
 
-@synthesize cachedPhotos = _cachedPhotos;
+@synthesize cachedStanfordPhotos = _cachedStanfordPhotos;
 
-- (NSArray *)cachedPhotos
+- (NSArray *)cachedStanfordPhotos
 {
-    if (!_cachedPhotos) _cachedPhotos = [FlickrFetcher stanfordPhotos];
-    return _cachedPhotos;
+    if (!_cachedStanfordPhotos) _cachedStanfordPhotos = [FlickrFetcher stanfordPhotos];
+    return _cachedStanfordPhotos;
 }
 
 #pragma mark - Methods
 
 - (NSSet *)uniqueFlickrTags
 {
-    NSArray *flickrTagsPerPhoto = [self.cachedPhotos valueForKey:FLICKR_TAGS];
+    NSArray *flickrTagsPerPhoto = [self.cachedStanfordPhotos valueForKey:FLICKR_TAGS];
     NSArray *allFlickrTagsUsed = [[flickrTagsPerPhoto componentsJoinedByString:FlickrTagSeparator]
                                   componentsSeparatedByString:FlickrTagSeparator];
     return [NSSet setWithArray:allFlickrTagsUsed];
@@ -71,8 +71,8 @@ static NSString * const FlickrTagSeparator = @" ";
         NSRange search = [obj[FLICKR_TAGS] rangeOfString:tagName];
         return search.location != NSNotFound;
     };
-    NSIndexSet *matchingImageIndexes = [self.cachedPhotos indexesOfObjectsPassingTest:imageContainsTag];
-    return [self.cachedPhotos objectsAtIndexes:matchingImageIndexes];
+    NSIndexSet *matchingImageIndexes = [self.cachedStanfordPhotos indexesOfObjectsPassingTest:imageContainsTag];
+    return [self.cachedStanfordPhotos objectsAtIndexes:matchingImageIndexes];
 }
 
 - (NSArray *)wrapInImageEntities:(NSArray *)flickrImages
