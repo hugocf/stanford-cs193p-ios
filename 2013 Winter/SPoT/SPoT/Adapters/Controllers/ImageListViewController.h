@@ -12,6 +12,5 @@
 @interface ImageListViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *imageEntries;
-@property (strong, nonatomic) TagEntity *tagForImages;
 
 @end

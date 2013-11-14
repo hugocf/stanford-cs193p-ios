@@ -27,12 +27,6 @@ static NSString * const ImageListCellReuseIdentifier = @"ImageName";
     [self.tableView reloadData];
 }
 
-- (void)setTagForImages:(TagEntity *)tagForImages
-{
-    _tagForImages = tagForImages;
-    [self.tableView reloadData];
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -63,12 +57,6 @@ static NSString * const ImageListCellReuseIdentifier = @"ImageName";
             }
         }
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.imageEntries = [[ImageViewingInteractor new] listImagesByTag:self.tagForImages];
 }
 
 @end

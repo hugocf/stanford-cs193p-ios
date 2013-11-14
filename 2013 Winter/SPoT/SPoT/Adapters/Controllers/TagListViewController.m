@@ -9,6 +9,7 @@
 #import "TagListViewController.h"
 #import "TagListingInteractor.h"
 #import "TagEntity.h"
+#import "ImageViewingInteractor.h"
 
 static NSString * const TagListCellReuseIdentifier = @"TagName";
 static NSString * const TagListCellSegueIdentifier = @"ShowImagesForTag";
@@ -57,9 +58,10 @@ static NSString * const TagListSubtitleText = @"%d photo%@";
             if (indexPath) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-                if ([segue.destinationViewController respondsToSelector:@selector(setTagForImages:)]) {
+                if ([segue.destinationViewController respondsToSelector:@selector(setImageEntries:)]) {
                     TagEntity *tag = self.tagEntries[(NSUInteger)indexPath.row];
-                    [segue.destinationViewController performSelector:@selector(setTagForImages:) withObject:tag];
+                    NSArray * images = [[ImageViewingInteractor new] listImagesByTag:tag];
+                    [segue.destinationViewController performSelector:@selector(setImageEntries:) withObject:images];
                 }
 #pragma clang diagnostic pop
             }
