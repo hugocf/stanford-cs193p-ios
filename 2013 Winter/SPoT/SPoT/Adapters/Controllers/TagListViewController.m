@@ -14,7 +14,7 @@
 static NSString * const TagListCellReuseIdentifier = @"TagName";
 static NSString * const TagListCellSegueIdentifier = @"ShowImagesForTag";
 static NSString * const TagListCellSegueSelector = @"setTagForImages:";
-static NSString * const TagListSubtitleText = @"%d photo%@";
+static NSString * const TagListSubtitleText = @"%ld photo%@";
 
 @interface TagListViewController ()
 
@@ -52,7 +52,8 @@ static NSString * const TagListSubtitleText = @"%d photo%@";
     TagEntity *tag = (TagEntity *)self.tagEntries[(NSUInteger)indexPath.row];
     BOOL isPlural = tag.numberOfImages > 1;
     cell.textLabel.text = tag.description;
-    cell.detailTextLabel.text = [NSString stringWithFormat:TagListSubtitleText, tag.numberOfImages, (isPlural)? @"s" : @""];
+    cell.detailTextLabel.text = [NSString stringWithFormat:TagListSubtitleText,
+                                 (unsigned long)tag.numberOfImages, (isPlural)? @"s" : @""];
     return cell;
 }
 
