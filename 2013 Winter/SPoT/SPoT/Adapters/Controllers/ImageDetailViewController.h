@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ImageEntity.h"
 
 @interface ImageDetailViewController : UIViewController
+
+@property (strong, nonatomic) ImageEntity *imageToDisplay;
 
 @end

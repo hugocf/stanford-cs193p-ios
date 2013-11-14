@@ -7,6 +7,7 @@
 //
 
 #import "ImageListViewController.h"
+#import "ImageDetailViewController.h"
 #import "ImageViewingInteractor.h"
 #import "ImageEntity.h"
 
@@ -53,8 +54,15 @@ static NSString * const ImageListCellReuseIdentifier = @"ImageName";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([sender isKindOfClass:[UITableViewCell class]]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        if (indexPath) {
+            if ([segue.destinationViewController isKindOfClass:[ImageDetailViewController class]]) {
+                ImageEntity *image = self.imageEntries[(NSUInteger)indexPath.row];
+                ((ImageDetailViewController *)segue.destinationViewController).imageToDisplay = image;
+            }
+        }
+    }
 }
 
 - (void)viewDidLoad
