@@ -83,6 +83,18 @@ static const CGFloat ImageDetailZoomMax = 5.0f;
 
 #pragma mark - UIViewController
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    /* TODO: Add auto scrolling based on UIScrollView’s bounds and the size of the photo. */
+    /*       See when in the VC's lifecycle you can do geometry calculations with Autolayout on. */
+//    CGFloat zoomFactor;
+//    if (self.imageView.image.size.width < self.scrollView.frame.size.width) {
+//        zoomFactor = self.scrollView.frame.size.width / self.imageView.image.size.width;
+//        self.scrollView.zoomScale = zoomFactor;
+//    }
+//    [self resetImage];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
