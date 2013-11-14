@@ -8,7 +8,11 @@
 
 #import "ImageDetailViewController.h"
 
-@interface ImageDetailViewController ()
+static const CGFloat ImageDetailZoomMin = 0.2f;
+static const CGFloat ImageDetailZoomNormal = 1.0f;
+static const CGFloat ImageDetailZoomMax = 5.0f;
+
+@interface ImageDetailViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
@@ -40,6 +44,7 @@
         // reset scroll view
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
+        [self configureScrollView];
         
         // load image
         NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageToDisplay.formats.normal];
@@ -54,12 +59,28 @@
     }
 }
 
+- (void)configureScrollView
+{
+    self.scrollView.maximumZoomScale = ImageDetailZoomMax;
+    self.scrollView.minimumZoomScale = ImageDetailZoomMin;
+    self.scrollView.zoomScale = ImageDetailZoomNormal;
+    self.scrollView.delegate = self;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
+}
+
 #pragma mark - NSViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	[self.scrollView addSubview:self.imageView];
+    [self configureScrollView];
     [self resetImage];
 }
 
