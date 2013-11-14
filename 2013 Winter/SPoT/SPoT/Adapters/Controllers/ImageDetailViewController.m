@@ -40,22 +40,30 @@ static const CGFloat ImageDetailZoomMax = 5.0f;
 - (void)resetImage
 {
     if (self.scrollView) {
-        
-        // reset scroll view
-        self.scrollView.contentSize = CGSizeZero;
-        self.imageView.image = nil;
-        [self configureScrollView];
-        
-        // load image
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageToDisplay.formats.normal];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        
-        // display into scroll + image view
-        if (image) {
-            self.scrollView.contentSize = image.size;
-            self.imageView.image = image;
-            self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-        }
+        [self resetDisplayArea];
+        [self displayImage:[self loadImage]];
+    }
+}
+
+- (void)resetDisplayArea
+{
+    self.scrollView.zoomScale = ImageDetailZoomNormal;
+    self.scrollView.contentSize = CGSizeZero;
+    self.imageView.image = nil;
+}
+
+- (UIImage *)loadImage
+{
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageToDisplay.formats.normal];
+    return [[UIImage alloc] initWithData:imageData];
+}
+
+- (void)displayImage:(UIImage *)image
+{
+    if (image) {
+        self.scrollView.contentSize = image.size;
+        self.imageView.image = image;
+        self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     }
 }
 
@@ -63,7 +71,6 @@ static const CGFloat ImageDetailZoomMax = 5.0f;
 {
     self.scrollView.maximumZoomScale = ImageDetailZoomMax;
     self.scrollView.minimumZoomScale = ImageDetailZoomMin;
-    self.scrollView.zoomScale = ImageDetailZoomNormal;
     self.scrollView.delegate = self;
 }
 
@@ -74,7 +81,7 @@ static const CGFloat ImageDetailZoomMax = 5.0f;
     return self.imageView;
 }
 
-#pragma mark - NSViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad
 {
