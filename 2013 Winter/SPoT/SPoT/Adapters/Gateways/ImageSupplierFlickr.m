@@ -13,13 +13,26 @@ static NSString * const FlickrTagSeparator = @" ";
 
 @interface ImageSupplierFlickr ()
 
-@property (strong, nonatomic) NSArray *cachedPhotos;
+@property (readonly, nonatomic) NSArray *cachedPhotos;
 
 @end
 
 @implementation ImageSupplierFlickr
 
+#pragma mark - Class
+
++ (instancetype)sharedImageSupplierFlickr {
+    static id sharedInstance = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
 #pragma mark - Properties
+
+@synthesize cachedPhotos = _cachedPhotos;
 
 - (NSArray *)cachedPhotos
 {

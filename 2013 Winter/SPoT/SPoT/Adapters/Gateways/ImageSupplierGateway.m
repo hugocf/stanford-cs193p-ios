@@ -13,7 +13,7 @@
 
 + (id<ImageSupplierDataSource>)defaultDataSource
 {
-    return [[ImageSupplierFlickr alloc] init];
+    return [ImageSupplierFlickr sharedImageSupplierFlickr];
 }
 
 @end
