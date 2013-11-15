@@ -7,7 +7,7 @@
 //
 
 #import "TagListingInteractor.h"
-#import "ImageSupplierGateway.h"
+#import "ImageSupplierGateway.h"    /* FIXME: Isn't this breaking the Dependency Rule? */
 
 static NSString * const TagListExclusions[] = { @"cs193pspot", @"portrait", @"landscape" };
 

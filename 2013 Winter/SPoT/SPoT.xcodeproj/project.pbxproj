@@ -49,6 +49,7 @@
 /* Begin PBXFileReference section */
 		9A09566218342E6200388B45 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		9A09566318342E6200388B45 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		9A2ECF29183645E000499D16 /* ImageSupplierDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageSupplierDataSource.h; sourceTree = "<group>"; };
 		9AA1C23A1832AB3F00B75AD5 /* FlickrFetcherLearningTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcherLearningTests.m; sourceTree = "<group>"; };
 		9AA1C23E1832BC9200B75AD5 /* ImageSupplierGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageSupplierGateway.h; sourceTree = "<group>"; };
 		9AA1C23F1832BC9200B75AD5 /* ImageSupplierGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSupplierGateway.m; sourceTree = "<group>"; };
@@ -268,6 +269,7 @@
 		9AF6285A182BE05500B127CE /* Use Cases */ = {
 			isa = PBXGroup;
 			children = (
+				9A2ECF29183645E000499D16 /* ImageSupplierDataSource.h */,
 				9ACA7BB5182C1565004410BB /* ImageViewingInteractor.h */,
 				9ACA7BB6182C1565004410BB /* ImageViewingInteractor.m */,
 				9ACA7BA3182C1282004410BB /* TagListingInteractor.h */,

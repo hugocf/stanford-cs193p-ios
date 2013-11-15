@@ -7,6 +7,8 @@
 //
 
 #import "ImageSupplierFlickr.h"
+#import "ImageEntity.h"
+#import "TagEntity.h"
 #import "FlickrFetcher.h"
 
 static NSString * const FlickrTagSeparator = @" ";

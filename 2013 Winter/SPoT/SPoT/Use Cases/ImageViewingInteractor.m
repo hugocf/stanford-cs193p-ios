@@ -7,7 +7,7 @@
 //
 
 #import "ImageViewingInteractor.h"
-#import "ImageSupplierGateway.h"
+#import "ImageSupplierGateway.h"    /* FIXME: Isn't this breaking the Dependency Rule? */
 
 @interface ImageViewingInteractor ()
 
