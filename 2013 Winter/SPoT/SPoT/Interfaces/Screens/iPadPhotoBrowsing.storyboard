@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Split View Controller-->
+        <!--Tablet Split View Controller-->
         <scene sceneID="VtA-6c-3tz">
             <objects>
-                <splitViewController id="ciW-HR-0EJ" sceneMemberID="viewController">
+                <splitViewController id="ciW-HR-0EJ" customClass="TabletSplitViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <connections>
                         <segue destination="17t-iY-4FQ" kind="relationship" relationship="masterViewController" id="zjv-TK-KyD"/>
@@ -260,6 +260,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="irs-wO-nZV"/>
+        <segue reference="2L7-Ib-i37"/>
     </inferredMetricsTieBreakers>
 </document>
