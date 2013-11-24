@@ -127,26 +127,37 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl7-Jb-zux">
-                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </scrollView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFz-DJ-I8a">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="5pT-jC-xY7"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bl7-Jb-zux" firstAttribute="top" secondItem="Fgc-K1-Nc9" secondAttribute="top" constant="20" symbolic="YES" id="J91-z4-L8L"/>
-                            <constraint firstAttribute="trailing" secondItem="bl7-Jb-zux" secondAttribute="trailing" id="Su5-ys-Ukg"/>
-                            <constraint firstAttribute="bottom" secondItem="bl7-Jb-zux" secondAttribute="bottom" id="YJ0-6z-NUn"/>
-                            <constraint firstItem="bl7-Jb-zux" firstAttribute="leading" secondItem="Fgc-K1-Nc9" secondAttribute="leading" id="edN-OC-dz8"/>
+                            <constraint firstAttribute="trailing" secondItem="JFz-DJ-I8a" secondAttribute="trailing" id="63W-22-a6L"/>
+                            <constraint firstAttribute="bottom" secondItem="bl7-Jb-zux" secondAttribute="bottom" id="W07-hL-BXD"/>
+                            <constraint firstItem="bl7-Jb-zux" firstAttribute="trailing" secondItem="JFz-DJ-I8a" secondAttribute="trailing" id="YHV-RO-AdQ"/>
+                            <constraint firstItem="JFz-DJ-I8a" firstAttribute="leading" secondItem="Fgc-K1-Nc9" secondAttribute="leading" id="f1H-Qi-qkf"/>
+                            <constraint firstItem="bl7-Jb-zux" firstAttribute="top" secondItem="JFz-DJ-I8a" secondAttribute="bottom" id="fCh-R8-Gjs"/>
+                            <constraint firstItem="bl7-Jb-zux" firstAttribute="leading" secondItem="JFz-DJ-I8a" secondAttribute="leading" id="mlD-qg-bjP"/>
+                            <constraint firstItem="JFz-DJ-I8a" firstAttribute="top" secondItem="CAf-X5-z8y" secondAttribute="bottom" id="qbK-Af-GnR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gi6-Ex-Ait"/>
                     <connections>
                         <outlet property="scrollView" destination="bl7-Jb-zux" id="vI6-XP-3pB"/>
+                        <outlet property="toolbar" destination="5pT-jC-xY7" id="4Lr-Vc-wiM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1N-jY-WFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1402" y="-1646"/>
+            <point key="canvasLocation" x="-1433" y="-1646"/>
         </scene>
         <!--Image List View Controller-->
         <scene sceneID="V7W-sB-NvG">

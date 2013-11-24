@@ -14,6 +14,7 @@ static const CGFloat ImageDetailZoomMax = 5.0f;
 
 @interface ImageDetailViewController () <UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *toolbar;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
 
@@ -39,6 +40,9 @@ static const CGFloat ImageDetailZoomMax = 5.0f;
 
 - (void)resetImage
 {
+    if (self.toolbar) {
+        self.toolbar.title = self.imageToDisplay.title;
+    }
     if (self.scrollView) {
         [self resetDisplayArea];
         [self displayImage:[self loadImage]];
